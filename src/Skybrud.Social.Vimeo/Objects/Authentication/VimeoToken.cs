@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Social.Json.Extensions;
-using Skybrud.Social.Vimeo.Endpoints.Raw;
-using Skybrud.Social.Vimeo.OAuth2;
 using Skybrud.Social.Vimeo.Objects.Users;
 using Skybrud.Social.Vimeo.Scopes;
 

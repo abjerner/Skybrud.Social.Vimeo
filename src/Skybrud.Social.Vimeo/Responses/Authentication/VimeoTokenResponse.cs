@@ -8,12 +8,6 @@ namespace Skybrud.Social.Vimeo.Responses.Authentication {
     /// </summary>
     public class VimeoTokenResponse : VimeoResponse<VimeoToken> {
 
-        #region Properties
-
-
-
-        #endregion
-
         #region Constructors
 
         private VimeoTokenResponse(SocialHttpResponse response) : base(response) {

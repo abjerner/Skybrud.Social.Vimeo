@@ -1,5 +1,8 @@
 ﻿namespace Skybrud.Social.Vimeo.Scopes {
 
+    /// <summary>
+    /// Class representing a scope of the Vimeo API.
+    /// </summary>
     /// <see>
     ///     <cref>https://developer.vimeo.com/api/authentication#supported-scopes</cref>
     /// </see>
@@ -96,6 +99,12 @@
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new scope based on the specified <code>alias</code>, <code>name</code> and <code>description</code>.
+        /// </summary>
+        /// <param name="alias">The alias of the scope.</param>
+        /// <param name="name">The name of the scope.</param>
+        /// <param name="description">The description of the scope.</param>
         public VimeoScope(string alias, string name, string description) {
             Alias = alias;
             Name = name;

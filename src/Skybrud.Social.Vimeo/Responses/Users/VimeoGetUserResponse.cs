@@ -3,6 +3,9 @@ using Skybrud.Social.Vimeo.Objects.Users;
 
 namespace Skybrud.Social.Vimeo.Responses.Users {
 
+    /// <summary>
+    /// Class representing a response with information about a Vimeo user.
+    /// </summary>
     public class VimeoGetUserResponse : VimeoResponse<VimeoUser> {
 
         #region Constructors

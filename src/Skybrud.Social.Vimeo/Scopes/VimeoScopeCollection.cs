@@ -73,20 +73,22 @@ namespace Skybrud.Social.Vimeo.Scopes {
             return (from scope in _list select scope.Name).ToArray();
         }
 
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection of scopes.
+        /// </summary>
         public IEnumerator<VimeoScope> GetEnumerator() {
             return _list.GetEnumerator();
         }
 
         /// <summary>
-        /// Returns a string representing the scopea added to the collection using a space as a separator.
+        /// Returns a string representing the scopes added to the collection using a space as a separator.
         /// </summary>
         /// <returns>String of scopes separated by a space.</returns>
         public override string ToString() {
             return String.Join(" ", from scope in _list select scope.Name);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
+        IEnumerator IEnumerable.GetEnumerator() {
             return GetEnumerator();
         }
 
@@ -94,6 +96,11 @@ namespace Skybrud.Social.Vimeo.Scopes {
 
         #region Static methods
 
+        /// <summary>
+        /// Parses the specified space separated string into an instance of <see cref="VimeoScopeCollection"/>.
+        /// </summary>
+        /// <param name="str">String containing the individual scopes.</param>
+        /// <returns>Returns an instance of <see cref="VimeoScopeCollection"/> with the specified scopes.</returns>
         public static VimeoScopeCollection Parse(string str) {
             return new VimeoScopeCollection(
                 from alias in (str ?? "").Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
