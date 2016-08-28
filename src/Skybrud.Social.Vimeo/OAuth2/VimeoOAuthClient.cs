@@ -43,6 +43,11 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
         #region Endpoints
 
         /// <summary>
+        /// Gets a reference to the raw <strong>Channels</strong> endpoint.
+        /// </summary>
+        public VimeoChannelsRawEndpoint Channels { get; private set; }
+
+        /// <summary>
         /// Gets a reference to the raw <strong>Me</strong> endpoint.
         /// </summary>
         public VimeoMeRawEndpoint Me { get; private set; }
@@ -62,6 +67,7 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
         /// Initializes a new OAuth client default properties.
         /// </summary>
         public VimeoOAuthClient() {
+            Channels = new VimeoChannelsRawEndpoint(this);
             Me = new VimeoMeRawEndpoint(this);
             Users = new VimeoUsersRawEndpoint(this);
         }

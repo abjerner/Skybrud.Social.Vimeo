@@ -48,14 +48,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Endpoints\Raw\VimeoChannelsRawEndpoint.cs" />
     <Compile Include="Endpoints\Raw\VimeoMeRawEndpoint.cs" />
     <Compile Include="Endpoints\Raw\VimeoUsersRawEndpoint.cs" />
     <Compile Include="Endpoints\VimeoMeEndpoint.cs" />
+    <Compile Include="Endpoints\VimeoChannelsEndpoint.cs" />
     <Compile Include="Endpoints\VimeoUsersEndpoint.cs" />
+    <Compile Include="Enums\VimeoSortDirection.cs" />
+    <Compile Include="Enums\VimeoVideoSortField.cs" />
     <Compile Include="Exceptions\VimeoException.cs" />
     <Compile Include="Interfaces\IVimeoOAuthClient.cs" />
     <Compile Include="OAuth1a\VimeoOAuthClient.cs" />
     <Compile Include="OAuth2\VimeoOAuthClient.cs" />
+    <Compile Include="Objects\Pictures\VimeoPicture.cs" />
+    <Compile Include="Objects\Pictures\VimeoPictureSize.cs" />
+    <Compile Include="Objects\Channels\VimeoChannelPrivacyStatus.cs" />
+    <Compile Include="Objects\Channels\VimeoChannelPrivacy.cs" />
+    <Compile Include="Objects\Common\VimeoPaging.cs" />
+    <Compile Include="Objects\Common\VimeoCollection.cs" />
+    <Compile Include="Objects\Channels\VimeoChannel.cs" />
+    <Compile Include="Objects\Channels\VimeoChannelsCollection.cs" />
+    <Compile Include="Objects\Common\VimeoRateLimiting.cs" />
+    <Compile Include="Objects\Users\VimeoUserWebsite.cs" />
+    <Compile Include="Objects\Users\VimeoUserAccountType.cs" />
+    <Compile Include="Objects\Videos\VimeoVideo.cs" />
+    <Compile Include="Options\Users\VimeoGetUserChannelsOptions.cs" />
+    <Compile Include="Options\VimeoPaginationOptions.cs" />
+    <Compile Include="Responses\Channels\VimeoGetChannelVideosResponse.cs" />
+    <Compile Include="Responses\Channels\VimeoGetChannelResponse.cs" />
+    <Compile Include="Options\Channels\VimeoGetChannelVideosOptions.cs" />
+    <Compile Include="Responses\Users\VimeoGetUserChannelsResponse.cs" />
     <Compile Include="Responses\Users\VimeoGetUserResponse.cs" />
     <Compile Include="Scopes\VimeoScope.cs" />
     <Compile Include="Scopes\VimeoScopeCollection.cs" />
@@ -71,6 +93,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

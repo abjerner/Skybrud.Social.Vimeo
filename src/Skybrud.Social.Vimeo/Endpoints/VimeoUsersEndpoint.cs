@@ -1,4 +1,5 @@
 ﻿using Skybrud.Social.Vimeo.Endpoints.Raw;
+using Skybrud.Social.Vimeo.Options.Users;
 using Skybrud.Social.Vimeo.Responses.Users;
 
 namespace Skybrud.Social.Vimeo.Endpoints {
@@ -60,7 +61,56 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         public VimeoGetUserResponse GetInfo(string username) {
             return VimeoGetUserResponse.ParseResponse(Raw.GetInfo(username));
         }
-        
+
+        /// <summary>
+        /// Gets a list of channels of the user with the specified <code>userId</code>.
+        /// </summary>
+        /// <param name="userId">The ID of the parent user.</param>
+        /// <returns>Returns an instance of <see cref="VimeoGetUserChannelsResponse"/> representing the response.</returns>
+        public VimeoGetUserChannelsResponse GetChannels(long userId) {
+            return VimeoGetUserChannelsResponse.ParseResponse(Raw.GetChannels(userId));
+        }
+
+        /// <summary>
+        /// Gets a list of channels of the user with the specified <code>userId</code>.
+        /// </summary>
+        /// <param name="userId">The ID of the parent user.</param>
+        /// <param name="page">The page to be returned.</param>
+        /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
+        /// <returns>Returns an instance of <see cref="VimeoGetUserChannelsResponse"/> representing the response.</returns>
+        public VimeoGetUserChannelsResponse GetChannels(long userId, int page, int perPage) {
+            return VimeoGetUserChannelsResponse.ParseResponse(Raw.GetChannels(userId, page, perPage));
+        }
+
+        /// <summary>
+        /// Gets a list of channels of the user with the specified <code>userId</code>.
+        /// </summary>
+        /// <param name="username">The username of the parent user.</param>
+        /// <returns>Returns an instance of <see cref="VimeoGetUserChannelsResponse"/> representing the response.</returns>
+        public VimeoGetUserChannelsResponse GetChannels(string username) {
+            return VimeoGetUserChannelsResponse.ParseResponse(Raw.GetChannels(username));
+        }
+
+        /// <summary>
+        /// Gets a list of channels of the user with the specified <code>userId</code>.
+        /// </summary>
+        /// <param name="username">The username of the parent user.</param>
+        /// <param name="page">The page to be returned.</param>
+        /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
+        /// <returns>Returns an instance of <see cref="VimeoGetUserChannelsResponse"/> representing the response.</returns>
+        public VimeoGetUserChannelsResponse GetChannels(string username, int page, int perPage) {
+            return VimeoGetUserChannelsResponse.ParseResponse(Raw.GetChannels(username, page, perPage));
+        }
+
+        /// <summary>
+        /// Gets a list of user channels matching the specified <code>options</code>.
+        /// </summary>
+        /// <param name="options">The options for call to the API.</param>
+        /// <returns>Returns an instance of <see cref="VimeoGetUserChannelsResponse"/> representing the response.</returns>
+        public VimeoGetUserChannelsResponse GetChannels(VimeoGetUserChannelsOptions options) {
+            return VimeoGetUserChannelsResponse.ParseResponse(Raw.GetChannels(options));
+        }
+
         #endregion
 
     }

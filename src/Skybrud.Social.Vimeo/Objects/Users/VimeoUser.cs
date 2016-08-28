@@ -2,6 +2,8 @@
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Social.Json.Extensions;
+using Skybrud.Social.Time;
+using Skybrud.Social.Vimeo.Objects.Pictures;
 
 namespace Skybrud.Social.Vimeo.Objects.Users {
     
@@ -56,6 +58,48 @@ namespace Skybrud.Social.Vimeo.Objects.Users {
             get { return !String.IsNullOrWhiteSpace(Bio); }
         }
 
+        /// <summary>
+        /// Gets the timestamp for when the user was created.
+        /// </summary>
+        public SocialDateTime CreatedTime { get; private set; }
+
+        /// <summary>
+        /// Gets the account type of the user.
+        /// </summary>
+        public VimeoUserAccountType Account { get; private set; }
+
+        /// <summary>
+        /// Gets the default picture of the user. Use the <see cref="HasPicture"/> property to check whether the user
+        /// has a default picture.
+        /// </summary>
+        public VimeoPicture Picture { get; private set; }
+
+        /// <summary>
+        /// Gets whether the user has default picture. If true, information about the picture can be read from the
+        /// <see cref="Picture"/> property.
+        /// </summary>
+        public bool HasPicture {
+            get { return !String.IsNullOrWhiteSpace(Bio); }
+        }
+
+        /// <summary>
+        /// Gets an array of websites of the user.
+        /// </summary>
+        public VimeoUserWebsite[] Websites { get; private set; }
+
+        /// <summary>
+        /// Gets whether the user has specified any websites. If true, the websites can be read from the
+        /// <see cref="Websites"/> property.
+        /// </summary>
+        public bool HasWebsites {
+            get { return Websites.Length > 0; }
+        }
+
+        /// <summary>
+        /// Gets the resource key of the channel.
+        /// </summary>
+        public string ResourceKey { get; private set; }
+
         #endregion
 
         #region Constructors
@@ -67,6 +111,13 @@ namespace Skybrud.Social.Vimeo.Objects.Users {
             Link = obj.GetString("link");
             Location = obj.GetString("location");
             Bio = obj.GetString("bio");
+            CreatedTime = obj.GetString("created_time", SocialDateTime.Parse);
+            Account = obj.GetEnum<VimeoUserAccountType>("account");
+            Picture = obj.GetObject("pictures", VimeoPicture.Parse);
+            Websites = obj.GetArrayItems("websites", VimeoUserWebsite.Parse);
+            // "metadata"
+            ResourceKey = obj.GetString("resource_key");
+            // "preferences"
         }
 
         #endregion

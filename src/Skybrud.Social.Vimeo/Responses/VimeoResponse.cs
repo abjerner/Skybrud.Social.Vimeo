@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Social.Http;
 using Skybrud.Social.Json.Extensions;
 using Skybrud.Social.Vimeo.Exceptions;
+using Skybrud.Social.Vimeo.Objects.Common;
 
 namespace Skybrud.Social.Vimeo.Responses {
 
@@ -11,13 +12,24 @@ namespace Skybrud.Social.Vimeo.Responses {
     /// </summary>
     public class VimeoResponse : SocialResponse {
 
+        #region Properties
+
+        /// <summary>
+        /// Gets information about rate limiting.
+        /// </summary>
+        public VimeoRateLimiting RateLimiting { get; private set; }
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
         /// Initializes a new instance based on the specified <code>response</code>.
         /// </summary>
         /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
-        protected VimeoResponse(SocialHttpResponse response) : base(response) { }
+        protected VimeoResponse(SocialHttpResponse response) : base(response) {
+            RateLimiting = VimeoRateLimiting.GetFromResponse(response);
+        }
 
         #endregion
 

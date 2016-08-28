@@ -1,0 +1,138 @@
+﻿using System;
+using System.Linq;
+using Newtonsoft.Json.Linq;
+using Skybrud.Social.Json.Extensions;
+using Skybrud.Social.Time;
+
+namespace Skybrud.Social.Vimeo.Objects.Videos {
+    
+    /// <summary>
+    /// Class describing a Vimeo video.
+    /// </summary>
+    public class VimeoVideo : VimeoObject {
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the ID of the video. The ID isn't directly specified by the Vimeo API, but is derived from the <see cref="Uri"/> property.
+        /// </summary>
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Gets the URI of the Vimeo video.
+        /// </summary>
+        public string Uri { get; private set; }
+
+        /// <summary>
+        /// Gets the name of the Vimeo video.
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets the description of the Vimeo video.
+        /// </summary>
+        public string Description { get; private set; }
+
+        /// <summary>
+        /// Gets whether the video has a description. If true, the description can be read from the
+        /// <see cref="Description"/> property.
+        /// </summary>
+        public bool HasDescription {
+            get { return !String.IsNullOrWhiteSpace(Description); }
+        }
+
+        /// <summary>
+        /// Gets the link (URL for the video page) of the Vimeo video.
+        /// </summary>
+        public string Link { get; private set; }
+
+        /// <summary>
+        /// Gets the duration of the video.
+        /// </summary>
+        public TimeSpan Duration { get; private set; }
+
+        /// <summary>
+        /// Gets the width of the video.
+        /// </summary>
+        public int Width { get; private set; }
+
+        /// <summary>
+        /// Gets the language of the video.
+        /// </summary>
+        public string Language { get; private set; }
+
+        /// <summary>
+        /// Gets the height of the video.
+        /// </summary>
+        public int Height { get; private set; }
+
+        /// <summary>
+        /// Gets the timestamp for when the video was created.
+        /// </summary>
+        public SocialDateTime CreatedTime { get; private set; }
+
+        /// <summary>
+        /// Gets the timestamp for when the video was last modified.
+        /// </summary>
+        public SocialDateTime ModifiedTime { get; private set; }
+
+        /// <summary>
+        /// Gets the timestamp for when the video was released.
+        /// </summary>
+        public SocialDateTime ReleaseTime { get; private set; }
+
+        /// <summary>
+        /// Gets the resource key of the video.
+        /// </summary>
+        public string ResourceKey { get; private set; }
+
+        #endregion
+
+        #region Constructors
+
+        private VimeoVideo(JObject obj) : base(obj) {
+            Uri = obj.GetString("uri");
+            Id = Int64.Parse(Uri.Split('/').Last());
+            Name = obj.GetString("name");
+            Description = obj.GetString("description");
+            Link = obj.GetString("link");
+            Duration = obj.GetDouble("duration", TimeSpan.FromSeconds);
+            Width = obj.GetInt32("width");
+            Language = obj.GetString("language");
+            Height = obj.GetInt32("height");
+            // "embed"
+            CreatedTime = obj.GetString("created_time", SocialDateTime.Parse);
+            ModifiedTime = obj.GetString("modified_time", SocialDateTime.Parse);
+            ReleaseTime = obj.GetString("release_time", SocialDateTime.Parse);
+            // "content_rating"
+            // "license"
+            // "privacy"
+            // "pictures"
+            // "tags"
+            // "stats"
+            // "metadata" (mostly used when exploring the API, so not a priority)
+            // "user"
+            // "app"
+            // "status"
+            ResourceKey = obj.GetString("resource_key");
+            // "embed_presets"
+        }
+
+        #endregion
+
+        #region Static methods
+
+        /// <summary>
+        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoVideo"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <returns>Returns an instance of <see cref="VimeoVideo"/>.</returns>
+        public static VimeoVideo Parse(JObject obj) {
+            return obj == null ? null : new VimeoVideo(obj);
+        }
+
+        #endregion
+
+    }
+
+}

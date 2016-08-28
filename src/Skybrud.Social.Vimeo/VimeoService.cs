@@ -24,6 +24,11 @@ namespace Skybrud.Social.Vimeo {
         public IVimeoOAuthClient Client { get; private set; }
 
         /// <summary>
+        /// Gets a reference to the <strong>Channels</strong> endpoint.
+        /// </summary>
+        public VimeoChannelsEndpoint Channels { get; private set; }
+
+        /// <summary>
         /// Gets a reference to the <strong>Me</strong> endpoint.
         /// </summary>
         public VimeoMeEndpoint Me { get; private set; }
@@ -46,6 +51,7 @@ namespace Skybrud.Social.Vimeo {
             if (client == null) throw new ArgumentNullException("client");
             Client = client;
 
+            Channels = new VimeoChannelsEndpoint(this);
             Me = new VimeoMeEndpoint(this);
             Users = new VimeoUsersEndpoint(this);
         
