@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Specialized;
-using Skybrud.Social.Exceptions;
+using Skybrud.Essentials.Common;
 using Skybrud.Social.Http;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
 using Skybrud.Social.Vimeo.Interfaces;
 using Skybrud.Social.Vimeo.Responses.Authentication;
 using Skybrud.Social.Vimeo.Scopes;
+using Skybrud.Essentials.Security;
 
 namespace Skybrud.Social.Vimeo.OAuth2 {
 
@@ -171,7 +172,7 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
                 Method = SocialHttpMethod.Post,
                 Url = "https://api.vimeo.com/oauth/access_token",
                 PostData = new SocialHttpPostData(data),
-                Authorization = "basic " + SocialUtils.Security.Base64Encode(ClientId + ":" + ClientSecret)
+                Authorization = "basic " + SecurityUtils.Base64Encode(ClientId + ":" + ClientSecret)
             };
 
             // Make the call to the API

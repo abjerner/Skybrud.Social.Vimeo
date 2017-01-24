@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json.Extensions;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Vimeo.Objects.Common;
 
 namespace Skybrud.Social.Vimeo.Objects.Channels {

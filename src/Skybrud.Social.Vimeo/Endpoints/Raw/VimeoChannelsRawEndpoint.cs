@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Social.Exceptions;
+using Skybrud.Essentials.Common;
 using Skybrud.Social.Http;
 using Skybrud.Social.Vimeo.Interfaces;
 using Skybrud.Social.Vimeo.Options.Channels;

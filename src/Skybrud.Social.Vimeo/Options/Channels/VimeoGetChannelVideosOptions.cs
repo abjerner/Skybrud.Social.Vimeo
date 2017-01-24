@@ -1,4 +1,5 @@
 ﻿using System;
+using Skybrud.Essentials.Strings;
 using Skybrud.Social.Interfaces.Http;
 using Skybrud.Social.Vimeo.Enums;
 
@@ -62,7 +63,7 @@ namespace Skybrud.Social.Vimeo.Options.Channels {
             IHttpQueryString query = base.GetQueryString();
             if (!String.IsNullOrWhiteSpace(Query)) query.Add("query", query);
             if (Sort != VimeoVideoSortField.Default) {
-                query.Add("sort", SocialUtils.Strings.ToUnderscore(Sort));
+                query.Add("sort", StringUtils.ToUnderscore(Sort));
                 query.Add("direction", Direction == VimeoSortDirection.Ascending ? "asc" : "desc");
             }
             return query;

@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Http;
-using Skybrud.Social.Json.Extensions;
 using Skybrud.Social.Vimeo.Exceptions;
 using Skybrud.Social.Vimeo.Objects.Common;
 

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json.Extensions;
-using Skybrud.Social.Time;
+using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Vimeo.Objects.Videos {
     
@@ -69,17 +69,17 @@ namespace Skybrud.Social.Vimeo.Objects.Videos {
         /// <summary>
         /// Gets the timestamp for when the video was created.
         /// </summary>
-        public SocialDateTime CreatedTime { get; private set; }
+        public EssentialsDateTime CreatedTime { get; private set; }
 
         /// <summary>
         /// Gets the timestamp for when the video was last modified.
         /// </summary>
-        public SocialDateTime ModifiedTime { get; private set; }
+        public EssentialsDateTime ModifiedTime { get; private set; }
 
         /// <summary>
         /// Gets the timestamp for when the video was released.
         /// </summary>
-        public SocialDateTime ReleaseTime { get; private set; }
+        public EssentialsDateTime ReleaseTime { get; private set; }
 
         /// <summary>
         /// Gets the resource key of the video.
@@ -101,9 +101,9 @@ namespace Skybrud.Social.Vimeo.Objects.Videos {
             Language = obj.GetString("language");
             Height = obj.GetInt32("height");
             // "embed"
-            CreatedTime = obj.GetString("created_time", SocialDateTime.Parse);
-            ModifiedTime = obj.GetString("modified_time", SocialDateTime.Parse);
-            ReleaseTime = obj.GetString("release_time", SocialDateTime.Parse);
+            CreatedTime = obj.GetString("created_time", EssentialsDateTime.Parse);
+            ModifiedTime = obj.GetString("modified_time", EssentialsDateTime.Parse);
+            ReleaseTime = obj.GetString("release_time", EssentialsDateTime.Parse);
             // "content_rating"
             // "license"
             // "privacy"

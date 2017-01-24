@@ -1,6 +1,6 @@
 ﻿using System;
 using Skybrud.Social.Http;
-using Skybrud.Social.Time;
+using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Vimeo.Objects.Common {
 
@@ -24,13 +24,13 @@ namespace Skybrud.Social.Vimeo.Objects.Common {
         /// <summary>
         /// Gets the timestamp for when the current window is reset.
         /// </summary>
-        public SocialDateTime Reset { get; private set; }
+        public EssentialsDateTime Reset { get; private set; }
 
         #endregion
 
         #region Constructors
 
-        private VimeoRateLimiting(int limit, int remaining, SocialDateTime reset) {
+        private VimeoRateLimiting(int limit, int remaining, EssentialsDateTime reset) {
             Limit = limit;
             Remaining = remaining;
             Reset = reset;
@@ -58,7 +58,7 @@ namespace Skybrud.Social.Vimeo.Objects.Common {
                 remaining = -1;
             }
 
-            var reset = SocialDateTime.Parse(response.Headers["X-RateLimit-Reset"]);
+            var reset = EssentialsDateTime.Parse(response.Headers["X-RateLimit-Reset"]);
 
             return new VimeoRateLimiting(limit, remaining, reset);
 

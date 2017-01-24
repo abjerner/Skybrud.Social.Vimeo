@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json.Extensions;
-using Skybrud.Social.Time;
-using Skybrud.Social.Vimeo.Objects.Common;
+using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Time;
 using Skybrud.Social.Vimeo.Objects.Pictures;
 using Skybrud.Social.Vimeo.Objects.Users;
 
@@ -52,12 +51,12 @@ namespace Skybrud.Social.Vimeo.Objects.Channels {
         /// <summary>
         /// Gets the timestamp for when the channel was created.
         /// </summary>
-        public SocialDateTime CreatedTime { get; private set; }
+        public EssentialsDateTime CreatedTime { get; private set; }
         
         /// <summary>
         /// Gets the timestamp for when the channel was last modified.
         /// </summary>
-        public SocialDateTime ModifiedTime { get; private set; }
+        public EssentialsDateTime ModifiedTime { get; private set; }
 
         /// <summary>
         /// Gets information about the owner of the channel.
@@ -109,8 +108,8 @@ namespace Skybrud.Social.Vimeo.Objects.Channels {
             Name = obj.GetString("name");
             Description = obj.GetString("description");
             Link = obj.GetString("link");
-            CreatedTime = obj.GetString("created_time", SocialDateTime.Parse);
-            ModifiedTime = obj.GetString("modified_time", SocialDateTime.Parse);
+            CreatedTime = obj.GetString("created_time", EssentialsDateTime.Parse);
+            ModifiedTime = obj.GetString("modified_time", EssentialsDateTime.Parse);
             User = obj.GetObject("user", VimeoUser.Parse);
             Picture = obj.GetObject("pictures", VimeoPicture.Parse);
             Header = obj.GetObject("header", VimeoPicture.Parse);

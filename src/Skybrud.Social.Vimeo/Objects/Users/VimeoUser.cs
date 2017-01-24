@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json.Extensions;
-using Skybrud.Social.Time;
+using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Time;
 using Skybrud.Social.Vimeo.Objects.Pictures;
 
 namespace Skybrud.Social.Vimeo.Objects.Users {
@@ -61,7 +61,7 @@ namespace Skybrud.Social.Vimeo.Objects.Users {
         /// <summary>
         /// Gets the timestamp for when the user was created.
         /// </summary>
-        public SocialDateTime CreatedTime { get; private set; }
+        public EssentialsDateTime CreatedTime { get; private set; }
 
         /// <summary>
         /// Gets the account type of the user.
@@ -111,7 +111,7 @@ namespace Skybrud.Social.Vimeo.Objects.Users {
             Link = obj.GetString("link");
             Location = obj.GetString("location");
             Bio = obj.GetString("bio");
-            CreatedTime = obj.GetString("created_time", SocialDateTime.Parse);
+            CreatedTime = obj.GetString("created_time", EssentialsDateTime.Parse);
             Account = obj.GetEnum<VimeoUserAccountType>("account");
             Picture = obj.GetObject("pictures", VimeoPicture.Parse);
             Websites = obj.GetArrayItems("websites", VimeoUserWebsite.Parse);
