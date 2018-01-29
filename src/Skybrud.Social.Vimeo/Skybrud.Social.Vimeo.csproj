@@ -20,7 +20,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <PackageTags>Vimeo, Graph, API, Skybrud, Social, OAuth, JSON</PackageTags>
+    <PackageTags>Vimeo, API, Skybrud, Social, OAuth, JSON</PackageTags>
     <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.Vimeo/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Vimeo</PackageProjectUrl>
     <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
