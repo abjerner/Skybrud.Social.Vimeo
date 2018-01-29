@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Specialized;
 using Skybrud.Essentials.Common;
 using Skybrud.Social.Http;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
