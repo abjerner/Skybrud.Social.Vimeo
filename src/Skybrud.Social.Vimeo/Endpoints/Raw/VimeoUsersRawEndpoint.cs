@@ -34,10 +34,10 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         #region Methods
 
         /// <summary>
-        /// Gets information about the user with the specified <code>userId</code>.
+        /// Gets information about the user with the specified <paramref name="userId"/>.
         /// </summary>
         /// <param name="userId">The ID of the user.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/users#/{user_id}</cref>
         /// </see>
@@ -46,10 +46,10 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         }
 
         /// <summary>
-        /// Gets information about the user with the specified <code>userId</code>.
+        /// Gets information about the user with the specified <paramref name="username"/>.
         /// </summary>
         /// <param name="username">The username of the user.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/users#/{user_id}</cref>
         /// </see>
@@ -58,50 +58,50 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         }
 
         /// <summary>
-        /// Gets a list of channels of the user with the specified <code>userId</code>.
+        /// Gets a list of channels of the user with the specified <paramref name="userId"/>.
         /// </summary>
         /// <param name="userId">The ID of the parent user.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetChannels(long userId) {
             return Client.DoHttpGetRequest("https://api.vimeo.com/users/" + userId + "/channels");
         }
 
         /// <summary>
-        /// Gets a list of channels of the user with the specified <code>userId</code>.
+        /// Gets a list of channels of the user with the specified <paramref name="userId"/>.
         /// </summary>
         /// <param name="userId">The ID of the parent user.</param>
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetChannels(long userId, int page, int perPage) {
             return GetChannels(new VimeoGetUserChannelsOptions(userId, page, perPage));
         }
 
         /// <summary>
-        /// Gets a list of channels of the user with the specified <code>userId</code>.
+        /// Gets a list of channels of the user with the specified <paramref name="username"/>.
         /// </summary>
         /// <param name="username">The username of the parent user.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetChannels(string username) {
             return Client.DoHttpGetRequest("https://api.vimeo.com/users/" + username + "/channels");
         }
 
         /// <summary>
-        /// Gets a list of channels of the user with the specified <code>userId</code>.
+        /// Gets a list of channels of the user with the specified <paramref name="username"/>.
         /// </summary>
         /// <param name="username">The username of the parent user.</param>
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetChannels(string username, int page, int perPage) {
             return GetChannels(new VimeoGetUserChannelsOptions(username, page, perPage));
         }
 
         /// <summary>
-        /// Gets a list of user channels matching the specified <code>options</code>.
+        /// Gets a list of user channels matching the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetChannels(VimeoGetUserChannelsOptions options) {
             if (options == null) throw new ArgumentNullException("options");
             if (!options.HasUserId && !options.HasUsername) throw new PropertyNotSetException("UserId");
