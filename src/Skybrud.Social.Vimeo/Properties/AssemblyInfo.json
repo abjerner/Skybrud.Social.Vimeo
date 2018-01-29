@@ -1,0 +1,10 @@
+{
+  "title": "Skybrud.Social.Vimeo",
+  "description": "Authentication and service implementation for the Vimeo API.",
+  "company": "Skybrud.dk a/s",
+  "product": "Skybrud.Social",
+  "copyright": "Copyright © 2018",
+  "version": "1.0.0.0",
+  "informationalVersion": "1.0.0-beta001",
+  "fileVersion": "0.0.1590.1"
+}

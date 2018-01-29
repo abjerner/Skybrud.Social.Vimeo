@@ -1,105 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16567B80-74F5-4956-995B-D5FF5DCF8F64}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>netstandard1.3;net45;net46</TargetFrameworks>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <RunBuildTargets>true</RunBuildTargets>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <RootNamespace>Skybrud.Social.Vimeo</RootNamespace>
-    <AssemblyName>Skybrud.Social.Vimeo</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <Version>1.0.0-beta001</Version>
+    <Company>Skybrud.dk a/s</Company>
+    <Product>Skybrud.Social</Product>
+    <Authors>Anders Bjerner</Authors>
+    <Copyright>Copyright © 2018</Copyright>
+    <Description>Authentication and service implementation for the Vimeo API.</Description>
+    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Vimeo</RepositoryUrl>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  
+  <PropertyGroup>
+    <PackageTags>Vimeo, Graph, API, Skybrud, Social, OAuth, JSON</PackageTags>
+    <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.Vimeo/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Vimeo</PackageProjectUrl>
+    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Skybrud.Social.Vimeo.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <DefineConstants>NET_STANDARD</DefineConstants>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
+    <DefineConstants>NET_FRAMEWORK</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Skybrud.Essentials, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Skybrud.Essentials.1.1.0\lib\net45\Skybrud.Essentials.dll</HintPath>
-    </Reference>
-    <Reference Include="Skybrud.Social.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Skybrud.Social.Core.1.0.1\lib\net45\Skybrud.Social.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Skybrud.Social.Core" Version="1.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Endpoints\Raw\VimeoChannelsRawEndpoint.cs" />
-    <Compile Include="Endpoints\Raw\VimeoMeRawEndpoint.cs" />
-    <Compile Include="Endpoints\Raw\VimeoUsersRawEndpoint.cs" />
-    <Compile Include="Endpoints\VimeoMeEndpoint.cs" />
-    <Compile Include="Endpoints\VimeoChannelsEndpoint.cs" />
-    <Compile Include="Endpoints\VimeoUsersEndpoint.cs" />
-    <Compile Include="Enums\VimeoSortDirection.cs" />
-    <Compile Include="Enums\VimeoVideoSortField.cs" />
-    <Compile Include="Exceptions\VimeoException.cs" />
-    <Compile Include="Interfaces\IVimeoOAuthClient.cs" />
-    <Compile Include="OAuth1a\VimeoOAuthClient.cs" />
-    <Compile Include="OAuth2\VimeoOAuthClient.cs" />
-    <Compile Include="Objects\Pictures\VimeoPicture.cs" />
-    <Compile Include="Objects\Pictures\VimeoPictureSize.cs" />
-    <Compile Include="Objects\Channels\VimeoChannelPrivacyStatus.cs" />
-    <Compile Include="Objects\Channels\VimeoChannelPrivacy.cs" />
-    <Compile Include="Objects\Common\VimeoPaging.cs" />
-    <Compile Include="Objects\Common\VimeoCollection.cs" />
-    <Compile Include="Objects\Channels\VimeoChannel.cs" />
-    <Compile Include="Objects\Channels\VimeoChannelsCollection.cs" />
-    <Compile Include="Objects\Common\VimeoRateLimiting.cs" />
-    <Compile Include="Objects\Users\VimeoUserWebsite.cs" />
-    <Compile Include="Objects\Users\VimeoUserAccountType.cs" />
-    <Compile Include="Objects\Videos\VimeoVideo.cs" />
-    <Compile Include="Options\Users\VimeoGetUserChannelsOptions.cs" />
-    <Compile Include="Options\VimeoPaginationOptions.cs" />
-    <Compile Include="Responses\Channels\VimeoGetChannelVideosResponse.cs" />
-    <Compile Include="Responses\Channels\VimeoGetChannelResponse.cs" />
-    <Compile Include="Options\Channels\VimeoGetChannelVideosOptions.cs" />
-    <Compile Include="Responses\Users\VimeoGetUserChannelsResponse.cs" />
-    <Compile Include="Responses\Users\VimeoGetUserResponse.cs" />
-    <Compile Include="Scopes\VimeoScope.cs" />
-    <Compile Include="Scopes\VimeoScopeCollection.cs" />
-    <Compile Include="Objects\Authentication\VimeoApp.cs" />
-    <Compile Include="Objects\Authentication\VimeoToken.cs" />
-    <Compile Include="Objects\Users\VimeoUser.cs" />
-    <Compile Include="Objects\VimeoObject.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Responses\Authentication\VimeoTokenResponse.cs" />
-    <Compile Include="Responses\VimeoResponse.cs" />
-    <Compile Include="VimeoService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.3|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.3\Skybrud.Social.Vimeo.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+    <DocumentationFile>bin\Release\net45\Skybrud.Social.Vimeo.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
+    <DocumentationFile>bin\Release\net46\Skybrud.Social.Vimeo.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(TargetFramework)|$(RunBuildTargets)'=='netstandard1.3|true'">
+    <Exec Command="&quot;$(SolutionDir)build/Skybrud.Social.PreBuildTool.exe&quot; /date=2013-09-22 /projectPath=&quot;$(ProjectPath)&quot;" />
   </Target>
-  <Target Name="AfterBuild">
+
+  <Target Name="PostBuild" BeforeTargets="PostBuildEvent" Condition="'$(TargetFramework)|$(RunBuildTargets)'=='net46|true'">
+    <Exec Command="&quot;$(SolutionDir)build\UpdateAssemblyInfoJson.exe&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
   </Target>
-  -->
+
 </Project>
