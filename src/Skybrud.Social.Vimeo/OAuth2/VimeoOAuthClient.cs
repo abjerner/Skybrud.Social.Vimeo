@@ -7,6 +7,7 @@ using Skybrud.Social.Vimeo.Interfaces;
 using Skybrud.Social.Vimeo.Responses.Authentication;
 using Skybrud.Social.Vimeo.Scopes;
 using Skybrud.Essentials.Security;
+using Skybrud.Social.Interfaces.Http;
 
 namespace Skybrud.Social.Vimeo.OAuth2 {
 
@@ -123,7 +124,7 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
             if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException("RedirectUri");
 
             // Construct the query string
-            NameValueCollection query = new NameValueCollection();
+            IHttpQueryString query = new SocialHttpQueryString();
             query.Add("response_type", "code");
             query.Add("client_id", ClientId);
             query.Add("redirect_uri", RedirectUri);
@@ -131,7 +132,7 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
             query.Add("state", state);
 
             // Construct the full URL
-            return ("https://api.vimeo.com/oauth/authorize?" + SocialUtils.Misc.NameValueCollectionToQueryString(query, true));
+            return ("https://api.vimeo.com/oauth/authorize?" + query);
 
         }
 
@@ -161,17 +162,16 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
             if (String.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException("authCode");
 
             // Initialize the POST data
-            NameValueCollection data = new NameValueCollection {
-                {"grant_type", "authorization_code"},
-                {"code", authCode },
-                {"redirect_uri", RedirectUri}
-            };
+            IHttpPostData data = new SocialHttpPostData();
+            data.Add("grant_type", "authorization_code");
+            data.Add("code", authCode);
+            data.Add("redirect_uri", RedirectUri);
 
             // Initialize the request
             SocialHttpRequest request = new SocialHttpRequest {
                 Method = SocialHttpMethod.Post,
                 Url = "https://api.vimeo.com/oauth/access_token",
-                PostData = new SocialHttpPostData(data),
+                PostData = data,
                 Authorization = "basic " + SecurityUtils.Base64Encode(ClientId + ":" + ClientSecret)
             };
 
