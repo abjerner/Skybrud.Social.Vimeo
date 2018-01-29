@@ -11,6 +11,11 @@
         Basic,
 
         /// <summary>
+        /// Indicates a user with a <strong>Business</strong> membership.
+        /// </summary>
+        Business,
+
+        /// <summary>
         /// Indicates a user with a <strong>Plus</strong> membership.
         /// </summary>
         Plus,
