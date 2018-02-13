@@ -1,8 +1,7 @@
 ﻿using Skybrud.Social.OAuth;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
-using Skybrud.Social.Vimeo.OAuth;
 
-namespace Skybrud.Social.Vimeo.OAuth1a {
+namespace Skybrud.Social.Vimeo.OAuth {
 
     /// <summary>
     /// Class for handling authentication and communication with the Vimeo API using OAuth 1.0a.
@@ -14,17 +13,17 @@ namespace Skybrud.Social.Vimeo.OAuth1a {
         /// <summary>
         /// Gets a reference to the raw <strong>Channels</strong> endpoint.
         /// </summary>
-        public VimeoChannelsRawEndpoint Channels { get; private set; }
+        public VimeoChannelsRawEndpoint Channels { get; }
 
         /// <summary>
         /// Gets a reference to the raw <strong>Me</strong> endpoint.
         /// </summary>
-        public VimeoMeRawEndpoint Me { get; private set; }
+        public VimeoMeRawEndpoint Me { get; }
 
         /// <summary>
         /// Gets a reference to the raw <strong>Users</strong> endpoint.
         /// </summary>
-        public VimeoUsersRawEndpoint Users { get; private set; }
+        public VimeoUsersRawEndpoint Users { get; }
 
         #endregion
 

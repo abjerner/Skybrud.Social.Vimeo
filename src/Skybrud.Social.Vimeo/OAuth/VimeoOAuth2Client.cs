@@ -45,17 +45,17 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// <summary>
         /// Gets a reference to the raw <strong>Channels</strong> endpoint.
         /// </summary>
-        public VimeoChannelsRawEndpoint Channels { get; private set; }
+        public VimeoChannelsRawEndpoint Channels { get; }
 
         /// <summary>
         /// Gets a reference to the raw <strong>Me</strong> endpoint.
         /// </summary>
-        public VimeoMeRawEndpoint Me { get; private set; }
+        public VimeoMeRawEndpoint Me { get; }
 
         /// <summary>
         /// Gets a reference to the raw <strong>Users</strong> endpoint.
         /// </summary>
-        public VimeoUsersRawEndpoint Users { get; private set; }
+        public VimeoUsersRawEndpoint Users { get; }
 
         #endregion
 
@@ -73,7 +73,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         }
 
         /// <summary>
-        /// Initializes a new OAuth client with the specified <code>accessToken</code>.
+        /// Initializes a new OAuth client with the specified <paramref name="accessToken"/>.
         /// </summary>
         /// <param name="accessToken">A valid access token.</param>
         public VimeoOAuth2Client(string accessToken) : this() {
@@ -81,7 +81,8 @@ namespace Skybrud.Social.Vimeo.OAuth {
         }
 
         /// <summary>
-        /// Initializes a new OAuth client with the specified <code>clientId</code> and <code>clientSecret</code>.
+        /// Initializes a new OAuth client with the specified <paramref name="clientId"/> and
+        /// <paramref name="clientSecret"/>.
         /// </summary>
         /// <param name="clientId">The client ID of the app.</param>
         /// <param name="clientSecret">The client secret of the app.</param>
@@ -91,8 +92,8 @@ namespace Skybrud.Social.Vimeo.OAuth {
         }
 
         /// <summary>
-        /// Initializes an OAuth client with the specified <code>clientId</code>, <code>clientSecret</code> and
-        /// <code>redirectUri</code>.
+        /// Initializes an OAuth client with the specified <paramref name="clientId"/>,
+        /// <paramref name="clientSecret"/> and <paramref name="redirectUri"/>.
         /// </summary>
         /// <param name="clientId">The client ID of the app.</param>
         /// <param name="clientSecret">The client secret of the app.</param>
@@ -108,18 +109,18 @@ namespace Skybrud.Social.Vimeo.OAuth {
         #region Member methods
 
         /// <summary>
-        /// Generates the authorization URL using the specified state and scope.
+        /// Generates the authorization URL using the specified <paramref name="state"/> and <paramref name="scope"/>.
         /// </summary>
         /// <param name="state">The state to send to Vimeo's OAuth login page.</param>
         /// <param name="scope">The scope of the application.</param>
-        /// <returns>Returns an authorization URL based on <see cref="ClientId"/>, <see cref="RedirectUri"/>,
-        /// <code>state</code> and <code>scope</code>.</returns>
+        /// <returns>An authorization URL based on <see cref="ClientId"/>, <see cref="RedirectUri"/>,
+        /// <paramref name="state"/> and <paramref name="scope"/>.</returns>
         public string GetAuthorizationUrl(string state, string scope = null) {
 
             // Validate the input
-            if (String.IsNullOrWhiteSpace(state)) throw new ArgumentNullException("state");
-            if (String.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException("ClientId");
-            if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException("RedirectUri");
+            if (String.IsNullOrWhiteSpace(state)) throw new ArgumentNullException(nameof(state));
+            if (String.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
 
             // Construct the query string
             IHttpQueryString query = new SocialHttpQueryString();
@@ -135,14 +136,14 @@ namespace Skybrud.Social.Vimeo.OAuth {
         }
 
         /// <summary>
-        /// Generates the authorization URL using the specified state and scope.
+        /// Generates the authorization URL using the specified <paramref name="state"/> and <paramref name="scope"/>.
         /// </summary>
         /// <param name="state">The state to send to Vimeo's OAuth login page.</param>
         /// <param name="scope">The scope of the application.</param>
-        /// <returns>Returns an authorization URL based on <see cref="ClientId"/>, <see cref="RedirectUri"/>,
-        /// <code>state</code> and <code>scope</code>.</returns>
+        /// <returns>An authorization URL based on <see cref="ClientId"/>, <see cref="RedirectUri"/>,
+        /// <paramref name="state"/> and <paramref name="scope"/>.</returns>
         public string GetAuthorizationUrl(string state, VimeoScopeCollection scope) {
-            if (scope == null) throw new ArgumentNullException("scope");
+            if (scope == null) throw new ArgumentNullException(nameof(scope));
             return GetAuthorizationUrl(state, scope.ToString());
         }
 
@@ -150,14 +151,14 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// Exchanges the specified authorization code for an access token.
         /// </summary>
         /// <param name="authCode">The authorization code received from the Vimeo OAuth dialog.</param>
-        /// <returns>Returns an instance of <see cref="VimeoTokenResponse"/> representing the response.</returns>
+        /// <returns>An instance of <see cref="VimeoTokenResponse"/> representing the response.</returns>
         public VimeoTokenResponse GetAccessTokenFromAuthCode(string authCode) {
 
             // Some validation
-            if (String.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException("ClientId");
-            if (String.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException("ClientSecret");
-            if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException("RedirectUri");
-            if (String.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException("authCode");
+            if (String.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (String.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException(nameof(ClientSecret));
+            if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
+            if (String.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
 
             // Initialize the POST data
             IHttpPostData data = new SocialHttpPostData();
