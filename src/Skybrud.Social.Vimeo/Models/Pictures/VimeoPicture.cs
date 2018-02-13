@@ -3,7 +3,7 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Vimeo.Objects.Pictures {
+namespace Skybrud.Social.Vimeo.Models.Pictures {
     
     /// <summary>
     /// Class representing a Vimeo picture (eg. of a channel or user).

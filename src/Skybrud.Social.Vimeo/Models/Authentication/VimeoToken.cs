@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Social.Vimeo.Objects.Users;
+using Skybrud.Social.Vimeo.Models.Users;
 using Skybrud.Social.Vimeo.Scopes;
 
-namespace Skybrud.Social.Vimeo.Objects.Authentication {
+namespace Skybrud.Social.Vimeo.Models.Authentication {
     
     /// <summary>
     /// Class describing an access token received from the Vimeo API.

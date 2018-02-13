@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Vimeo.Objects.Users {
+namespace Skybrud.Social.Vimeo.Models.Users {
     
     /// <summary>
     /// Class describing a website of a Vimeo user.

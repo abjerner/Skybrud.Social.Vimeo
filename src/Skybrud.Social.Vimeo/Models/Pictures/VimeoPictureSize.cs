@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Vimeo.Objects.Pictures {
+namespace Skybrud.Social.Vimeo.Models.Pictures {
     
     /// <summary>
     /// Class representing a size (thumbnail) of a <see cref="VimeoPicture"/>.

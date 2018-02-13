@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Social.Vimeo.Objects.Common;
+using Skybrud.Social.Vimeo.Models.Common;
 
-namespace Skybrud.Social.Vimeo.Objects.Channels {
+namespace Skybrud.Social.Vimeo.Models.Channels {
     
     public class VimeoChannelsCollection : VimeoCollection {
 

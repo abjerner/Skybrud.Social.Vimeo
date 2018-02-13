@@ -1,5 +1,4 @@
 ﻿using Skybrud.Social.Http;
-using Skybrud.Social.Vimeo.Objects.Users;
 
 namespace Skybrud.Social.Vimeo.Responses.Users {
 

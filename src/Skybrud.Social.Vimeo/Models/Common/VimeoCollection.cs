@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Vimeo.Objects.Common {
+namespace Skybrud.Social.Vimeo.Models.Common {
 
     /// <summary>
     /// Class representing a generic collection returned by the Vimeo API.

@@ -1,5 +1,4 @@
 ﻿using Skybrud.Social.Http;
-using Skybrud.Social.Vimeo.Objects.Videos;
 
 namespace Skybrud.Social.Vimeo.Responses.Channels {
     

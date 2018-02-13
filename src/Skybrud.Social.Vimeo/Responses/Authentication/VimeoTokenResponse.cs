@@ -1,5 +1,4 @@
-﻿using Skybrud.Social.Vimeo.Objects.Authentication;
-using Skybrud.Social.Http;
+﻿using Skybrud.Social.Http;
 
 namespace Skybrud.Social.Vimeo.Responses.Authentication {
 

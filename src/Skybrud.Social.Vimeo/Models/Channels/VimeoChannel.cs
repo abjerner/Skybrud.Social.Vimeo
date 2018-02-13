@@ -3,10 +3,10 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
-using Skybrud.Social.Vimeo.Objects.Pictures;
-using Skybrud.Social.Vimeo.Objects.Users;
+using Skybrud.Social.Vimeo.Models.Pictures;
+using Skybrud.Social.Vimeo.Models.Users;
 
-namespace Skybrud.Social.Vimeo.Objects.Channels {
+namespace Skybrud.Social.Vimeo.Models.Channels {
     
     /// <summary>
     /// Class describing a Vimeo channel.

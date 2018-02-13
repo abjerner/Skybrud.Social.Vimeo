@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 
-namespace Skybrud.Social.Vimeo.Objects.Videos {
+namespace Skybrud.Social.Vimeo.Models.Videos {
     
     /// <summary>
     /// Class describing a Vimeo video.

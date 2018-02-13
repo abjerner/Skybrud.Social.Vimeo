@@ -1,8 +1,8 @@
 ﻿using System;
-using Skybrud.Social.Http;
 using Skybrud.Essentials.Time;
+using Skybrud.Social.Http;
 
-namespace Skybrud.Social.Vimeo.Objects.Common {
+namespace Skybrud.Social.Vimeo.Models.Common {
 
     /// <summary>
     /// Class with rate-limiting information about a response from the Vimeo API.

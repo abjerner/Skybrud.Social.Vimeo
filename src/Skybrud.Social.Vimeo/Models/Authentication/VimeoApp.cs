@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Vimeo.Objects.Authentication {
+namespace Skybrud.Social.Vimeo.Models.Authentication {
     
     /// <summary>
     /// Class describing a Vimeo app.
