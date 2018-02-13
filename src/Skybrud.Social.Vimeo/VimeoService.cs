@@ -1,7 +1,6 @@
 ﻿using System;
 using Skybrud.Social.Vimeo.Endpoints;
-using Skybrud.Social.Vimeo.Interfaces;
-using Skybrud.Social.Vimeo.OAuth2;
+using Skybrud.Social.Vimeo.OAuth;
 
 namespace Skybrud.Social.Vimeo {
     
@@ -61,13 +60,14 @@ namespace Skybrud.Social.Vimeo {
         #region Static methods
 
         /// <summary>
-        /// Initialize a new service instance from the specified access token. Internally a new OAuth 20. client will be
+        /// Initialize a new service instance from the specified access token. Internally a new OAuth 2.0 client will be
         /// initialized from the access token.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <returns>Returns the created instance of <see cref="Skybrud.Social.Vimeo.VimeoService" />.</returns>
         public static VimeoService CreateFromAccessToken(string accessToken) {
-            return new VimeoService(new VimeoOAuthClient(accessToken));
+            if (String.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
+            return new VimeoService(new VimeoOAuth2Client(accessToken));
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Skybrud.Social.Vimeo {
         /// <param name="client">The OAuth client.</param>
         /// <returns>Returns the created instance of <see cref="Skybrud.Social.Vimeo.VimeoService" />.</returns>
         public static VimeoService CreateFromOAuthClient(IVimeoOAuthClient client) {
-            if (client == null) throw new ArgumentNullException("client");
+            if (client == null) throw new ArgumentNullException(nameof(client));
             return new VimeoService(client);
         }
 

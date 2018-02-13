@@ -1,5 +1,5 @@
 ﻿using Skybrud.Social.Http;
-using Skybrud.Social.Vimeo.Interfaces;
+using Skybrud.Social.Vimeo.OAuth;
 
 namespace Skybrud.Social.Vimeo.Endpoints.Raw {
 

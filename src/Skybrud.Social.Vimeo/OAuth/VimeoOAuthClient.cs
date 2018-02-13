@@ -1,6 +1,6 @@
 ﻿using Skybrud.Social.OAuth;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
-using Skybrud.Social.Vimeo.Interfaces;
+using Skybrud.Social.Vimeo.OAuth;
 
 namespace Skybrud.Social.Vimeo.OAuth1a {
 

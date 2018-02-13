@@ -1,7 +1,7 @@
 ﻿using System;
 using Skybrud.Essentials.Common;
 using Skybrud.Social.Http;
-using Skybrud.Social.Vimeo.Interfaces;
+using Skybrud.Social.Vimeo.OAuth;
 using Skybrud.Social.Vimeo.Options.Users;
 
 namespace Skybrud.Social.Vimeo.Endpoints.Raw {

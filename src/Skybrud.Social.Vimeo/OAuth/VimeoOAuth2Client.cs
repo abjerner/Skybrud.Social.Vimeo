@@ -1,19 +1,18 @@
 ﻿using System;
 using Skybrud.Essentials.Common;
+using Skybrud.Essentials.Security;
 using Skybrud.Social.Http;
+using Skybrud.Social.Interfaces.Http;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
-using Skybrud.Social.Vimeo.Interfaces;
 using Skybrud.Social.Vimeo.Responses.Authentication;
 using Skybrud.Social.Vimeo.Scopes;
-using Skybrud.Essentials.Security;
-using Skybrud.Social.Interfaces.Http;
 
-namespace Skybrud.Social.Vimeo.OAuth2 {
+namespace Skybrud.Social.Vimeo.OAuth {
 
     /// <summary>
     /// Class for handling the raw communication with the Vimeo API as well as any OAuth 2.0 communication.
     /// </summary>
-    public class VimeoOAuthClient : SocialHttpClient, IVimeoOAuthClient {
+    public class VimeoOAuth2Client : SocialHttpClient, IVimeoOAuthClient {
 
         #region Properties
 
@@ -67,7 +66,7 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
         /// <summary>
         /// Initializes a new OAuth client default properties.
         /// </summary>
-        public VimeoOAuthClient() {
+        public VimeoOAuth2Client() {
             Channels = new VimeoChannelsRawEndpoint(this);
             Me = new VimeoMeRawEndpoint(this);
             Users = new VimeoUsersRawEndpoint(this);
@@ -77,7 +76,7 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
         /// Initializes a new OAuth client with the specified <code>accessToken</code>.
         /// </summary>
         /// <param name="accessToken">A valid access token.</param>
-        public VimeoOAuthClient(string accessToken) : this() {
+        public VimeoOAuth2Client(string accessToken) : this() {
             AccessToken = accessToken;
         }
 
@@ -86,7 +85,7 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
         /// </summary>
         /// <param name="clientId">The client ID of the app.</param>
         /// <param name="clientSecret">The client secret of the app.</param>
-        public VimeoOAuthClient(string clientId, string clientSecret) : this() {
+        public VimeoOAuth2Client(string clientId, string clientSecret) : this() {
             ClientId = clientId;
             ClientSecret = clientSecret;
         }
@@ -98,7 +97,7 @@ namespace Skybrud.Social.Vimeo.OAuth2 {
         /// <param name="clientId">The client ID of the app.</param>
         /// <param name="clientSecret">The client secret of the app.</param>
         /// <param name="redirectUri">The redirect URI of the app.</param>
-        public VimeoOAuthClient(string clientId, string clientSecret, string redirectUri) : this() {
+        public VimeoOAuth2Client(string clientId, string clientSecret, string redirectUri) : this() {
             ClientId = clientId;
             ClientSecret = clientSecret;
             RedirectUri = redirectUri;
