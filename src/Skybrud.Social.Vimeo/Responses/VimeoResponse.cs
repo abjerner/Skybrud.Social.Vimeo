@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Http;
 using Skybrud.Social.Vimeo.Exceptions;
+using Skybrud.Social.Vimeo.Models.Common;
 
 namespace Skybrud.Social.Vimeo.Responses {
 

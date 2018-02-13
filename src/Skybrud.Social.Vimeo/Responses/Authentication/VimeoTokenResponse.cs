@@ -1,4 +1,5 @@
 ﻿using Skybrud.Social.Http;
+using Skybrud.Social.Vimeo.Models.Authentication;
 
 namespace Skybrud.Social.Vimeo.Responses.Authentication {
 
