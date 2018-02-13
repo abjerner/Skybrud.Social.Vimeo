@@ -25,10 +25,10 @@ namespace Skybrud.Social.Vimeo.Responses.Users {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>response</code> into an instance of <see cref="VimeoGetUserChannelsResponse"/>.
+        /// Parses the specified <paramref name="response"/> into an instance of <see cref="VimeoGetUserChannelsResponse"/>.
         /// </summary>
         /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
-        /// <returns>Returns an instance of <see cref="VimeoGetUserChannelsResponse"/> representing the response.</returns>
+        /// <returns>An instance of <see cref="VimeoGetUserChannelsResponse"/> representing the response.</returns>
         public static VimeoGetUserChannelsResponse ParseResponse(SocialHttpResponse response) {
             return response == null ? null : new VimeoGetUserChannelsResponse(response);
         }

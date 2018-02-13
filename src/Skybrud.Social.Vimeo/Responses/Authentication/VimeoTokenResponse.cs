@@ -28,7 +28,7 @@ namespace Skybrud.Social.Vimeo.Responses.Authentication {
         /// Parses the specified <code>response</code> into an instance of <see cref="VimeoTokenResponse"/>.
         /// </summary>
         /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
-        /// <returns>Returns an instance of <see cref="VimeoTokenResponse"/> representing the response.</returns>
+        /// <returns>An instance of <see cref="VimeoTokenResponse"/> representing the response.</returns>
         public static VimeoTokenResponse ParseResponse(SocialHttpResponse response) {
             return response == null ? null : new VimeoTokenResponse(response);
         }

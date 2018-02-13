@@ -100,7 +100,8 @@
         #region Constructors
 
         /// <summary>
-        /// Initializes a new scope based on the specified <code>alias</code>, <code>name</code> and <code>description</code>.
+        /// Initializes a new scope based on the specified <paramref name="alias"/>, <paramref name="name"/> and
+        /// <paramref name="description"/>.
         /// </summary>
         /// <param name="alias">The alias of the scope.</param>
         /// <param name="name">The name of the scope.</param>
