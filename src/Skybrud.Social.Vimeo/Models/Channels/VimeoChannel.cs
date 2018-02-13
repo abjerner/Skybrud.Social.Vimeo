@@ -88,6 +88,11 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         public VimeoChannelPrivacy Privacy { get; }
 
         /// <summary>
+        /// Gets the meta data of the channel.
+        /// </summary>
+        public VimeoChannelMetaData MetaData { get; }
+
+        /// <summary>
         /// Gets the resource key of the channel.
         /// </summary>
         public string ResourceKey { get; }
@@ -108,7 +113,7 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
             Picture = obj.GetObject("pictures", VimeoPicture.Parse);
             Header = obj.GetObject("header", VimeoPicture.Parse);
             Privacy = obj.GetObject("privacy", VimeoChannelPrivacy.Parse);
-            // "metadata" (mostly used when exploring the API, so not a priority)
+            MetaData = obj.GetObject("metadata", VimeoChannelMetaData.Parse);
             ResourceKey = obj.GetString("resource_key");
         }
 
