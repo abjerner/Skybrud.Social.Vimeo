@@ -7,7 +7,7 @@ namespace Skybrud.Social.Vimeo.Exceptions {
     /// <summary>
     /// Class representing an exception based on an error from one of the Vimeo API.
     /// </summary>
-    public class VimeoException : Exception {
+    public class VimeoHttpException : Exception {
 
         #region Properties
 
@@ -36,12 +36,12 @@ namespace Skybrud.Social.Vimeo.Exceptions {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new exception based on the specified <code>response</code>.
+        /// Initializes a new exception based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response that contained or triggered the error.</param>
         /// <param name="error">The error code.</param>
         /// <param name="errorDescription">The description about the error.</param>
-        public VimeoException(SocialHttpResponse response, string error, string errorDescription) : base("Invalid response received from the Vimeo API (Status: " + ((int) response.StatusCode) + ")") {
+        public VimeoHttpException(SocialHttpResponse response, string error, string errorDescription) : base("Invalid response received from the Vimeo API (Status: " + ((int) response.StatusCode) + ")") {
             Response = response;
             StatusCode = response.StatusCode;
             Error = error;

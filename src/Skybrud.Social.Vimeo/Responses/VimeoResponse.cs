@@ -45,7 +45,7 @@ namespace Skybrud.Social.Vimeo.Responses {
             if (response.StatusCode == HttpStatusCode.OK) return;
 
             JObject obj = ParseJsonObject(response.Body);
-            throw new VimeoException(response, obj.GetString("error"), obj.GetString("error_description"));
+            throw new VimeoHttpException(response, obj.GetString("error"), obj.GetString("error_description"));
 
         }
 
