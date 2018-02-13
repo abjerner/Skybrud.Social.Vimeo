@@ -13,22 +13,22 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// <summary>
         /// Gets the URL for the next page.
         /// </summary>
-        public string Next { get; private set; }
+        public string Next { get; }
 
         /// <summary>
         /// Gets the URL for the next page.
         /// </summary>
-        public string Previous { get; private set; }
+        public string Previous { get; }
 
         /// <summary>
         /// Gets the URL for the next page.
         /// </summary>
-        public string First { get; private set; }
+        public string First { get; }
 
         /// <summary>
         /// Gets the URL for the next page.
         /// </summary>
-        public string Last { get; private set; }
+        public string Last { get; }
 
         #endregion
 
@@ -46,10 +46,10 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoPaging"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoPaging"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="VimeoPaging"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoPaging"/>.</returns>
         public static VimeoPaging Parse(JObject obj) {
             return obj == null ? null : new VimeoPaging(obj);
         }

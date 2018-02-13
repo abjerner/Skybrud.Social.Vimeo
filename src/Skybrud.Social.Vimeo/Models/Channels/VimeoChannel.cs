@@ -18,85 +18,79 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         /// <summary>
         /// Gets the ID of the channel. The channel isn't directly specified by the Vimeo API, but is derived from the <see cref="Uri"/> property.
         /// </summary>
-        public long Id { get; private set; }
+        public long Id { get; }
 
         /// <summary>
         /// Gets the URI of the Vimeo channel.
         /// </summary>
-        public string Uri { get; private set; }
+        public string Uri { get; }
 
         /// <summary>
         /// Gets the name of the Vimeo channel.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the description of the Vimeo channel.
         /// </summary>
-        public string Description { get; private set; }
+        public string Description { get; }
 
         /// <summary>
         /// Gets whether the channel has a description. If true, the description can be read from the
         /// <see cref="Description"/> property.
         /// </summary>
-        public bool HasDescription {
-            get { return !String.IsNullOrWhiteSpace(Description); }
-        }
+        public bool HasDescription => !String.IsNullOrWhiteSpace(Description);
 
         /// <summary>
         /// Gets the link (URL for the channel page) of the Vimeo channel.
         /// </summary>
-        public string Link { get; private set; }
+        public string Link { get; }
 
         /// <summary>
         /// Gets the timestamp for when the channel was created.
         /// </summary>
-        public EssentialsDateTime CreatedTime { get; private set; }
+        public EssentialsDateTime CreatedTime { get; }
         
         /// <summary>
         /// Gets the timestamp for when the channel was last modified.
         /// </summary>
-        public EssentialsDateTime ModifiedTime { get; private set; }
+        public EssentialsDateTime ModifiedTime { get; }
 
         /// <summary>
         /// Gets information about the owner of the channel.
         /// </summary>
-        public VimeoUser User { get; private set; }
+        public VimeoUser User { get; }
 
         /// <summary>
         /// Gets the default picture of the channel. Use the <see cref="HasPicture"/> property to check whether the
         /// channel has a default picture.
         /// </summary>
-        public VimeoPicture Picture { get; private set; }
+        public VimeoPicture Picture { get; }
 
         /// <summary>
         /// Gets whether the channel has a default picture.
         /// </summary>
-        public bool HasPicture {
-            get { return Picture != null; }
-        }
+        public bool HasPicture => Picture != null;
 
         /// <summary>
         /// Gets information about the header picture of the channel.
         /// </summary>
-        public VimeoPicture Header { get; private set; }
+        public VimeoPicture Header { get; }
 
         /// <summary>
         /// Gets whether the channel has header picture.
         /// </summary>
-        public bool HasHeader {
-            get { return Header != null; }
-        }
+        public bool HasHeader => Header != null;
 
         /// <summary>
         /// Gets privacy information about the channel.
         /// </summary>
-        public VimeoChannelPrivacy Privacy { get; private set; }
+        public VimeoChannelPrivacy Privacy { get; }
 
         /// <summary>
         /// Gets the resource key of the channel.
         /// </summary>
-        public string ResourceKey { get; private set; }
+        public string ResourceKey { get; }
 
         #endregion
 
@@ -123,10 +117,10 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoChannel"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoChannel"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="VimeoChannel"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoChannel"/>.</returns>
         public static VimeoChannel Parse(JObject obj) {
             return obj == null ? null : new VimeoChannel(obj);
         }

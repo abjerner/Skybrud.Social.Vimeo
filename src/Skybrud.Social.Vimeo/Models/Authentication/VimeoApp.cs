@@ -13,12 +13,12 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         /// <summary>
         /// Gets the name of the app.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the URI of the app.
         /// </summary>
-        public string Uri { get; private set; }
+        public string Uri { get; }
 
         #endregion
 
@@ -34,10 +34,10 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoApp"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoApp"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="VimeoApp"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoApp"/>.</returns>
         public static VimeoApp Parse(JObject obj) {
             return obj == null ? null : new VimeoApp(obj);
         }

@@ -14,29 +14,27 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         /// <summary>
         /// Gets the width of the size.
         /// </summary>
-        public int Width { get; private set; }
+        public int Width { get; }
         
         /// <summary>
         /// Gets the height of the size.
         /// </summary>
-        public int Height { get; private set; }
+        public int Height { get; }
 
         /// <summary>
         /// Gets the URL of the size.
         /// </summary>
-        public string Link { get; private set; }
+        public string Link { get; }
 
         /// <summary>
         /// Gets the URL of the size with a play button.
         /// </summary>
-        public string LinkWithPlayButton { get; private set; }
+        public string LinkWithPlayButton { get; }
 
         /// <summary>
         /// Gets whether the <see cref="LinkWithPlayButton"/> property has a value.
         /// </summary>
-        public bool HasLinkWithPlayButton {
-            get { return !String.IsNullOrWhiteSpace(LinkWithPlayButton); }
-        }
+        public bool HasLinkWithPlayButton => !String.IsNullOrWhiteSpace(LinkWithPlayButton);
 
         #endregion
 
@@ -54,10 +52,10 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoPictureSize"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoPictureSize"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="VimeoPicture"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoPicture"/>.</returns>
         public static VimeoPictureSize Parse(JObject obj) {
             return obj == null ? null : new VimeoPictureSize(obj);
         }

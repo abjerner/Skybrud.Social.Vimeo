@@ -15,32 +15,32 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         /// <summary>
         /// Gets the ID of the picture.
         /// </summary>
-        public long Id { get; private set; }
+        public long Id { get; }
 
         /// <summary>
         /// Gets the URI of the picture.
         /// </summary>
-        public string Uri { get; private set; }
+        public string Uri { get; }
 
         /// <summary>
         /// Gets whether the picture is currently active.
         /// </summary>
-        public bool IsActive { get; private set; }
+        public bool IsActive { get; }
 
         /// <summary>
         /// Gets the type of the picture.
         /// </summary>
-        public string Type { get; private set; }
+        public string Type { get; }
 
         /// <summary>
         /// Gets the sizes/thumbnails of the picture.
         /// </summary>
-        public VimeoPictureSize[] Sizes { get; private set; }
+        public VimeoPictureSize[] Sizes { get; }
 
         /// <summary>
         /// Gets the resource key of the channel.
         /// </summary>
-        public string ResourceKey { get; private set; }
+        public string ResourceKey { get; }
 
         #endregion
 
@@ -60,10 +60,10 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoPicture"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoPicture"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="VimeoPicture"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoPicture"/>.</returns>
         public static VimeoPicture Parse(JObject obj) {
             return obj == null ? null : new VimeoPicture(obj);
         }

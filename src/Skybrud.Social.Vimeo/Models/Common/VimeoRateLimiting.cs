@@ -14,17 +14,17 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// <summary>
         /// Gets the total number of calls allowed within the current window.
         /// </summary>
-        public int Limit { get; private set; }
+        public int Limit { get; }
 
         /// <summary>
         /// Gets the remaining number of calls available to your app within the current window.
         /// </summary>
-        public int Remaining { get; private set; }
+        public int Remaining { get; }
 
         /// <summary>
         /// Gets the timestamp for when the current window is reset.
         /// </summary>
-        public EssentialsDateTime Reset { get; private set; }
+        public EssentialsDateTime Reset { get; }
 
         #endregion
 
@@ -41,10 +41,10 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Static methods
 
         /// <summary>
-        /// Parses rate-limiting information from the specified <code>response</code>.
+        /// Parses rate-limiting information from the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response that holds the rate-limiting information.</param>
-        /// <returns>Returns an instance of <see cref="VimeoRateLimiting"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoRateLimiting"/>.</returns>
         public static VimeoRateLimiting GetFromResponse(SocialHttpResponse response) {
 
             int limit;

@@ -13,7 +13,7 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         /// <summary>
         /// Gets the privacy status of the channel.
         /// </summary>
-        public VimeoChannelPrivacyStatus View { get; private set; }
+        public VimeoChannelPrivacyStatus View { get; }
 
         #endregion
 
@@ -28,10 +28,10 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoChannelPrivacy"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoChannelPrivacy"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="VimeoChannelPrivacy"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoChannelPrivacy"/>.</returns>
         public static VimeoChannelPrivacy Parse(JObject obj) {
             return obj == null ? null : new VimeoChannelPrivacy(obj);
         }

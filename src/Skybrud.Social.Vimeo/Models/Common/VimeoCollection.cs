@@ -13,27 +13,31 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// <summary>
         /// Gets the total amount of items in the collection.
         /// </summary>
-        public int Total { get; private set; }
+        public int Total { get; }
 
         /// <summary>
         /// Gets the current page.
         /// </summary>
-        public int Page { get; private set; }
+        public int Page { get; }
 
         /// <summary>
         /// Gets the maximum amount of items per page.
         /// </summary>
-        public int PerPage { get; private set; }
+        public int PerPage { get; }
 
         /// <summary>
         /// Gets pagination URLs about the collection.
         /// </summary>
-        public VimeoPaging Paging { get; private set; }
+        public VimeoPaging Paging { get; }
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new collection based on the specified <paramref name="obj"/>.
+        /// </summary>
+        /// <param name="obj">The <see cref="JObject"/> representing the collection.</param>
         protected VimeoCollection(JObject obj) : base(obj) {
             Total = obj.GetInt32("total");
             Page = obj.GetInt32("page");
@@ -46,10 +50,10 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoCollection"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoCollection"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="VimeoCollection"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoCollection"/>.</returns>
         public static VimeoCollection Parse(JObject obj) {
             return obj == null ? null : new VimeoCollection(obj);
         }

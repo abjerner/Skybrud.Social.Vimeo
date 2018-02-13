@@ -18,27 +18,27 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         /// <summary>
         /// Gets the access token.
         /// </summary>
-        public string AccessToken { get; private set; }
+        public string AccessToken { get; }
 
         /// <summary>
         /// Gets the type of the access token.
         /// </summary>
-        public string TokenType { get; private set; }
+        public string TokenType { get; }
 
         /// <summary>
         /// Gets a collection of the granted scope.
         /// </summary>
-        public VimeoScopeCollection Scope { get; private set; }
+        public VimeoScopeCollection Scope { get; }
 
         /// <summary>
         /// Gets information about the app.
         /// </summary>
-        public VimeoApp App { get; private set; }
+        public VimeoApp App { get; }
 
         /// <summary>
         /// Gets information about the authenticated user.
         /// </summary>
-        public VimeoUser User { get; private set; }
+        public VimeoUser User { get; }
 
         #endregion
 
@@ -57,10 +57,10 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoToken"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoToken"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="VimeoToken"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoToken"/>.</returns>
         public static VimeoToken Parse(JObject obj) {
             return obj == null ? null : new VimeoToken(obj);
         }

@@ -14,26 +14,24 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// <summary>
         /// Gets the name of the website.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the link (URL) of the website.
         /// </summary>
-        public string Link { get; private set; }
+        public string Link { get; }
 
         /// <summary>
         /// Gets the description of the website. Use the <see cref="HasDescription"/> property to check whether a
         /// description has been specified.
         /// </summary>
-        public string Description { get; private set; }
+        public string Description { get; }
 
         /// <summary>
         /// Gets whether the website has a description. If true, the description can be read from the
         /// <see cref="Description"/> property.
         /// </summary>
-        public bool HasDescription {
-            get { return !String.IsNullOrWhiteSpace(Description); }
-        }
+        public bool HasDescription => !String.IsNullOrWhiteSpace(Description);
 
         #endregion
 
@@ -50,10 +48,10 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="VimeoUserWebsite"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoUserWebsite"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="VimeoUserWebsite"/>.</returns>
+        /// <returns>An instance of <see cref="VimeoUserWebsite"/>.</returns>
         public static VimeoUserWebsite Parse(JObject obj) {
             return obj == null ? null : new VimeoUserWebsite(obj);
         }
