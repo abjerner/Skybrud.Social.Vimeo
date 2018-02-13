@@ -21,22 +21,22 @@ namespace Skybrud.Social.Vimeo {
         /// <summary>
         /// Gets a reference to the internal OAuth client for communication with the Vimeo API.
         /// </summary>
-        public IVimeoOAuthClient Client { get; private set; }
+        public IVimeoOAuthClient Client { get; }
 
         /// <summary>
         /// Gets a reference to the <strong>Channels</strong> endpoint.
         /// </summary>
-        public VimeoChannelsEndpoint Channels { get; private set; }
+        public VimeoChannelsEndpoint Channels { get; }
 
         /// <summary>
         /// Gets a reference to the <strong>Me</strong> endpoint.
         /// </summary>
-        public VimeoMeEndpoint Me { get; private set; }
+        public VimeoMeEndpoint Me { get; }
 
         /// <summary>
         /// Gets a reference to the <strong>Users</strong> endpoint.
         /// </summary>
-        public VimeoUsersEndpoint Users { get; private set; }
+        public VimeoUsersEndpoint Users { get; }
 
         #endregion
 
@@ -47,9 +47,8 @@ namespace Skybrud.Social.Vimeo {
         /// </summary>
         /// <param name="client">An instance of <see cref="IVimeoOAuthClient"/>.</param>
         protected VimeoService(IVimeoOAuthClient client) {
-            
-            if (client == null) throw new ArgumentNullException("client");
-            Client = client;
+
+            Client = client ?? throw new ArgumentNullException(nameof(client));
 
             Channels = new VimeoChannelsEndpoint(this);
             Me = new VimeoMeEndpoint(this);
