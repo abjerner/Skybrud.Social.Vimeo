@@ -22,9 +22,7 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// <summary>
         /// Gets a reference to the raw endpoint.
         /// </summary>
-        public VimeoChannelsRawEndpoint Raw {
-            get { return Service.Client.Channels; }
-        }
+        public VimeoChannelsRawEndpoint Raw => Service.Client.Channels;
 
         #endregion
 
@@ -36,22 +34,22 @@ namespace Skybrud.Social.Vimeo.Endpoints {
 
         #endregion
 
-        #region Methods
+        #region Member methods
 
         /// <summary>
-        /// Gets information about the channel with the specified <code>channelId</code>.
+        /// Gets information about the channel with the specified <paramref name="channelId"/>.
         /// </summary>
         /// <param name="channelId">The ID of the user.</param>
-        /// <returns>Returns an instance of <see cref="VimeoGetChannelResponse"/> representing the response.</returns>
+        /// <returns>An instance of <see cref="VimeoGetChannelResponse"/> representing the response.</returns>
         public VimeoGetChannelResponse GetInfo(long channelId) {
             return VimeoGetChannelResponse.ParseResponse(Raw.GetInfo(channelId));
         }
 
         /// <summary>
-        /// Gets a list of videos of the channel matching the specified <code>options</code>.
+        /// Gets a list of videos of the channel matching the specified <paramref name="options"/>.
         /// </summary>
-        /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="VimeoGetChannelVideosResponse"/> representing the response.</returns>
+        /// <param name="options">The options for request to the API.</param>
+        /// <returns>An instance of <see cref="VimeoGetChannelVideosResponse"/> representing the response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/channels#/{channel_id}/videos</cref>
         /// </see>

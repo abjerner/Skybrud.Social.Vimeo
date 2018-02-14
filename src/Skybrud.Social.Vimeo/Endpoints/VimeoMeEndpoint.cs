@@ -21,9 +21,7 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// <summary>
         /// Gets a reference to the raw endpoint.
         /// </summary>
-        public VimeoMeRawEndpoint Raw {
-            get { return Service.Client.Me; }
-        }
+        public VimeoMeRawEndpoint Raw => Service.Client.Me;
 
         #endregion
 
@@ -35,12 +33,12 @@ namespace Skybrud.Social.Vimeo.Endpoints {
 
         #endregion
 
-        #region Methods
+        #region Member methods
 
         /// <summary>
         /// Gets information about the authenticated user.
         /// </summary>
-        /// <returns>Returns an instance of <see cref="VimeoGetUserResponse"/> representing the response.</returns>
+        /// <returns>An instance of <see cref="VimeoGetUserResponse"/> representing the response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/me#GET/me</cref>
         /// </see>

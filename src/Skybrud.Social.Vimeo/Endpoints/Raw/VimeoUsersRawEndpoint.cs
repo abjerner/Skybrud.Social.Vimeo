@@ -7,7 +7,7 @@ using Skybrud.Social.Vimeo.Options.Users;
 namespace Skybrud.Social.Vimeo.Endpoints.Raw {
 
     /// <summary>
-    /// Class representing the raw implementation of the users endpoint.
+    /// Class representing the raw implementation of the <strong>users</strong> endpoint.
     /// </summary>
     /// <see>
     ///     <cref>https://developer.vimeo.com/api/endpoints/users</cref>
@@ -19,7 +19,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the OAuth client.
         /// </summary>
-        public IVimeoOAuthClient Client { get; private set; }
+        public IVimeoOAuthClient Client { get; }
 
         #endregion
 
@@ -100,11 +100,11 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <summary>
         /// Gets a list of user channels matching the specified <paramref name="options"/>.
         /// </summary>
-        /// <param name="options">The options for call to the API.</param>
+        /// <param name="options">The options for request to the API.</param>
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetChannels(VimeoGetUserChannelsOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (!options.HasUserId && !options.HasUsername) throw new PropertyNotSetException("UserId");
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            if (!options.HasUserId && !options.HasUsername) throw new PropertyNotSetException(nameof(options.UserId));
             return Client.DoHttpGetRequest("https://api.vimeo.com/users/" + (options.HasUserId ? options.UserId + "" : options.Username) + "/channels", options);
         }
 

@@ -16,7 +16,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the OAuth client.
         /// </summary>
-        public IVimeoOAuthClient Client { get; private set; }
+        public IVimeoOAuthClient Client { get; }
 
         #endregion
 
@@ -33,7 +33,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <summary>
         /// Gets information about the authenticated user.
         /// </summary>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/me#GET/me</cref>
         /// </see>
