@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.OAuth;
+﻿using Skybrud.Social.Http;
+using Skybrud.Social.OAuth;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
 
 namespace Skybrud.Social.Vimeo.OAuth {
@@ -24,6 +25,11 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// Gets a reference to the raw <strong>Users</strong> endpoint.
         /// </summary>
         public VimeoUsersRawEndpoint Users { get; }
+
+        /// <summary>
+        /// Gets a reference to the raw <strong>Videos</strong> endpoint.
+        /// </summary>
+        public VimeoVideosRawEndpoint Videos { get; }
 
         #endregion
 
@@ -75,7 +81,25 @@ namespace Skybrud.Social.Vimeo.OAuth {
             Channels = new VimeoChannelsRawEndpoint(this);
             Me = new VimeoMeRawEndpoint(this);
             Users = new VimeoUsersRawEndpoint(this);
+            Videos = new VimeoVideosRawEndpoint(this);
+
+        }
+
+        #endregion
+
+        #region Member methods
         
+        /// <summary>
+        /// Virtual method that can be used for configuring a request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+
+            base.PrepareHttpRequest(request);
+
+            // Append the scheme and host name if not already present
+            if (request.Url.StartsWith("/")) request.Url = "https://api.vimeo.com" + request.Url;
+
         }
 
         #endregion

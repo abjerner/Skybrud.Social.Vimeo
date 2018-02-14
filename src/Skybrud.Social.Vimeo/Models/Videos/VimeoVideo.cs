@@ -3,6 +3,8 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
+using Skybrud.Social.Vimeo.Models.Tags;
+using Skybrud.Social.Vimeo.Models.Users;
 
 namespace Skybrud.Social.Vimeo.Models.Videos {
     
@@ -37,9 +39,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// Gets whether the video has a description. If true, the description can be read from the
         /// <see cref="Description"/> property.
         /// </summary>
-        public bool HasDescription {
-            get { return !String.IsNullOrWhiteSpace(Description); }
-        }
+        public bool HasDescription => !String.IsNullOrWhiteSpace(Description);
 
         /// <summary>
         /// Gets the link (URL for the video page) of the Vimeo video.
@@ -67,6 +67,11 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         public int Height  { get; }
 
         /// <summary>
+        /// Gets embedding details for the video.
+        /// </summary>
+        public VimeoVideoEmbed Embed { get; }
+
+        /// <summary>
         /// Gets the timestamp for when the video was created.
         /// </summary>
         public EssentialsDateTime CreatedTime  { get; }
@@ -80,6 +85,36 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// Gets the timestamp for when the video was released.
         /// </summary>
         public EssentialsDateTime ReleaseTime  { get; }
+
+        /// <summary>
+        /// Gets a reference to the pictures of the video.
+        /// </summary>
+        public VimeoVideoPictures Pictures { get; }
+
+        /// <summary>
+        /// Gets an array with the tags of the video.
+        /// </summary>
+        public VimeoTag[] Tags { get; }
+
+        /// <summary>
+        /// Gets whether the video has any tags.
+        /// </summary>
+        public bool HasTags => Tags.Length > 0;
+
+        /// <summary>
+        /// Gets a reference to statistics about the video.
+        /// </summary>
+        public VimeoVideoStats Stats { get; }
+
+        /// <summary>
+        /// Gets the meta data of the video.
+        /// </summary>
+        public VimeoVideoMetaData MetaData { get; }
+
+        /// <summary>
+        /// Gets a reference to the user who uploaded the video.
+        /// </summary>
+        public VimeoUser User { get; }
 
         /// <summary>
         /// Gets the resource key of the video.
@@ -100,18 +135,18 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
             Width = obj.GetInt32("width");
             Language = obj.GetString("language");
             Height = obj.GetInt32("height");
-            // "embed"
+            Embed = obj.GetObject("embed", VimeoVideoEmbed.Parse);
             CreatedTime = obj.GetString("created_time", EssentialsDateTime.Parse);
             ModifiedTime = obj.GetString("modified_time", EssentialsDateTime.Parse);
             ReleaseTime = obj.GetString("release_time", EssentialsDateTime.Parse);
             // "content_rating"
             // "license"
             // "privacy"
-            // "pictures"
-            // "tags"
-            // "stats"
-            // "metadata" (mostly used when exploring the API, so not a priority)
-            // "user"
+            Pictures = obj.GetObject("pictures", VimeoVideoPictures.Parse);
+            Tags = obj.GetArrayItems("tags", VimeoTag.Parse);
+            Stats = obj.GetObject("stats", VimeoVideoStats.Parse);
+            MetaData = obj.GetObject("metadata", VimeoVideoMetaData.Parse);
+            User = obj.GetObject("user", VimeoUser.Parse);
             // "app"
             // "status"
             ResourceKey = obj.GetString("resource_key");

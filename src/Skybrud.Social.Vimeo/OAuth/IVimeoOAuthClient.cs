@@ -25,6 +25,11 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// </summary>
         VimeoUsersRawEndpoint Users { get; }
 
+        /// <summary>
+        /// Gets a reference to the raw <strong>Videos</strong> endpoint.
+        /// </summary>
+        VimeoVideosRawEndpoint Videos { get; }
+
         #endregion
 
     }

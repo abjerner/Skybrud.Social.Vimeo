@@ -37,6 +37,11 @@ namespace Skybrud.Social.Vimeo {
         /// </summary>
         public VimeoUsersEndpoint Users { get; }
 
+        /// <summary>
+        /// Gets a reference to the <strong>Videos</strong> endpoint.
+        /// </summary>
+        public VimeoVideosEndpoint Videos { get; }
+
         #endregion
 
         #region Constructors
@@ -52,7 +57,8 @@ namespace Skybrud.Social.Vimeo {
             Channels = new VimeoChannelsEndpoint(this);
             Me = new VimeoMeEndpoint(this);
             Users = new VimeoUsersEndpoint(this);
-        
+            Videos = new VimeoVideosEndpoint(this);
+
         }
 
         #endregion
