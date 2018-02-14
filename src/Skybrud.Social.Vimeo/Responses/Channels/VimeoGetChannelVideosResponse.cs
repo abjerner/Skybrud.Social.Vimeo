@@ -6,7 +6,7 @@ namespace Skybrud.Social.Vimeo.Responses.Channels {
     /// <summary>
     /// Class representing a response with collection of Vimeo videos.
     /// </summary>
-    public class VimeoGetChannelVideosResponse : VimeoResponse<VimeoVideo> {
+    public class VimeoGetChannelVideosResponse : VimeoResponse<VimeoVideosCollection> {
 
         #region Constructors
 
@@ -16,7 +16,7 @@ namespace Skybrud.Social.Vimeo.Responses.Channels {
             ValidateResponse(response);
 
             // Parse the response body
-            Body = ParseJsonObject(response.Body, VimeoVideo.Parse);
+            Body = ParseJsonObject(response.Body, VimeoVideosCollection.Parse);
 
         }
 
