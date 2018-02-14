@@ -47,6 +47,14 @@ namespace Skybrud.Social.Vimeo.Options.Channels {
         /// Initializes a new instance with the specified options.
         /// </summary>
         /// <param name="channelId">The ID of the channel.</param>
+        public VimeoGetChannelVideosOptions(long channelId) {
+            ChannelId = channelId;
+        }
+
+        /// <summary>
+        /// Initializes a new instance with the specified options.
+        /// </summary>
+        /// <param name="channelId">The ID of the channel.</param>
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
         public VimeoGetChannelVideosOptions(long channelId, int page, int perPage) {

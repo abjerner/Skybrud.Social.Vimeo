@@ -44,6 +44,33 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         public VimeoGetChannelResponse GetInfo(long channelId) {
             return VimeoGetChannelResponse.ParseResponse(Raw.GetInfo(channelId));
         }
+        
+        /// <summary>
+        /// Gets a list of videos of the channel with the specified <paramref name="channelId"/>.
+        /// </summary>
+        /// <param name="channelId">The ID of the cannel.</param>
+        /// <returns>An instance of <see cref="VimeoGetChannelVideosResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/endpoints/channels#/{channel_id}/videos</cref>
+        /// </see>
+        public VimeoGetChannelVideosResponse GetVideos(long channelId) {
+            return VimeoGetChannelVideosResponse.ParseResponse(Raw.GetVideos(channelId));
+        }
+
+        /// <summary>
+        /// Gets a list of videos of the channel with the specified <paramref name="channelId"/>.
+        /// </summary>
+        /// <param name="channelId">The ID of the cannel.</param>
+        /// <param name="page">The page to be returned.</param>
+        /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
+        /// <returns>An instance of <see cref="VimeoGetChannelVideosResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/endpoints/channels#/{channel_id}/videos</cref>
+        /// </see>
+        public VimeoGetChannelVideosResponse GetVideos(long channelId, int page, int perPage) {
+            return VimeoGetChannelVideosResponse.ParseResponse(Raw.GetVideos(channelId, page, perPage));
+        }
+
 
         /// <summary>
         /// Gets a list of videos of the channel matching the specified <paramref name="options"/>.
