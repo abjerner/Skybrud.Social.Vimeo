@@ -37,6 +37,18 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         #region Member methods
 
         /// <summary>
+        /// Gets information about the video with the specified <paramref name="videoId"/>.
+        /// </summary>
+        /// <param name="videoId">The ID of the video</param>
+        /// <returns>An instance of <see cref="VimeoGetVideoResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/endpoints/videos#GET/videos/{video_id}</cref>
+        /// </see>
+        public VimeoGetVideoResponse GetVideo(long videoId) {
+            return VimeoGetVideoResponse.ParseResponse(Raw.GetVideo(videoId));
+        }
+
+        /// <summary>
         /// Gets a list of videos uploaded by the authenticated user.
         /// </summary>
         /// <returns>An instance of <see cref="VimeoGetVideosResponse"/> representing the response.</returns>
