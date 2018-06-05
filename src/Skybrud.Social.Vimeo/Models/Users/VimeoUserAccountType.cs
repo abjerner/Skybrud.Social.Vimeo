@@ -23,7 +23,15 @@
         /// <summary>
         /// Indicates a user with a <strong>Pro</strong> membership.
         /// </summary>
-        Pro
+        Pro,
+
+        /// <summary>
+        /// Indicates a user with a <strong>Vimeo PRO Unlimited</strong> membership.
+        /// </summary>
+        /// <see>
+        ///     <cref>https://join.vimeo.com/pro-unlimited/</cref>
+        /// </see>
+        ProUnlimited
 
     }
 
