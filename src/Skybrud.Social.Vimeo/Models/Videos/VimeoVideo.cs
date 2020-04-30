@@ -39,7 +39,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// Gets whether the video has a description. If true, the description can be read from the
         /// <see cref="Description"/> property.
         /// </summary>
-        public bool HasDescription => !String.IsNullOrWhiteSpace(Description);
+        public bool HasDescription => string.IsNullOrWhiteSpace(Description) == false;
 
         /// <summary>
         /// Gets the link (URL for the video page) of the Vimeo video.
@@ -127,7 +127,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         private VimeoVideo(JObject obj) : base(obj) {
             Uri = obj.GetString("uri");
-            Id = Int64.Parse(Uri.Split('/').Last());
+            Id = long.Parse(Uri.Split('/').Last());
             Name = obj.GetString("name");
             Description = obj.GetString("description");
             Link = obj.GetString("link");

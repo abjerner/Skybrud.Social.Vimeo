@@ -17,7 +17,7 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// <summary>
         /// Gets a reference to the Vimeo service.
         /// </summary>
-        public VimeoService Service { get; private set; }
+        public VimeoService Service { get; }
 
         /// <summary>
         /// Gets a reference to the raw endpoint.

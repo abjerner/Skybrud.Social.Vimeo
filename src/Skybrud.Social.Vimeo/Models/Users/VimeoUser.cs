@@ -42,7 +42,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// <summary>
         /// Gets whether the user has specified a location. If true, the location can be read from the <see cref="Location"/> property.
         /// </summary>
-        public bool HasLocation => !String.IsNullOrWhiteSpace(Location);
+        public bool HasLocation => string.IsNullOrWhiteSpace(Location) == false;
 
         /// <summary>
         /// Gets the bio of the user. Use the <see cref="HasBio"/> property to check whether a bio has been specified.
@@ -52,7 +52,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// <summary>
         /// Gets whether the user has specified a bio. If true, the bio can be read from the <see cref="Bio"/> property.
         /// </summary>
-        public bool HasBio => !String.IsNullOrWhiteSpace(Bio);
+        public bool HasBio => string.IsNullOrWhiteSpace(Bio) == false;
 
         /// <summary>
         /// Gets the timestamp for when the user was created.
@@ -74,7 +74,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// Gets whether the user has default picture. If true, information about the picture can be read from the
         /// <see cref="Picture"/> property.
         /// </summary>
-        public bool HasPicture => !String.IsNullOrWhiteSpace(Bio);
+        public bool HasPicture => string.IsNullOrWhiteSpace(Bio) == false;
 
         /// <summary>
         /// Gets an array of websites of the user.
@@ -98,7 +98,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
 
         private VimeoUser(JObject obj) : base(obj) {
             Uri = obj.GetString("uri");
-            Id = Int64.Parse(Uri.Split('/').Last());
+            Id = long.Parse(Uri.Split('/').Last());
             Name = obj.GetString("name");
             Link = obj.GetString("link");
             Location = obj.GetString("location");

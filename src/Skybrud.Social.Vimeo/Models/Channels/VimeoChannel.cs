@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
@@ -39,7 +38,7 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         /// Gets whether the channel has a description. If true, the description can be read from the
         /// <see cref="Description"/> property.
         /// </summary>
-        public bool HasDescription => !String.IsNullOrWhiteSpace(Description);
+        public bool HasDescription => string.IsNullOrWhiteSpace(Description) == false;
 
         /// <summary>
         /// Gets the link (URL for the channel page) of the Vimeo channel.
@@ -103,7 +102,7 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
 
         private VimeoChannel(JObject obj) : base(obj) {
             Uri = obj.GetString("uri");
-            Id = Int64.Parse(Uri.Split('/').Last());
+            Id = long.Parse(Uri.Split('/').Last());
             Name = obj.GetString("name");
             Description = obj.GetString("description");
             Link = obj.GetString("link");

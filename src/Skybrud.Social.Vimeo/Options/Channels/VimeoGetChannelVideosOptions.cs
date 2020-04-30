@@ -69,7 +69,7 @@ namespace Skybrud.Social.Vimeo.Options.Channels {
 
         public override IHttpQueryString GetQueryString() {
             IHttpQueryString query = base.GetQueryString();
-            if (!String.IsNullOrWhiteSpace(Query)) query.Add("query", query);
+            if (!string.IsNullOrWhiteSpace(Query)) query.Add("query", query);
             if (Sort != VimeoVideoSortField.Default) {
                 query.Add("sort", StringUtils.ToUnderscore(Sort));
                 query.Add("direction", Direction == VimeoSortDirection.Ascending ? "asc" : "desc");

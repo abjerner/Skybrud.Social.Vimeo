@@ -125,9 +125,9 @@ namespace Skybrud.Social.Vimeo.OAuth {
         public string GetAuthorizationUrl(string state, string scope = null) {
 
             // Validate the input
-            if (String.IsNullOrWhiteSpace(state)) throw new ArgumentNullException(nameof(state));
-            if (String.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
-            if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
+            if (string.IsNullOrWhiteSpace(state)) throw new ArgumentNullException(nameof(state));
+            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
 
             // Construct the query string
             IHttpQueryString query = new HttpQueryString();
@@ -162,10 +162,10 @@ namespace Skybrud.Social.Vimeo.OAuth {
         public VimeoTokenResponse GetAccessTokenFromAuthCode(string authCode) {
 
             // Some validation
-            if (String.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
-            if (String.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException(nameof(ClientSecret));
-            if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
-            if (String.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
+            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (string.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException(nameof(ClientSecret));
+            if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
+            if (string.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
 
             // Initialize the POST data
             IHttpPostData data = new HttpPostData();
@@ -199,7 +199,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
             if (request.Url.StartsWith("/")) request.Url = "https://api.vimeo.com" + request.Url;
 
             // Append the access token if specified
-            if (!String.IsNullOrWhiteSpace(AccessToken)) request.Authorization = "Bearer " + AccessToken;
+            if (!string.IsNullOrWhiteSpace(AccessToken)) request.Authorization = "Bearer " + AccessToken;
 
         }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using Skybrud.Essentials.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Vimeo.Models.Common {
@@ -47,18 +46,15 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// <returns>An instance of <see cref="VimeoRateLimiting"/>.</returns>
         public static VimeoRateLimiting GetFromResponse(IHttpResponse response) {
 
-            int limit;
-            int remaining;
-
-            if (!Int32.TryParse(response.Headers["X-Ratelimit-Limit"] ?? "", out limit)) {
+            if (int.TryParse(response.Headers["X-Ratelimit-Limit"] ?? "", out int limit) == false) {
                 limit = -1;
             }
 
-            if (!Int32.TryParse(response.Headers["X-Ratelimit-Remaining"] ?? "", out remaining)) {
+            if (int.TryParse(response.Headers["X-Ratelimit-Remaining"] ?? "", out int remaining) == false) {
                 remaining = -1;
             }
 
-            var reset = EssentialsDateTime.Parse(response.Headers["X-RateLimit-Reset"]);
+            EssentialsDateTime reset = EssentialsDateTime.Parse(response.Headers["X-RateLimit-Reset"]);
 
             return new VimeoRateLimiting(limit, remaining, reset);
 

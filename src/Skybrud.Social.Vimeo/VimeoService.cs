@@ -72,7 +72,7 @@ namespace Skybrud.Social.Vimeo {
         /// <param name="accessToken">The access token.</param>
         /// <returns>An instance of <see cref="Skybrud.Social.Vimeo.VimeoService" />.</returns>
         public static VimeoService CreateFromAccessToken(string accessToken) {
-            if (String.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
+            if (string.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
             return new VimeoService(new VimeoOAuth2Client(accessToken));
         }
 

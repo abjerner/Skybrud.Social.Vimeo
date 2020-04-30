@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
@@ -48,7 +47,7 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
 
         private VimeoPicture(JObject obj) : base(obj) {
             Uri = obj.GetString("uri");
-            Id = Int64.Parse(Uri.Split('/').Last());
+            Id = long.Parse(Uri.Split('/').Last());
             IsActive = obj.GetBoolean("active");
             Type = obj.GetString("type");
             Sizes = obj.GetArrayItems("sizes", VimeoPictureSize.Parse);

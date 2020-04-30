@@ -1,9 +1,5 @@
-﻿using System;
-using System.Linq;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Essentials.Time;
-using Skybrud.Social.Vimeo.Models.Tags;
 
 namespace Skybrud.Social.Vimeo.Models.Videos {
     

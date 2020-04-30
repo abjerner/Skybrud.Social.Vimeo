@@ -83,7 +83,7 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// </summary>
         /// <returns>String of scopes separated by a space.</returns>
         public override string ToString() {
-            return String.Join(" ", from scope in _list select scope.Name);
+            return string.Join(" ", from scope in _list select scope.Name);
         }
 
         IEnumerator IEnumerable.GetEnumerator() {
@@ -101,7 +101,7 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// <returns>An instance of <see cref="VimeoScopeCollection"/> with the specified scopes.</returns>
         public static VimeoScopeCollection Parse(string str) {
             return new VimeoScopeCollection(
-                from alias in (str ?? "").Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                from alias in (str ?? string.Empty).Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 let scope = VimeoScope.All.FirstOrDefault(x => x.Alias == alias)
                 select scope ?? new VimeoScope(alias, null, null)
             );

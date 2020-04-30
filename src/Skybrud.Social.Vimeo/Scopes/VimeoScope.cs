@@ -83,17 +83,17 @@
         /// <summary>
         /// Gets the alias of the scope.
         /// </summary>
-        public string Alias { get; private set; }
+        public string Alias { get; }
 
         /// <summary>
         /// Gets the name of the scope.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the description of the scope.
         /// </summary>
-        public string Description { get; private set; }
+        public string Description { get; }
 
         #endregion
 

@@ -18,10 +18,8 @@ namespace Skybrud.Social.Vimeo.Options.Users {
         /// <summary>
         /// Gets whether a user ID has been specified.
         /// </summary>
-        public bool HasUserId {
-            get { return UserId > 0; }
-        }
-        
+        public bool HasUserId => UserId > 0;
+
         /// <summary>
         /// Gets or sets the username of the parent user.
         /// </summary>
@@ -30,9 +28,7 @@ namespace Skybrud.Social.Vimeo.Options.Users {
         /// <summary>
         /// Gets whether a username has been specified.
         /// </summary>
-        public bool HasUsername {
-            get { return !String.IsNullOrWhiteSpace(Username); }
-        }
+        public bool HasUsername => !string.IsNullOrWhiteSpace(Username);
 
         #endregion
 

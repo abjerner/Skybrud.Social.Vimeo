@@ -17,7 +17,7 @@ namespace Skybrud.Social.Vimeo.Responses {
         /// <summary>
         /// Gets information about rate limiting.
         /// </summary>
-        public VimeoRateLimiting RateLimiting { get; private set; }
+        public VimeoRateLimiting RateLimiting { get; }
 
         #endregion
 

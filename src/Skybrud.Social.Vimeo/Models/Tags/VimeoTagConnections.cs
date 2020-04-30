@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Vimeo.Models.Common;
 
-namespace Skybrud.Social.Vimeo.Models.Channels {
+namespace Skybrud.Social.Vimeo.Models.Tags {
 
     /// <summary>
     /// Class representing the connections of a Vimeo tags.
