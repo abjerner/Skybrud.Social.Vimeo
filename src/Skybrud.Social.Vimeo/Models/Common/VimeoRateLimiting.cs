@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Time;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Social.Vimeo.Models.Common {
 
@@ -45,7 +45,7 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// </summary>
         /// <param name="response">The response that holds the rate-limiting information.</param>
         /// <returns>An instance of <see cref="VimeoRateLimiting"/>.</returns>
-        public static VimeoRateLimiting GetFromResponse(SocialHttpResponse response) {
+        public static VimeoRateLimiting GetFromResponse(IHttpResponse response) {
 
             int limit;
             int remaining;

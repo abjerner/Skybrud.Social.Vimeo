@@ -1,4 +1,4 @@
-﻿using Skybrud.Social.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Social.Vimeo.OAuth;
 
 namespace Skybrud.Social.Vimeo.Endpoints.Raw {
@@ -33,11 +33,11 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <summary>
         /// Gets information about the authenticated user.
         /// </summary>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/me#GET/me</cref>
         /// </see>
-        public SocialHttpResponse GetInfo() {
+        public IHttpResponse GetInfo() {
             return Client.DoHttpGetRequest("https://api.vimeo.com/me");
         }
 

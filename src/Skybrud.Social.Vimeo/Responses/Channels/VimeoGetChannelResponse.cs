@@ -1,4 +1,4 @@
-﻿using Skybrud.Social.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Social.Vimeo.Models.Channels;
 
 namespace Skybrud.Social.Vimeo.Responses.Channels {
@@ -10,7 +10,7 @@ namespace Skybrud.Social.Vimeo.Responses.Channels {
 
         #region Constructors
 
-        private VimeoGetChannelResponse(SocialHttpResponse response) : base(response) {
+        private VimeoGetChannelResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,9 +27,9 @@ namespace Skybrud.Social.Vimeo.Responses.Channels {
         /// <summary>
         /// Parses the specified <paramref name="response"/> into an instance of <see cref="VimeoGetChannelResponse"/>.
         /// </summary>
-        /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         /// <returns>An instance of <see cref="VimeoGetChannelResponse"/> representing the response.</returns>
-        public static VimeoGetChannelResponse ParseResponse(SocialHttpResponse response) {
+        public static VimeoGetChannelResponse ParseResponse(IHttpResponse response) {
             return response == null ? null : new VimeoGetChannelResponse(response);
         }
 

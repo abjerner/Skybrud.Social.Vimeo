@@ -1,4 +1,4 @@
-﻿using Skybrud.Social.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Social.Vimeo.Models.Videos;
 
 namespace Skybrud.Social.Vimeo.Responses.Videos {
@@ -10,7 +10,7 @@ namespace Skybrud.Social.Vimeo.Responses.Videos {
 
         #region Constructors
 
-        private VimeoGetVideoResponse(SocialHttpResponse response) : base(response) {
+        private VimeoGetVideoResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,9 +27,9 @@ namespace Skybrud.Social.Vimeo.Responses.Videos {
         /// <summary>
         /// Parses the specified <paramref name="response"/> into an instance of <see cref="VimeoGetVideoResponse"/>.
         /// </summary>
-        /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         /// <returns>An instance of <see cref="VimeoGetVideoResponse"/> representing the response.</returns>
-        public static VimeoGetVideoResponse ParseResponse(SocialHttpResponse response) {
+        public static VimeoGetVideoResponse ParseResponse(IHttpResponse response) {
             return response == null ? null : new VimeoGetVideoResponse(response);
         }
 

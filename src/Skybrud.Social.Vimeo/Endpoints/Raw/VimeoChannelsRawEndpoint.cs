@@ -1,6 +1,6 @@
 ﻿using System;
 using Skybrud.Essentials.Common;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.Vimeo.OAuth;
 using Skybrud.Social.Vimeo.Options.Channels;
 
@@ -37,8 +37,8 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// Gets information about the channel with the specified <paramref name="channelId"/>.
         /// </summary>
         /// <param name="channelId">The ID of the channel.</param>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetInfo(long channelId) {
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetInfo(long channelId) {
             return Client.DoHttpGetRequest("https://api.vimeo.com/channels/" + channelId);
         }
 
@@ -46,11 +46,11 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// Gets a list of videos of the channel with the specified <paramref name="channelId"/>.
         /// </summary>
         /// <param name="channelId">The ID of the cannel.</param>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/channels#/{channel_id}/videos</cref>
         /// </see>
-        public SocialHttpResponse GetVideos(long channelId) {
+        public IHttpResponse GetVideos(long channelId) {
             return GetVideos(new VimeoGetChannelVideosOptions(channelId));
         }
 
@@ -60,11 +60,11 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <param name="channelId">The ID of the cannel.</param>
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/channels#/{channel_id}/videos</cref>
         /// </see>
-        public SocialHttpResponse GetVideos(long channelId, int page, int perPage) {
+        public IHttpResponse GetVideos(long channelId, int page, int perPage) {
             return GetVideos(new VimeoGetChannelVideosOptions(channelId, page, perPage));
         }
 
@@ -72,11 +72,11 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// Gets a list of videos of the channel matching the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for request to the API.</param>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/channels#/{channel_id}/videos</cref>
         /// </see>
-        public SocialHttpResponse GetVideos(VimeoGetChannelVideosOptions options) {
+        public IHttpResponse GetVideos(VimeoGetChannelVideosOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
             if (options.ChannelId == 0) throw new PropertyNotSetException(nameof(options.ChannelId));
             return Client.DoHttpGetRequest("https://api.vimeo.com/channels/" + options.ChannelId + "/videos", options);

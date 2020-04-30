@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.Interfaces.Http;
+﻿using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Client;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
 
 namespace Skybrud.Social.Vimeo.OAuth {

@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Strings;
-using Skybrud.Social.Interfaces.Http;
 using Skybrud.Social.Vimeo.Enums;
 
 namespace Skybrud.Social.Vimeo.Options.Videos {

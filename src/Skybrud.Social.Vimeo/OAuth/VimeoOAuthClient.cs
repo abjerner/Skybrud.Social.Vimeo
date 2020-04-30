@@ -1,5 +1,5 @@
-﻿using Skybrud.Social.Http;
-using Skybrud.Social.OAuth;
+﻿using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.OAuth;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
 
 namespace Skybrud.Social.Vimeo.OAuth {
@@ -7,7 +7,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
     /// <summary>
     /// Class for handling authentication and communication with the Vimeo API using OAuth 1.0a.
     /// </summary>
-    public class VimeoOAuthClient : SocialOAuthClient, IVimeoOAuthClient {
+    public class VimeoOAuthClient : OAuthClient, IVimeoOAuthClient {
 
         #region Properties
 
@@ -93,7 +93,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// Virtual method that can be used for configuring a request.
         /// </summary>
         /// <param name="request">The request.</param>
-        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+        protected override void PrepareHttpRequest(IHttpRequest request) {
 
             base.PrepareHttpRequest(request);
 

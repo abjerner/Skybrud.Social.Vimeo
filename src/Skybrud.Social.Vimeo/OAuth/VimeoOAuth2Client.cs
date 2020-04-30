@@ -1,8 +1,9 @@
 ﻿using System;
 using Skybrud.Essentials.Common;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Client;
+using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Security;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces.Http;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
 using Skybrud.Social.Vimeo.Responses.Authentication;
 using Skybrud.Social.Vimeo.Scopes;
@@ -12,7 +13,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
     /// <summary>
     /// Class for handling the raw communication with the Vimeo API as well as any OAuth 2.0 communication.
     /// </summary>
-    public class VimeoOAuth2Client : SocialHttpClient, IVimeoOAuthClient {
+    public class VimeoOAuth2Client : HttpClient, IVimeoOAuthClient {
 
         #region Properties
 
@@ -129,7 +130,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
             if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
 
             // Construct the query string
-            IHttpQueryString query = new SocialHttpQueryString();
+            IHttpQueryString query = new HttpQueryString();
             query.Add("response_type", "code");
             query.Add("client_id", ClientId);
             query.Add("redirect_uri", RedirectUri);
@@ -167,21 +168,21 @@ namespace Skybrud.Social.Vimeo.OAuth {
             if (String.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
 
             // Initialize the POST data
-            IHttpPostData data = new SocialHttpPostData();
+            IHttpPostData data = new HttpPostData();
             data.Add("grant_type", "authorization_code");
             data.Add("code", authCode);
             data.Add("redirect_uri", RedirectUri);
 
             // Initialize the request
-            SocialHttpRequest request = new SocialHttpRequest {
-                Method = SocialHttpMethod.Post,
+            IHttpRequest request = new HttpRequest {
+                Method = HttpMethod.Post,
                 Url = "https://api.vimeo.com/oauth/access_token",
                 PostData = data,
                 Authorization = "basic " + SecurityUtils.Base64Encode(ClientId + ":" + ClientSecret)
             };
 
             // Make the call to the API
-            SocialHttpResponse response = request.GetResponse();
+            IHttpResponse response = request.GetResponse();
 
             // Parse the response
             return VimeoTokenResponse.ParseResponse(response);
@@ -192,7 +193,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// Virtual method that can be used for configuring a request.
         /// </summary>
         /// <param name="request">The request.</param>
-        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+        protected override void PrepareHttpRequest(IHttpRequest request) {
 
             // Append the scheme and host name if not already present
             if (request.Url.StartsWith("/")) request.Url = "https://api.vimeo.com" + request.Url;

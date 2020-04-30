@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Skybrud.Social.Core" Version="1.0.4" />
+    <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.13" />
   </ItemGroup>
 
   <PropertyGroup>

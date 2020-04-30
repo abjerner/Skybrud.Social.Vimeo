@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Social.Interfaces.Http;
+using Skybrud.Essentials.Http.Collections;
 
 namespace Skybrud.Social.Vimeo.Options.Users {
     

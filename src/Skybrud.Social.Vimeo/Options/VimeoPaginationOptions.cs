@@ -1,5 +1,5 @@
-﻿using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces.Http;
+﻿using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Vimeo.Options {
     
@@ -44,7 +44,7 @@ namespace Skybrud.Social.Vimeo.Options {
         #region Members methods
 
         public virtual IHttpQueryString GetQueryString() {
-            SocialHttpQueryString query = new SocialHttpQueryString();
+            HttpQueryString query = new HttpQueryString();
             if (Page > 0) query.Add("page", Page);
             if (PerPage > 0) query.Add("per_page", PerPage);
             return query;

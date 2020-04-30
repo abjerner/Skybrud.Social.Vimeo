@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 
 namespace Skybrud.Social.Vimeo.Exceptions {
 
@@ -12,9 +12,9 @@ namespace Skybrud.Social.Vimeo.Exceptions {
         #region Properties
 
         /// <summary>
-        /// Gets a reference to the underlying <see cref="SocialHttpResponse"/>.
+        /// Gets a reference to the underlying <see cref="IHttpResponse"/>.
         /// </summary>
-        public SocialHttpResponse Response { get; private set; }
+        public IHttpResponse Response { get; private set; }
 
         /// <summary>
         /// Gets the HTTP status code returned by the Vimeo API.
@@ -41,7 +41,7 @@ namespace Skybrud.Social.Vimeo.Exceptions {
         /// <param name="response">The response that contained or triggered the error.</param>
         /// <param name="error">The error code.</param>
         /// <param name="errorDescription">The description about the error.</param>
-        public VimeoHttpException(SocialHttpResponse response, string error, string errorDescription) : base("Invalid response received from the Vimeo API (Status: " + ((int) response.StatusCode) + ")") {
+        public VimeoHttpException(IHttpResponse response, string error, string errorDescription) : base("Invalid response received from the Vimeo API (Status: " + ((int) response.StatusCode) + ")") {
             Response = response;
             StatusCode = response.StatusCode;
             Error = error;
