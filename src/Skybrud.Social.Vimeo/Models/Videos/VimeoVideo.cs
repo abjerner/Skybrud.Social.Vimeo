@@ -74,17 +74,17 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets the timestamp for when the video was created.
         /// </summary>
-        public EssentialsDateTime CreatedTime  { get; }
+        public EssentialsTime CreatedTime  { get; }
 
         /// <summary>
         /// Gets the timestamp for when the video was last modified.
         /// </summary>
-        public EssentialsDateTime ModifiedTime  { get; }
+        public EssentialsTime ModifiedTime  { get; }
 
         /// <summary>
         /// Gets the timestamp for when the video was released.
         /// </summary>
-        public EssentialsDateTime ReleaseTime  { get; }
+        public EssentialsTime ReleaseTime  { get; }
 
         /// <summary>
         /// Gets a reference to the pictures of the video.
@@ -136,9 +136,9 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
             Language = obj.GetString("language");
             Height = obj.GetInt32("height");
             Embed = obj.GetObject("embed", VimeoVideoEmbed.Parse);
-            CreatedTime = obj.GetString("created_time", EssentialsDateTime.Parse);
-            ModifiedTime = obj.GetString("modified_time", EssentialsDateTime.Parse);
-            ReleaseTime = obj.GetString("release_time", EssentialsDateTime.Parse);
+            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse);
+            ModifiedTime = obj.GetString("modified_time", EssentialsTime.Parse);
+            ReleaseTime = obj.GetString("release_time", EssentialsTime.Parse);
             // "content_rating"
             // "license"
             // "privacy"

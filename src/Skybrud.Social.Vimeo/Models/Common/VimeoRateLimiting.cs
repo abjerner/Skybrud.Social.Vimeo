@@ -23,13 +23,13 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// <summary>
         /// Gets the timestamp for when the current window is reset.
         /// </summary>
-        public EssentialsDateTime Reset { get; }
+        public EssentialsTime Reset { get; }
 
         #endregion
 
         #region Constructors
 
-        private VimeoRateLimiting(int limit, int remaining, EssentialsDateTime reset) {
+        private VimeoRateLimiting(int limit, int remaining, EssentialsTime reset) {
             Limit = limit;
             Remaining = remaining;
             Reset = reset;
@@ -54,7 +54,7 @@ namespace Skybrud.Social.Vimeo.Models.Common {
                 remaining = -1;
             }
 
-            EssentialsDateTime reset = EssentialsDateTime.Parse(response.Headers["X-RateLimit-Reset"]);
+            EssentialsTime reset = EssentialsTime.Parse(response.Headers["X-RateLimit-Reset"]);
 
             return new VimeoRateLimiting(limit, remaining, reset);
 

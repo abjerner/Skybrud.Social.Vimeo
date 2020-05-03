@@ -48,12 +48,12 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         /// <summary>
         /// Gets the timestamp for when the channel was created.
         /// </summary>
-        public EssentialsDateTime CreatedTime { get; }
+        public EssentialsTime CreatedTime { get; }
         
         /// <summary>
         /// Gets the timestamp for when the channel was last modified.
         /// </summary>
-        public EssentialsDateTime ModifiedTime { get; }
+        public EssentialsTime ModifiedTime { get; }
 
         /// <summary>
         /// Gets information about the owner of the channel.
@@ -106,8 +106,8 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
             Name = obj.GetString("name");
             Description = obj.GetString("description");
             Link = obj.GetString("link");
-            CreatedTime = obj.GetString("created_time", EssentialsDateTime.Parse);
-            ModifiedTime = obj.GetString("modified_time", EssentialsDateTime.Parse);
+            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse);
+            ModifiedTime = obj.GetString("modified_time", EssentialsTime.Parse);
             User = obj.GetObject("user", VimeoUser.Parse);
             Picture = obj.GetObject("pictures", VimeoPicture.Parse);
             Header = obj.GetObject("header", VimeoPicture.Parse);

@@ -57,7 +57,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// <summary>
         /// Gets the timestamp for when the user was created.
         /// </summary>
-        public EssentialsDateTime CreatedTime { get; }
+        public EssentialsTime CreatedTime { get; }
 
         /// <summary>
         /// Gets the account type of the user.
@@ -103,7 +103,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
             Link = obj.GetString("link");
             Location = obj.GetString("location");
             Bio = obj.GetString("bio");
-            CreatedTime = obj.GetString("created_time", EssentialsDateTime.Parse);
+            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse);
             Account = obj.GetEnum<VimeoUserAccountType>("account");
             Picture = obj.GetObject("pictures", VimeoPicture.Parse);
             Websites = obj.GetArrayItems("websites", VimeoUserWebsite.Parse);
