@@ -40,6 +40,11 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         public string Location { get; }
 
         /// <summary>
+        /// Gets the gender of the user.
+        /// </summary>
+        public VimeoGender Gender { get; }
+
+        /// <summary>
         /// Gets whether the user has specified a location. If true, the location can be read from the <see cref="Location"/> property.
         /// </summary>
         public bool HasLocation => string.IsNullOrWhiteSpace(Location) == false;
@@ -53,6 +58,16 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// Gets whether the user has specified a bio. If true, the bio can be read from the <see cref="Bio"/> property.
         /// </summary>
         public bool HasBio => string.IsNullOrWhiteSpace(Bio) == false;
+
+        /// <summary>
+        /// Gets the short bio of the user. Use the <see cref="HasShortBio"/> property to check whether a short bio has been specified.
+        /// </summary>
+        public string ShortBio { get; }
+
+        /// <summary>
+        /// Gets whether the user has specified a short bio. If true, the short bio can be read from the <see cref="ShortBio"/> property.
+        /// </summary>
+        public bool HasShortBio => string.IsNullOrWhiteSpace(ShortBio) == false;
 
         /// <summary>
         /// Gets the timestamp for when the user was created.
@@ -102,7 +117,9 @@ namespace Skybrud.Social.Vimeo.Models.Users {
             Name = obj.GetString("name");
             Link = obj.GetString("link");
             Location = obj.GetString("location");
+            Gender = obj.GetString("gender", ParseGender);
             Bio = obj.GetString("bio");
+            ShortBio = obj.GetString("short_bio");
             CreatedTime = obj.GetString("created_time", EssentialsTime.Parse);
             Account = obj.GetEnum<VimeoUserAccountType>("account");
             Picture = obj.GetObject("pictures", VimeoPicture.Parse);
@@ -110,6 +127,38 @@ namespace Skybrud.Social.Vimeo.Models.Users {
             // "metadata"
             ResourceKey = obj.GetString("resource_key");
             // "preferences"
+        }
+
+        #endregion
+
+        #region Member methods
+
+        private VimeoGender ParseGender(string value) {
+
+
+
+            switch (value) {
+
+                case "":
+                    return VimeoGender.Unspecified;
+
+                case "n":
+                    return VimeoGender.RatherNotSay;
+
+                case "m":
+                    return VimeoGender.Male;
+
+                case "f":
+                    return VimeoGender.Female;
+
+                case "o":
+                    return VimeoGender.Other;
+
+                default:
+                    throw new Exception("Unknown gender: " + value);
+
+            }
+
         }
 
         #endregion
