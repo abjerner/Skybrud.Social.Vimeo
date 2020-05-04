@@ -38,12 +38,12 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// <summary>
         /// Gets information about the authenticated user.
         /// </summary>
-        /// <returns>An instance of <see cref="VimeoGetUserResponse"/> representing the response.</returns>
+        /// <returns>An instance of <see cref="VimeoUserResponse"/> representing the response.</returns>
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/me#GET/me</cref>
         /// </see>
-        public VimeoGetUserResponse GetInfo() {
-            return VimeoGetUserResponse.ParseResponse(Raw.GetInfo());
+        public VimeoUserResponse GetInfo() {
+            return new VimeoUserResponse(Raw.GetInfo());
         }
 
         #endregion

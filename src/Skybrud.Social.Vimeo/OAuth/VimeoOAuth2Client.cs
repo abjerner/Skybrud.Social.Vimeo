@@ -185,7 +185,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
             IHttpResponse response = request.GetResponse();
 
             // Parse the response
-            return VimeoTokenResponse.ParseResponse(response);
+            return new VimeoTokenResponse(response);
 
         }
 

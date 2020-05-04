@@ -1,24 +1,24 @@
 ﻿using Skybrud.Essentials.Http;
-using Skybrud.Social.Vimeo.Models.Authentication;
+using Skybrud.Social.Vimeo.Models.Channels;
 
-namespace Skybrud.Social.Vimeo.Responses.Authentication {
-
+namespace Skybrud.Social.Vimeo.Responses.Channels {
+    
     /// <summary>
-    /// Class representing a response with information about an access token.
+    /// Class representing the response containing a list of Vimeo channels.
     /// </summary>
-    public class VimeoTokenResponse : VimeoResponse<VimeoToken> {
+    public class VimeoChannelListResponse : VimeoResponse<VimeoChannelsCollection> {
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
-        public VimeoTokenResponse(IHttpResponse response) : base(response) {
+        public VimeoChannelListResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
 
             // Parse the response body
-            Body = ParseJsonObject(response.Body, VimeoToken.Parse);
+            Body = ParseJsonObject(response.Body, VimeoChannelsCollection.Parse);
 
         }
 
