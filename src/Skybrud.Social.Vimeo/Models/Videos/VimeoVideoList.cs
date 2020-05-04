@@ -3,16 +3,16 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Vimeo.Models.Common;
 
 namespace Skybrud.Social.Vimeo.Models.Videos {
-    
+
     /// <summary>
-    /// Class representing a collection of videos as returned by the Vimeo API.
+    /// Class representing a list of videos as returned by the Vimeo API.
     /// </summary>
-    public class VimeoVideosCollection : VimeoCollection {
+    public class VimeoVideoList : VimeoList {
 
         #region Properties
-        
+
         /// <summary>
-        /// Gets the videos of the collection.
+        /// Gets the videos of the list.
         /// </summary>
         public VimeoVideo[] Data { get; }
 
@@ -20,7 +20,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Constructors
 
-        private VimeoVideosCollection(JObject obj) : base(obj) {
+        private VimeoVideoList(JObject obj) : base(obj) {
             Data = obj.GetArrayItems("data", VimeoVideo.Parse);
         }
 
@@ -29,12 +29,12 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoVideosCollection"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoVideoList"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>An instance of <see cref="VimeoVideosCollection"/>.</returns>
-        public new static VimeoVideosCollection Parse(JObject obj) {
-            return obj == null ? null : new VimeoVideosCollection(obj);
+        /// <returns>An instance of <see cref="VimeoVideoList"/>.</returns>
+        public new static VimeoVideoList Parse(JObject obj) {
+            return obj == null ? null : new VimeoVideoList(obj);
         }
 
         #endregion

@@ -6,7 +6,7 @@ namespace Skybrud.Social.Vimeo.Options.Users {
     /// <summary>
     /// Class representing the options for getting a list of user channels.
     /// </summary>
-    public class VimeoGetUserChannelsOptions : VimeoPaginationOptions {
+    public class VimeoGetUserChannelsOptions : VimeoListOptions {
         
         #region Properties
 

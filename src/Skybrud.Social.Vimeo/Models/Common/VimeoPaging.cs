@@ -4,7 +4,7 @@ using Skybrud.Essentials.Json.Extensions;
 namespace Skybrud.Social.Vimeo.Models.Common {
     
     /// <summary>
-    /// Class with pagination about an instance of <see cref="VimeoCollection"/>.
+    /// Class with pagination about an instance of <see cref="VimeoList"/>.
     /// </summary>
     public class VimeoPaging : VimeoObject {
 

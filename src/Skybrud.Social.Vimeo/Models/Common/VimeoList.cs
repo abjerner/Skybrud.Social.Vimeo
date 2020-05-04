@@ -4,14 +4,14 @@ using Skybrud.Essentials.Json.Extensions;
 namespace Skybrud.Social.Vimeo.Models.Common {
 
     /// <summary>
-    /// Class representing a generic collection returned by the Vimeo API.
+    /// Class representing a generic list returned by the Vimeo API.
     /// </summary>
-    public class VimeoCollection : VimeoObject {
+    public class VimeoList : VimeoObject {
 
         #region Properties
 
         /// <summary>
-        /// Gets the total amount of items in the collection.
+        /// Gets the total amount of items in the list.
         /// </summary>
         public int Total { get; }
 
@@ -26,7 +26,7 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         public int PerPage { get; }
 
         /// <summary>
-        /// Gets pagination URLs about the collection.
+        /// Gets pagination URLs about the list.
         /// </summary>
         public VimeoPaging Paging { get; }
 
@@ -35,10 +35,10 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new collection based on the specified <paramref name="obj"/>.
+        /// Initializes a new list based on the specified <paramref name="obj"/>.
         /// </summary>
-        /// <param name="obj">The <see cref="JObject"/> representing the collection.</param>
-        protected VimeoCollection(JObject obj) : base(obj) {
+        /// <param name="obj">The <see cref="JObject"/> representing the list.</param>
+        protected VimeoList(JObject obj) : base(obj) {
             Total = obj.GetInt32("total");
             Page = obj.GetInt32("page");
             PerPage = obj.GetInt32("per_page");
@@ -50,12 +50,12 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoCollection"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoList"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>An instance of <see cref="VimeoCollection"/>.</returns>
-        public static VimeoCollection Parse(JObject obj) {
-            return obj == null ? null : new VimeoCollection(obj);
+        /// <returns>An instance of <see cref="VimeoList"/>.</returns>
+        public static VimeoList Parse(JObject obj) {
+            return obj == null ? null : new VimeoList(obj);
         }
 
         #endregion

@@ -2,12 +2,12 @@
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
-namespace Skybrud.Social.Vimeo.Options.Sorting {
+namespace Skybrud.Social.Vimeo.Options {
     
     /// <summary>
     /// Class with basic options for a paginated request to the Vimeo API.
     /// </summary>
-    public abstract class VimeoPaginationOptions : IHttpRequestOptions {
+    public abstract class VimeoListOptions : IHttpRequestOptions {
 
         #region Properties
 
@@ -28,14 +28,14 @@ namespace Skybrud.Social.Vimeo.Options.Sorting {
         /// <summary>
         /// Initializes a new instance with default options.
         /// </summary>
-        protected VimeoPaginationOptions() { }
+        protected VimeoListOptions() { }
 
         /// <summary>
         /// Initializes a new instance with specified options.
         /// </summary>
         /// <param name="page">The page to show.</param>
         /// <param name="perPage">The maximum amount of items per page.</param>
-        protected VimeoPaginationOptions(int page, int perPage) {
+        protected VimeoListOptions(int page, int perPage) {
             Page = page;
             PerPage = perPage;
         }
