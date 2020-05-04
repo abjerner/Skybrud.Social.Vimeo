@@ -14,22 +14,22 @@ namespace Skybrud.Social.Vimeo.Exceptions {
         /// <summary>
         /// Gets a reference to the underlying <see cref="IHttpResponse"/>.
         /// </summary>
-        public IHttpResponse Response { get; private set; }
+        public IHttpResponse Response { get; }
 
         /// <summary>
         /// Gets the HTTP status code returned by the Vimeo API.
         /// </summary>
-        public HttpStatusCode StatusCode { get; private set; }
+        public HttpStatusCode StatusCode { get; }
 
         /// <summary>
         /// Gets the error.
         /// </summary>
-        public string Error { get; private set; }
+        public string Error { get; }
 
         /// <summary>
         /// Gets the error description.
         /// </summary>
-        public string ErrorDescription { get; private set; }
+        public string ErrorDescription { get; }
 
         #endregion
 
