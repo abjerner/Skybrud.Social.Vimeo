@@ -1,6 +1,7 @@
 ﻿using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.OAuth;
 using Skybrud.Social.Vimeo.Endpoints.Raw;
+using Skybrud.Social.Vimeo.Responses;
 
 namespace Skybrud.Social.Vimeo.OAuth {
 
@@ -101,6 +102,34 @@ namespace Skybrud.Social.Vimeo.OAuth {
 
             // Append the scheme and host name if not already present
             if (request.Url.StartsWith("/")) request.Url = "https://api.vimeo.com" + request.Url;
+
+        }
+
+        /// <inheritdoc />
+        protected override IHttpResponse GetRequestTokenResponse() {
+
+            // Get the response from the base class
+            IHttpResponse response = base.GetRequestTokenResponse();
+
+            // Validate the response
+            VimeoResponse.ValidateResponse(response);
+
+            // Return the response
+            return response;
+
+        }
+
+        /// <inheritdoc />
+        protected override IHttpResponse GetAccessTokenResponse(string verifier) {
+
+            // Get the response from the base class
+            IHttpResponse response = base.GetAccessTokenResponse(verifier);
+
+            // Validate the response
+            VimeoResponse.ValidateResponse(response);
+
+            // Return the response
+            return response;
 
         }
 

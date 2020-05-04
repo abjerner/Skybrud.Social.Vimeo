@@ -31,6 +31,20 @@ namespace Skybrud.Social.Vimeo.Responses {
             
             RateLimiting = VimeoRateLimiting.GetFromResponse(response);
 
+            ValidateResponse(response);
+
+        }
+
+        #endregion
+
+        #region Static methods
+
+        /// <summary>
+        /// Validates the specified <paramref name="response"/>.
+        /// </summary>
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
+        public static void ValidateResponse(IHttpResponse response) {
+
             // Skip error checking if the server responds with an OK status code
             if (response.StatusCode == HttpStatusCode.OK) return;
 
@@ -47,8 +61,6 @@ namespace Skybrud.Social.Vimeo.Responses {
                     throw new VimeoHttpException(response, null, null);
 
             }
-
-
 
         }
 
