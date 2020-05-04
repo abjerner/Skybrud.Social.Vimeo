@@ -1,7 +1,7 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Vimeo.Models.Channels {
+namespace Skybrud.Social.Vimeo.Models.Common {
 
     public class VimeoMetaDataConnectionsItem : VimeoObject {
 

@@ -1,4 +1,5 @@
 ﻿using Skybrud.Essentials.Http;
+using Skybrud.Social.Vimeo.Options.Sorting;
 
 namespace Skybrud.Social.Vimeo.Options.Users {
     

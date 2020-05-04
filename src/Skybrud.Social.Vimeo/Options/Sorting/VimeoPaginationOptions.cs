@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
-namespace Skybrud.Social.Vimeo.Options {
+namespace Skybrud.Social.Vimeo.Options.Sorting {
     
     /// <summary>
     /// Class with basic options for a paginated request to the Vimeo API.

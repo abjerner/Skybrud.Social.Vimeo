@@ -2,7 +2,8 @@
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Strings;
-using Skybrud.Social.Vimeo.Enums;
+using Skybrud.Social.Vimeo.Options.Sorting;
+using Skybrud.Social.Vimeo.Options.Videos;
 
 namespace Skybrud.Social.Vimeo.Options.Channels {
 

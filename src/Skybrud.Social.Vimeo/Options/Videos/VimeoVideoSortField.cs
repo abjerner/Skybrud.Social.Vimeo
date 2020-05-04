@@ -1,4 +1,4 @@
-﻿namespace Skybrud.Social.Vimeo.Enums {
+﻿namespace Skybrud.Social.Vimeo.Options.Videos {
     
     public enum VimeoVideoSortField {
 
