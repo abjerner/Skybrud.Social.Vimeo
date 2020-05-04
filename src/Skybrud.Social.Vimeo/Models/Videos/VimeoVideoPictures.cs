@@ -10,6 +10,9 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the size variations of the picture.
+        /// </summary>
         public VimeoVideoPicture[] Sizes  { get; }
 
         #endregion

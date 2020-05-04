@@ -11,10 +11,19 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the link (URL) of the picture.
+        /// </summary>
         public string Link { get; }
 
+        /// <summary>
+        /// Gets the width of the picture.
+        /// </summary>
         public int Width { get; }
 
+        /// <summary>
+        /// Gets the height of the picture.
+        /// </summary>
         public int Height { get; }
 
         #endregion

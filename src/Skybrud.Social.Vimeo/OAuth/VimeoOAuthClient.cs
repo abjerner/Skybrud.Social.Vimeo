@@ -7,6 +7,8 @@ namespace Skybrud.Social.Vimeo.OAuth {
     /// <summary>
     /// Class for handling authentication and communication with the Vimeo API using OAuth 1.0a.
     /// </summary>
+    /// <remarks>While no longer officially supported (or documented) by Vimeo, authentication with OAuth 1.0a seems
+    /// still to be possible with apps original created for OAuth 1.0a.</remarks>
     public class VimeoOAuthClient : OAuthClient, IVimeoOAuthClient {
 
         #region Properties

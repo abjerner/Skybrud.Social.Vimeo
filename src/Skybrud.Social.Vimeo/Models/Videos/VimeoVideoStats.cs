@@ -10,6 +10,9 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the total amount of plays the video has received.
+        /// </summary>
         public long Plays { get; }
 
         #endregion
