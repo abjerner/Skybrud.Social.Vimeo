@@ -3,7 +3,7 @@
     /// <summary>
     /// Indicates the account type of a Vimeo user.
     /// </summary>
-    public enum VimeoUserAccountType {
+    public enum VimeoAccountType {
 
         /// <summary>
         /// Indicates a user with a basic membership (free).

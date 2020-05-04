@@ -77,7 +77,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// <summary>
         /// Gets the account type of the user.
         /// </summary>
-        public VimeoUserAccountType Account { get; }
+        public VimeoAccountType Account { get; }
 
         /// <summary>
         /// Gets the default picture of the user. Use the <see cref="HasPicture"/> property to check whether the user
@@ -121,7 +121,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
             Bio = obj.GetString("bio");
             ShortBio = obj.GetString("short_bio");
             CreatedTime = obj.GetString("created_time", EssentialsTime.Parse);
-            Account = obj.GetEnum<VimeoUserAccountType>("account");
+            Account = obj.GetEnum<VimeoAccountType>("account");
             Picture = obj.GetObject("pictures", VimeoPicture.Parse);
             Websites = obj.GetArrayItems("websites", VimeoUserWebsite.Parse);
             // "metadata"
