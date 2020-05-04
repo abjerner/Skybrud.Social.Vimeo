@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Strings;
 using Skybrud.Social.Vimeo.Enums;
@@ -31,7 +31,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// <summary>
         /// Gets whether a username has been specified.
         /// </summary>
-        public bool HasUsername => !String.IsNullOrWhiteSpace(Username);
+        public bool HasUsername => string.IsNullOrWhiteSpace(Username) == false;
 
         /// <summary>
         /// Gets or sets a text based query the videos should match.
@@ -47,13 +47,6 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// Gets or sets the sort direction.
         /// </summary>
         public VimeoSortDirection Direction { get; set; }
-
-        internal string ApiUrl {
-            get {
-                if (Username == "me") return "/me/videos";
-                return $"/users/{(HasUserId ? UserId + "" : Username)}/videos";
-            }
-        }
 
         #endregion
 
@@ -121,6 +114,21 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
                 query.Add("direction", Direction == VimeoSortDirection.Ascending ? "asc" : "desc");
             }
             return query;
+        }
+
+        /// <summary>
+        /// Gets an instance of <see cref="IHttpRequest"/> representing the request.
+        /// </summary>
+        public override IHttpRequest GetRequest() {
+
+            // Get videos of the authenticated user?
+            if (Username == "me" || HasUserId == false && HasUsername == false)  {
+                return new HttpRequest(HttpMethod.Get, "/me/videos", GetQueryString());
+            }
+
+            // Get the videos of the user matching either "Username" or "UserId"
+            return new HttpRequest(HttpMethod.Get, $"/users/{Username ?? UserId.ToString()}/videos", GetQueryString());
+
         }
 
         #endregion

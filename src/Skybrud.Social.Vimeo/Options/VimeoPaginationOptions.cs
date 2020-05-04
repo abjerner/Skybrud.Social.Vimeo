@@ -1,4 +1,5 @@
-﻿using Skybrud.Essentials.Http.Collections;
+﻿using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Vimeo.Options {
@@ -6,7 +7,7 @@ namespace Skybrud.Social.Vimeo.Options {
     /// <summary>
     /// Class with basic options for a paginated request to the Vimeo API.
     /// </summary>
-    public abstract class VimeoPaginationOptions : IHttpGetOptions {
+    public abstract class VimeoPaginationOptions : IHttpRequestOptions {
 
         #region Properties
 
@@ -43,12 +44,24 @@ namespace Skybrud.Social.Vimeo.Options {
 
         #region Members methods
 
+        /// <summary>
+        /// Gets an instance of <see cref="IHttpQueryString"/> representing the GET parameters.
+        /// </summary>
         public virtual IHttpQueryString GetQueryString() {
+            
             HttpQueryString query = new HttpQueryString();
+            
             if (Page > 0) query.Add("page", Page);
             if (PerPage > 0) query.Add("per_page", PerPage);
+            
             return query;
+
         }
+
+        /// <summary>
+        /// Gets an instance of <see cref="IHttpRequest"/> representing the request.
+        /// </summary>
+        public abstract IHttpRequest GetRequest();
 
         #endregion
 

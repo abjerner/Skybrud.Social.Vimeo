@@ -1,5 +1,4 @@
-﻿using System;
-using Skybrud.Essentials.Http.Collections;
+﻿using Skybrud.Essentials.Http;
 
 namespace Skybrud.Social.Vimeo.Options.Users {
     
@@ -43,6 +42,22 @@ namespace Skybrud.Social.Vimeo.Options.Users {
         /// Initializes a new instance with the specified options.
         /// </summary>
         /// <param name="userId">The ID of the parent user.</param>
+        public VimeoGetUserChannelsOptions(long userId) : this() {
+            UserId = userId;
+        }
+
+        /// <summary>
+        /// Initializes a new instance with the specified options.
+        /// </summary>
+        /// <param name="username">The username of the parent user.</param>
+        public VimeoGetUserChannelsOptions(string username) : this() {
+            Username = username;
+        }
+
+        /// <summary>
+        /// Initializes a new instance with the specified options.
+        /// </summary>
+        /// <param name="userId">The ID of the parent user.</param>
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
         public VimeoGetUserChannelsOptions(long userId, int page, int perPage) : this() {
@@ -67,9 +82,19 @@ namespace Skybrud.Social.Vimeo.Options.Users {
 
         #region Members methods
 
-        public override IHttpQueryString GetQueryString() {
-            IHttpQueryString query = base.GetQueryString();
-            return query;
+        /// <summary>
+        /// Gets an instance of <see cref="IHttpRequest"/> representing the request.
+        /// </summary>
+        public override IHttpRequest GetRequest() {
+
+            // Get channels of the authenticated user?
+            if (Username == "me" || HasUserId == false && HasUsername == false)  {
+                return new HttpRequest(HttpMethod.Get, "/me/channels", GetQueryString());
+            }
+
+            // Get the channels of the user matching either "Username" or "UserId"
+            return new HttpRequest(HttpMethod.Get, $"/users/{Username ?? UserId.ToString()}/channels", GetQueryString());
+
         }
 
         #endregion

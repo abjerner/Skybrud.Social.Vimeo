@@ -39,7 +39,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <param name="channelId">The ID of the channel.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         public IHttpResponse GetInfo(long channelId) {
-            return Client.DoHttpGetRequest("https://api.vimeo.com/channels/" + channelId);
+            return Client.Get($"/channels/{channelId}");
         }
 
         /// <summary>
@@ -78,8 +78,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// </see>
         public IHttpResponse GetVideos(VimeoGetChannelVideosOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
-            if (options.ChannelId == 0) throw new PropertyNotSetException(nameof(options.ChannelId));
-            return Client.DoHttpGetRequest("https://api.vimeo.com/channels/" + options.ChannelId + "/videos", options);
+            return Client.GetResponse(options);
         }
 
         #endregion

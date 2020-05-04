@@ -1,5 +1,4 @@
 ﻿using System;
-using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Social.Vimeo.OAuth;
 using Skybrud.Social.Vimeo.Options.Videos;
@@ -42,7 +41,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         ///     <cref>https://developer.vimeo.com/api/endpoints/videos#GET/videos/{video_id}</cref>
         /// </see>
         public IHttpResponse GetVideo(long videoId) {
-            return Client.DoHttpGetRequest("/videos/" + videoId);
+            return Client.Get("/videos/" + videoId);
         }
 
         /// <summary>
@@ -100,8 +99,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         public IHttpResponse GetVideos(VimeoGetVideosOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
-            if (!options.HasUserId && !options.HasUsername) throw new PropertyNotSetException(nameof(options.UserId));
-            return Client.DoHttpGetRequest(options.ApiUrl, options);
+            return Client.GetResponse(options);
         }
 
         #endregion

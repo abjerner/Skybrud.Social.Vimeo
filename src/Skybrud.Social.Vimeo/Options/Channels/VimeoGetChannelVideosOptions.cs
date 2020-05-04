@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skybrud.Essentials.Common;
+using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Strings;
 using Skybrud.Social.Vimeo.Enums;
@@ -67,6 +68,9 @@ namespace Skybrud.Social.Vimeo.Options.Channels {
 
         #region Members methods
 
+        /// <summary>
+        /// Gets an instance of <see cref="IHttpQueryString"/> representing the GET parameters.
+        /// </summary>
         public override IHttpQueryString GetQueryString() {
             IHttpQueryString query = base.GetQueryString();
             if (!string.IsNullOrWhiteSpace(Query)) query.Add("query", query);
@@ -75,6 +79,14 @@ namespace Skybrud.Social.Vimeo.Options.Channels {
                 query.Add("direction", Direction == VimeoSortDirection.Ascending ? "asc" : "desc");
             }
             return query;
+        }
+
+        /// <summary>
+        /// Gets an instance of <see cref="IHttpRequest"/> representing the request.
+        /// </summary>
+        public override IHttpRequest GetRequest() {
+            if (ChannelId == 0) throw new PropertyNotSetException(nameof(ChannelId));
+            return new HttpRequest(HttpMethod.Get, $"/channels/{ChannelId}/videos", GetQueryString());
         }
 
         #endregion
