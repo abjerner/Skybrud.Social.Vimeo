@@ -121,6 +121,11 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// </summary>
         public string ResourceKey  { get; }
 
+        /// <summary>
+        /// Gets a reference to the files for the video.
+        /// </summary>
+        public VimeoVideoFile[] Files { get; }
+
         #endregion
 
         #region Constructors
@@ -151,6 +156,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
             // "status"
             ResourceKey = obj.GetString("resource_key");
             // "embed_presets"
+            Files = obj.GetArrayItems("files", VimeoVideoFile.Parse);
         }
 
         #endregion
