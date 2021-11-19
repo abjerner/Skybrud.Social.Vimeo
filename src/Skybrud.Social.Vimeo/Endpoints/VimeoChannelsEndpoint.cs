@@ -18,7 +18,7 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// <summary>
         /// Gets a reference to the Vimeo service.
         /// </summary>
-        public VimeoService Service { get; }
+        public VimeoHttpService Service { get; }
 
         /// <summary>
         /// Gets a reference to the raw endpoint.
@@ -29,7 +29,7 @@ namespace Skybrud.Social.Vimeo.Endpoints {
 
         #region Constructors
 
-        internal VimeoChannelsEndpoint(VimeoService service) {
+        internal VimeoChannelsEndpoint(VimeoHttpService service) {
             Service = service;
         }
 

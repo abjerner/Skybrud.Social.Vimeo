@@ -13,7 +13,7 @@ namespace Skybrud.Social.Vimeo {
     /// <see>
     ///     <cref>https://developer.vimeo.com/api/endpoints</cref>
     /// </see>
-    public class VimeoService {
+    public class VimeoHttpService {
 
         #region Properties
 
@@ -50,7 +50,7 @@ namespace Skybrud.Social.Vimeo {
         /// Initializes a new service instance based on the specified <see cref="IVimeoOAuthClient"/>.
         /// </summary>
         /// <param name="client">An instance of <see cref="IVimeoOAuthClient"/>.</param>
-        protected VimeoService(IVimeoOAuthClient client) {
+        protected VimeoHttpService(IVimeoOAuthClient client) {
 
             Client = client ?? throw new ArgumentNullException(nameof(client));
 
@@ -70,20 +70,20 @@ namespace Skybrud.Social.Vimeo {
         /// initialized from the access token.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
-        /// <returns>An instance of <see cref="Skybrud.Social.Vimeo.VimeoService" />.</returns>
-        public static VimeoService CreateFromAccessToken(string accessToken) {
+        /// <returns>An instance of <see cref="VimeoHttpService" />.</returns>
+        public static VimeoHttpService CreateFromAccessToken(string accessToken) {
             if (string.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
-            return new VimeoService(new VimeoOAuth2Client(accessToken));
+            return new VimeoHttpService(new VimeoOAuth2Client(accessToken));
         }
 
         /// <summary>
         /// Initialize a new service instance from the specified OAuth client.
         /// </summary>
         /// <param name="client">The OAuth client.</param>
-        /// <returns>An instance of <see cref="Skybrud.Social.Vimeo.VimeoService" />.</returns>
-        public static VimeoService CreateFromOAuthClient(IVimeoOAuthClient client) {
+        /// <returns>An instance of <see cref="VimeoHttpService" />.</returns>
+        public static VimeoHttpService CreateFromOAuthClient(IVimeoOAuthClient client) {
             if (client == null) throw new ArgumentNullException(nameof(client));
-            return new VimeoService(client);
+            return new VimeoHttpService(client);
         }
 
         #endregion

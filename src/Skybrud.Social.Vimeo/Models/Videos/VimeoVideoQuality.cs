@@ -21,10 +21,14 @@
         Mobile,
         
         /// <summary>
-        /// Indicates that the video file quality is suited for mobile devices.
+        /// Indicates that the video file quality is suited for streaming.
         /// </summary>
         Streaming,
         
+        /// <summary>
+        /// Indicates that the video file quality could not be parsed. This would typically happen if Vimeo introduces
+        /// new values for the quality that this package does not know about.
+        /// </summary>
         Unrecognized
 
     }
