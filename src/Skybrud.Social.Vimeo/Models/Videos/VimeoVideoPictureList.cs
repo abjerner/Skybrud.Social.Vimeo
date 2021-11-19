@@ -6,7 +6,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
     /// <summary>
     /// Class describing the pictures of a Vimeo video.
     /// </summary>
-    public class VimeoVideoPictures : VimeoObject {
+    public class VimeoVideoPictureList : VimeoObject {
 
         #region Properties
 
@@ -19,7 +19,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Constructors
 
-        private VimeoVideoPictures(JObject obj) : base(obj) {
+        private VimeoVideoPictureList(JObject obj) : base(obj) {
             Sizes = obj.GetArrayItems("sizes", VimeoVideoPicture.Parse);
         }
 
@@ -28,12 +28,12 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoVideoPictures"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoVideoPictureList"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>An instance of <see cref="VimeoVideoPictures"/>.</returns>
-        public static VimeoVideoPictures Parse(JObject obj) {
-            return obj == null ? null : new VimeoVideoPictures(obj);
+        /// <returns>An instance of <see cref="VimeoVideoPictureList"/>.</returns>
+        public static VimeoVideoPictureList Parse(JObject obj) {
+            return obj == null ? null : new VimeoVideoPictureList(obj);
         }
 
         #endregion

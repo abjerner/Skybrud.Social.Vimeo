@@ -89,7 +89,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets a reference to the pictures of the video.
         /// </summary>
-        public VimeoVideoPictures Pictures { get; }
+        public VimeoVideoPictureList Pictures { get; }
 
         /// <summary>
         /// Gets an array with the tags of the video.
@@ -147,7 +147,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
             // "content_rating"
             // "license"
             // "privacy"
-            Pictures = obj.GetObject("pictures", VimeoVideoPictures.Parse);
+            Pictures = obj.GetObject("pictures", VimeoVideoPictureList.Parse);
             Tags = obj.GetArrayItems("tags", VimeoTag.Parse);
             Stats = obj.GetObject("stats", VimeoVideoStats.Parse);
             MetaData = obj.GetObject("metadata", VimeoVideoMetaData.Parse);
