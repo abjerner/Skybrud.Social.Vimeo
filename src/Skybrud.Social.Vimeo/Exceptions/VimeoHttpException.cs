@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Net;
 using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Exceptions;
 
 namespace Skybrud.Social.Vimeo.Exceptions {
 
     /// <summary>
     /// Class representing an exception based on an error from one of the Vimeo API.
     /// </summary>
-    public class VimeoHttpException : Exception {
+    public class VimeoHttpException : Exception, IHttpException {
 
         #region Properties
 
