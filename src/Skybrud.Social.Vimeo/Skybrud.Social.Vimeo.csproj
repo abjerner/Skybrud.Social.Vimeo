@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <RootNamespace>Skybrud.Social.Vimeo</RootNamespace>
-    <Version>1.0.0-beta004</Version>
+    <Version>1.0.0-beta005</Version>
     <Company>Limbo</Company>
     <Product>Skybrud.Social</Product>
     <Authors>Anders Bjerner</Authors>
