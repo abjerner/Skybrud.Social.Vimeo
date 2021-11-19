@@ -10,10 +10,10 @@
   <PropertyGroup>
     <RootNamespace>Skybrud.Social.Vimeo</RootNamespace>
     <Version>1.0.0-beta004</Version>
-    <Company>Skybrud.dk a/s</Company>
+    <Company>Limbo</Company>
     <Product>Skybrud.Social</Product>
     <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2020</Copyright>
+    <Copyright>Copyright © 2021</Copyright>
     <Description>Authentication and service implementation for the Vimeo API.</Description>
     <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Vimeo</RepositoryUrl>
   </PropertyGroup>
@@ -21,8 +21,10 @@
   <PropertyGroup>
     <PackageTags>Vimeo, API, Skybrud, Social, OAuth, JSON</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Vimeo</PackageProjectUrl>
-    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
+    <PackageProjectUrl>https://social.skybrud.dk/vimeo/</PackageProjectUrl>
+    <PackageIcon>Limbo.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Vimeo</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,6 +35,9 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
   
+  <ItemGroup>
+    <None Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(ConfigurationName)'=='Release' AND '$(BuildTools)'=='1'">
     <Exec Command="&quot;$(ProjectDir)..\build\Skybrud.BuildTools.Tasks.exe&quot; &quot;postBuild&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
