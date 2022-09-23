@@ -28,7 +28,7 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         /// <summary>
         /// Gets a collection of the granted scope.
         /// </summary>
-        public VimeoScopeCollection Scope { get; }
+        public VimeoScopeList Scope { get; }
 
         /// <summary>
         /// Gets information about the app.
@@ -47,7 +47,7 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         private VimeoToken(JObject obj) : base(obj) {
             AccessToken = obj.GetString("access_token");
             TokenType = obj.GetString("token_type");
-            Scope = obj.GetString("scope", VimeoScopeCollection.Parse);
+            Scope = obj.GetString("scope", VimeoScopeList.Parse);
             App = obj.GetObject("app", VimeoApp.Parse);
             User = obj.GetObject("user", VimeoUser.Parse);
         }

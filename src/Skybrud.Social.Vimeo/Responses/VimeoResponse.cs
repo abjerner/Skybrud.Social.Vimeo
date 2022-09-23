@@ -50,10 +50,10 @@ namespace Skybrud.Social.Vimeo.Responses {
 
             switch (response.ContentType?.Split(';')[0]) {
 
-                case "text/plain":
+                case HttpConstants.TextPlain:
                     throw new VimeoHttpException(response, response.Body, null);
 
-                case "application/json":
+                case HttpConstants.ApplicationJson:
                     JObject obj = ParseJsonObject(response.Body);
                     throw new VimeoHttpException(response, obj.GetString("error"), obj.GetString("error_description"));
 

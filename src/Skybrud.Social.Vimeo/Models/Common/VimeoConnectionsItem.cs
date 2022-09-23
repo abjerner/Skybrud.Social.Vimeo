@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
@@ -18,7 +19,7 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// <summary>
         /// Gets the possible HTTP options for the resource.
         /// </summary>
-        public string[] Options { get; }
+        public IReadOnlyList<string> Options { get; }
 
         /// <summary>
         /// Gets the total count.

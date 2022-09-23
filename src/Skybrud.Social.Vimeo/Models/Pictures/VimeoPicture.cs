@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
@@ -34,7 +35,7 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         /// <summary>
         /// Gets the sizes/thumbnails of the picture.
         /// </summary>
-        public VimeoPictureSize[] Sizes { get; }
+        public IReadOnlyList<VimeoPictureSize> Sizes { get; }
 
         /// <summary>
         /// Gets the resource key of the channel.
@@ -70,4 +71,5 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         #endregion
 
     }
+
 }

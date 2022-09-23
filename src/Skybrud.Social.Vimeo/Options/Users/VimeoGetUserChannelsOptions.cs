@@ -1,5 +1,4 @@
 ﻿using Skybrud.Essentials.Http;
-using Skybrud.Social.Vimeo.Options.Sorting;
 
 namespace Skybrud.Social.Vimeo.Options.Users {
     
@@ -13,7 +12,7 @@ namespace Skybrud.Social.Vimeo.Options.Users {
         /// <summary>
         /// Gets or sets the ID of the parent user.
         /// </summary>
-        public long UserId { get; set; }
+        public long? UserId { get; set; }
 
         /// <summary>
         /// Gets whether a user ID has been specified.

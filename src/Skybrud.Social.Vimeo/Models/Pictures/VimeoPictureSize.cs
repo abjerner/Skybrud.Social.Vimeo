@@ -34,7 +34,7 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         /// <summary>
         /// Gets whether the <see cref="LinkWithPlayButton"/> property has a value.
         /// </summary>
-        public bool HasLinkWithPlayButton => !String.IsNullOrWhiteSpace(LinkWithPlayButton);
+        public bool HasLinkWithPlayButton => !string.IsNullOrWhiteSpace(LinkWithPlayButton);
 
         #endregion
 

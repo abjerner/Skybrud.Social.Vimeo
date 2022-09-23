@@ -3,6 +3,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <LangVersion>10.0</LangVersion>
     <TargetFrameworks>netstandard1.3;net45;net46;net47</TargetFrameworks>
     <BuildInParallel>false</BuildInParallel>
   </PropertyGroup>
@@ -28,7 +29,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.14" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.42" />
+    <PackageReference Include="Skybrud.Essentials.Http" Version="1.1.0" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -6,11 +6,6 @@
     public enum VimeoVideoSortField {
 
         /// <summary>
-        /// Use the default sorting method.
-        /// </summary>
-        Default,
-
-        /// <summary>
         /// Sort the results by creation date.
         /// </summary>
         Date,

@@ -1,5 +1,4 @@
 ﻿using System;
-using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Social.Vimeo.OAuth;
 using Skybrud.Social.Vimeo.Options.Channels;

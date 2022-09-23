@@ -15,7 +15,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// <summary>
         /// Gets or sets the ID of the user.
         /// </summary>
-        public long UserId { get; set; }
+        public long? UserId { get; set; }
 
         /// <summary>
         /// Gets whether a user ID has been specified.
@@ -41,12 +41,12 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// <summary>
         /// Gets or sets the field to be sorted by.
         /// </summary>
-        public VimeoVideoSortField Sort { get; set; }
+        public VimeoVideoSortField? Sort { get; set; }
 
         /// <summary>
         /// Gets or sets the sort direction.
         /// </summary>
-        public VimeoSortDirection Direction { get; set; }
+        public VimeoSortDirection? Direction { get; set; }
 
         #endregion
 
@@ -55,9 +55,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// <summary>
         /// Initializes a new instance with default options.
         /// </summary>
-        public VimeoGetVideosOptions() {
-            Direction = VimeoSortDirection.Descending;
-        }
+        public VimeoGetVideosOptions() { }
 
         /// <summary>
         /// Initializes a new instance with the specified options.
@@ -94,7 +92,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
         public VimeoGetVideosOptions(string username, int page, int perPage) {
-            Username = username + "";
+            Username = username;
             Page = page;
             PerPage = perPage;
         }
@@ -109,10 +107,8 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         public override IHttpQueryString GetQueryString() {
             IHttpQueryString query = base.GetQueryString();
             if (!string.IsNullOrWhiteSpace(Query)) query.Add("query", query);
-            if (Sort != VimeoVideoSortField.Default) {
-                query.Add("sort", StringUtils.ToUnderscore(Sort));
-                query.Add("direction", Direction == VimeoSortDirection.Ascending ? "asc" : "desc");
-            }
+            if (Sort != null) query.Add("sort", StringUtils.ToUnderscore(Sort));
+            if (Direction != null) query.Add("direction", Direction == VimeoSortDirection.Descending ? "desc" : "asc");
             return query;
         }
 

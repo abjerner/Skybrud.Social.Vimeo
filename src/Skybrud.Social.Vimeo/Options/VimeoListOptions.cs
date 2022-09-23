@@ -14,12 +14,12 @@ namespace Skybrud.Social.Vimeo.Options {
         /// <summary>
         /// Gets or sets the page to show.
         /// </summary>
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum amount of items per page.
         /// </summary>
-        public int PerPage { get; set; }
+        public int? PerPage { get; set; }
 
         #endregion
 
@@ -51,8 +51,8 @@ namespace Skybrud.Social.Vimeo.Options {
             
             HttpQueryString query = new HttpQueryString();
             
-            if (Page > 0) query.Add("page", Page);
-            if (PerPage > 0) query.Add("per_page", PerPage);
+            if (Page != null) query.Add("page", Page.Value);
+            if (PerPage != null) query.Add("per_page", PerPage.Value);
             
             return query;
 

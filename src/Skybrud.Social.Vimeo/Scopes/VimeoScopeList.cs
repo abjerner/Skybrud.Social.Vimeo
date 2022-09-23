@@ -2,26 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Skybrud.Essentials.Collections;
 
 namespace Skybrud.Social.Vimeo.Scopes {
     
     /// <summary>
     /// Class representing a collection of scopes for the Vimeo API.
     /// </summary>
-    public class VimeoScopeCollection : IEnumerable<VimeoScope> {
+    public class VimeoScopeList : IReadOnlyList<VimeoScope> {
 
         #region Private fields
 
-        private readonly List<VimeoScope> _list = new List<VimeoScope>();
+        private readonly List<VimeoScope> _list = new();
 
         #endregion
 
         #region Properties
 
         /// <summary>
-        /// Gets an array of all the scopes added to the collection.
+        /// Gets the amount of scopes in the list.
         /// </summary>
-        public VimeoScope[] Items => _list.ToArray();
+        public int Count => _list.Count;
+
+        /// <summary>
+        /// Gets or sets the scope at the specified <paramref name="index"/>.
+        /// </summary>
+        /// <param name="index">The zero-based index of the scope to get or set.</param>
+        /// <returns>The scope at the specified index.</returns>
+        public VimeoScope this[int index] => _list[index];
 
         #endregion
 
@@ -31,7 +39,7 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// Initializes a new collection based on the specified <paramref name="array"/> of scopes.
         /// </summary>
         /// <param name="array">Array of scopes.</param>
-        public VimeoScopeCollection(params VimeoScope[] array) {
+        public VimeoScopeList(params VimeoScope[] array) {
             _list.AddRange(array);
         }
 
@@ -39,7 +47,7 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// Initializes a new collection based on the specified <paramref name="collection"/> of scopes.
         /// </summary>
         /// <param name="collection">Collection of scopes.</param>
-        public VimeoScopeCollection(IEnumerable<VimeoScope> collection) {
+        public VimeoScopeList(IEnumerable<VimeoScope> collection) {
             _list.AddRange(collection);
         }
 
@@ -53,14 +61,6 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// <param name="scope">The scope to be added.</param>
         public void Add(VimeoScope scope) {
             _list.Add(scope);
-        }
-
-        /// <summary>
-        /// Returns an array of scopes based on the collection.
-        /// </summary>
-        /// <returns>Array of scopes contained in the location.</returns>
-        public VimeoScope[] ToArray() {
-            return _list.ToArray();
         }
 
         /// <summary>
@@ -95,12 +95,12 @@ namespace Skybrud.Social.Vimeo.Scopes {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified space separated string into an instance of <see cref="VimeoScopeCollection"/>.
+        /// Parses the specified space separated string into an instance of <see cref="VimeoScopeList"/>.
         /// </summary>
         /// <param name="str">String containing the individual scopes.</param>
-        /// <returns>An instance of <see cref="VimeoScopeCollection"/> with the specified scopes.</returns>
-        public static VimeoScopeCollection Parse(string str) {
-            return new VimeoScopeCollection(
+        /// <returns>An instance of <see cref="VimeoScopeList"/> with the specified scopes.</returns>
+        public static VimeoScopeList Parse(string str) {
+            return new VimeoScopeList(
                 from alias in (str ?? string.Empty).Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 let scope = VimeoScope.All.FirstOrDefault(x => x.Alias == alias)
                 select scope ?? new VimeoScope(alias, null, null)
@@ -116,8 +116,8 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// </summary>
         /// <param name="scope">The scope the collection should be based on.</param>
         /// <returns>A new collection based on a single <paramref name="scope"/>.</returns>
-        public static implicit operator VimeoScopeCollection(VimeoScope scope) {
-            return new VimeoScopeCollection(scope);
+        public static implicit operator VimeoScopeList(VimeoScope scope) {
+            return new VimeoScopeList(scope);
         }
 
         /// <summary>
@@ -125,8 +125,8 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// </summary>
         /// <param name="array">The array of scopes the collection should be based on.</param>
         /// <returns>A new collection based on an <paramref name="array"/> of scopes.</returns>
-        public static implicit operator VimeoScopeCollection(VimeoScope[] array) {
-            return new VimeoScopeCollection(array ?? new VimeoScope[0]);
+        public static implicit operator VimeoScopeList(VimeoScope[] array) {
+            return new VimeoScopeList(array ?? ArrayUtils.Empty<VimeoScope>());
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// </summary>
         /// <param name="collection">The collection to which <paramref name="scope"/> will be added.</param>
         /// <param name="scope">The scope to be added to the <paramref name="collection"/>.</param>
-        public static VimeoScopeCollection operator +(VimeoScopeCollection collection, VimeoScope scope) {
+        public static VimeoScopeList operator +(VimeoScopeList collection, VimeoScope scope) {
             collection.Add(scope);
             return collection;
         }

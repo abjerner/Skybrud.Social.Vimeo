@@ -41,7 +41,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         ///     <cref>https://developer.vimeo.com/api/endpoints/videos#GET/videos/{video_id}</cref>
         /// </see>
         public IHttpResponse GetVideo(long videoId) {
-            return Client.Get("/videos/" + videoId);
+            return Client.Get($"/videos/{videoId}");
         }
 
         /// <summary>

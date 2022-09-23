@@ -138,7 +138,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
             query.Add("state", state);
 
             // Construct the full URL
-            return ("https://api.vimeo.com/oauth/authorize?" + query);
+            return $"https://api.vimeo.com/oauth/authorize?{query}";
 
         }
 
@@ -149,7 +149,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// <param name="scope">The scope of the application.</param>
         /// <returns>An authorization URL based on <see cref="ClientId"/>, <see cref="RedirectUri"/>,
         /// <paramref name="state"/> and <paramref name="scope"/>.</returns>
-        public string GetAuthorizationUrl(string state, VimeoScopeCollection scope) {
+        public string GetAuthorizationUrl(string state, VimeoScopeList scope) {
             if (scope == null) throw new ArgumentNullException(nameof(scope));
             return GetAuthorizationUrl(state, scope.ToString());
         }
@@ -178,7 +178,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
                 Method = HttpMethod.Post,
                 Url = "https://api.vimeo.com/oauth/access_token",
                 PostData = data,
-                Authorization = "basic " + SecurityUtils.Base64Encode(ClientId + ":" + ClientSecret)
+                Authorization = $"basic {SecurityUtils.Base64Encode($"{ClientId}:{ClientSecret}")}"
             };
 
             // Make the call to the API
@@ -196,10 +196,10 @@ namespace Skybrud.Social.Vimeo.OAuth {
         protected override void PrepareHttpRequest(IHttpRequest request) {
 
             // Append the scheme and host name if not already present
-            if (request.Url.StartsWith("/")) request.Url = "https://api.vimeo.com" + request.Url;
+            if (request.Url.StartsWith("/")) request.Url = $"https://api.vimeo.com{request.Url}";
 
             // Append the access token if specified
-            if (!string.IsNullOrWhiteSpace(AccessToken)) request.Authorization = "Bearer " + AccessToken;
+            if (!string.IsNullOrWhiteSpace(AccessToken)) request.Authorization = $"Bearer {AccessToken}";
 
         }
 

@@ -27,12 +27,12 @@ namespace Skybrud.Social.Vimeo.Options.Channels {
         /// <summary>
         /// Gets or sets the field to be sorted by.
         /// </summary>
-        public VimeoVideoSortField Sort { get; set; }
+        public VimeoVideoSortField? Sort { get; set; }
 
         /// <summary>
         /// Gets or sets the sort direction.
         /// </summary>
-        public VimeoSortDirection Direction { get; set; }
+        public VimeoSortDirection? Direction { get; set; }
 
         #endregion
 
@@ -75,10 +75,8 @@ namespace Skybrud.Social.Vimeo.Options.Channels {
         public override IHttpQueryString GetQueryString() {
             IHttpQueryString query = base.GetQueryString();
             if (!string.IsNullOrWhiteSpace(Query)) query.Add("query", query);
-            if (Sort != VimeoVideoSortField.Default) {
-                query.Add("sort", StringUtils.ToUnderscore(Sort));
-                query.Add("direction", Direction == VimeoSortDirection.Ascending ? "asc" : "desc");
-            }
+            if (Sort != null) query.Add("sort", StringUtils.ToUnderscore(Sort));
+            if (Direction != null) query.Add("direction", Direction == VimeoSortDirection.Descending ? "desc" : "asc");
             return query;
         }
 

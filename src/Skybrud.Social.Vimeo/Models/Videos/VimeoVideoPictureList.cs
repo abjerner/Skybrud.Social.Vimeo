@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Videos {
@@ -13,7 +14,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets the size variations of the picture.
         /// </summary>
-        public VimeoVideoPicture[] Sizes  { get; }
+        public IReadOnlyList<VimeoVideoPicture> Sizes  { get; }
 
         #endregion
 

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Vimeo.Models.Common;
 
@@ -14,7 +15,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets the videos of the list.
         /// </summary>
-        public VimeoVideo[] Data { get; }
+        public IReadOnlyList<VimeoVideo> Data { get; }
 
         #endregion
 

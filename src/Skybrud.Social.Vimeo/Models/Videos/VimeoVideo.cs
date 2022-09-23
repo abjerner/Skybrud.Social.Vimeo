@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
@@ -94,12 +95,12 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets an array with the tags of the video.
         /// </summary>
-        public VimeoTag[] Tags { get; }
+        public IReadOnlyList<VimeoTag> Tags { get; }
 
         /// <summary>
         /// Gets whether the video has any tags.
         /// </summary>
-        public bool HasTags => Tags.Length > 0;
+        public bool HasTags => Tags.Count > 0;
 
         /// <summary>
         /// Gets a reference to statistics about the video.

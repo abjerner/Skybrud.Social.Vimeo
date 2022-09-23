@@ -55,7 +55,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// </see>
         public IHttpResponse GetInfo(string username) {
             if (string.IsNullOrWhiteSpace(username)) throw new ArgumentNullException(nameof(username));
-            return Client.DoHttpGetRequest($"/users/{username}");
+            return Client.Get($"/users/{username}");
         }
 
         /// <summary>

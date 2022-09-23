@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
@@ -94,13 +95,13 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// <summary>
         /// Gets an array of websites of the user.
         /// </summary>
-        public VimeoUserWebsite[] Websites { get; }
+        public IReadOnlyList<VimeoUserWebsite> Websites { get; }
 
         /// <summary>
         /// Gets whether the user has specified any websites. If true, the websites can be read from the
         /// <see cref="Websites"/> property.
         /// </summary>
-        public bool HasWebsites => Websites.Length > 0;
+        public bool HasWebsites => Websites.Count > 0;
 
         /// <summary>
         /// Gets the resource key of the channel.
@@ -133,37 +134,20 @@ namespace Skybrud.Social.Vimeo.Models.Users {
 
         #region Member methods
 
-        private VimeoGender ParseGender(string value) {
-
-
-
-            switch (value) {
-
-                case "":
-                    return VimeoGender.Unspecified;
-
-                case "n":
-                    return VimeoGender.RatherNotSay;
-
-                case "m":
-                    return VimeoGender.Male;
-
-                case "f":
-                    return VimeoGender.Female;
-
-                case "o":
-                    return VimeoGender.Other;
-
-                default:
-                    throw new Exception("Unknown gender: " + value);
-
-            }
-
-        }
-
         #endregion
 
         #region Static methods
+
+        private static VimeoGender ParseGender(string value) {
+            return value switch {
+                "" => VimeoGender.Unspecified,
+                "n" => VimeoGender.RatherNotSay,
+                "m" => VimeoGender.Male,
+                "f" => VimeoGender.Female,
+                "o" => VimeoGender.Other,
+                _ => throw new Exception($"Unknown gender: {value}")
+            };
+        }
 
         /// <summary>
         /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoUser"/>.
