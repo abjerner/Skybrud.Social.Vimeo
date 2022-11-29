@@ -42,10 +42,14 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// </summary>
         public bool HasDescription => string.IsNullOrWhiteSpace(Description) == false;
 
+        // TODO: Add support for property "type": (enum: video)
+
         /// <summary>
         /// Gets the link (URL for the video page) of the Vimeo video.
         /// </summary>
         public string Link  { get; }
+
+        // TODO: Add support for property "player_embed_url": (string)
 
         /// <summary>
         /// Gets the duration of the video.
@@ -87,6 +91,12 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// </summary>
         public EssentialsTime ReleaseTime  { get; }
 
+        // TODO: Add support for property "content_rating": (array)
+        // TODO: Add support for property "content_rating_class": (string/enum: "safe")
+        // TODO: Add support for property "rating_mod_locked": (bool)
+        // TODO: Add support for property "license": (????)
+        // TODO: Add support for property "privacy": (object)
+
         /// <summary>
         /// Gets a reference to the pictures of the video.
         /// </summary>
@@ -107,6 +117,10 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// </summary>
         public VimeoVideoStats Stats { get; }
 
+        // TODO: Add support for property "categories": (array)
+
+        // TODO: Add support for property "uploader": (object)
+
         /// <summary>
         /// Gets the meta data of the video.
         /// </summary>
@@ -117,6 +131,12 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// </summary>
         public VimeoUser User { get; }
 
+        // TODO: Add support for property "play": (object)
+
+        // TODO: Add support for property "app": (object)
+
+        // TODO: Add support for property "status": (string/enum: "available")
+
         /// <summary>
         /// Gets the resource key of the video.
         /// </summary>
@@ -126,6 +146,14 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// Gets a reference to the files for the video.
         /// </summary>
         public VimeoVideoFile[] Files { get; }
+
+        // TODO: Add support for property "upload": (????)
+
+        // TODO: Add support for property "transcode": (????)
+
+        // TODO: Add support for property "is_playable": (bool)
+
+        // TODO: Add support for property "has_audio": (bool)
 
         #endregion
 
