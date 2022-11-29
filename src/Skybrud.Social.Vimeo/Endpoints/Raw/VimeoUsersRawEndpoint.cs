@@ -41,7 +41,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/users#/{user_id}</cref>
         /// </see>
-        public IHttpResponse GetInfo(long userId) {
+        public IHttpResponse GetUser(long userId) {
             return Client.Get($"/users/{userId}");
         }
 
@@ -53,7 +53,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/users#/{user_id}</cref>
         /// </see>
-        public IHttpResponse GetInfo(string username) {
+        public IHttpResponse GetUser(string username) {
             if (string.IsNullOrWhiteSpace(username)) throw new ArgumentNullException(nameof(username));
             return Client.Get($"/users/{username}");
         }

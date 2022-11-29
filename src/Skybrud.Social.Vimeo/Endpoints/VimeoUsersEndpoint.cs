@@ -45,8 +45,8 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/users#/{user_id}</cref>
         /// </see>
-        public VimeoUserResponse GetInfo(long userId) {
-            return new VimeoUserResponse(Raw.GetInfo(userId));
+        public VimeoUserResponse GetUser(long userId) {
+            return new VimeoUserResponse(Raw.GetUser(userId));
         }
 
         /// <summary>
@@ -57,8 +57,8 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/users#/{user_id}</cref>
         /// </see>
-        public VimeoUserResponse GetInfo(string username) {
-            return new VimeoUserResponse(Raw.GetInfo(username));
+        public VimeoUserResponse GetUser(string username) {
+            return new VimeoUserResponse(Raw.GetUser(username));
         }
 
         /// <summary>

@@ -37,7 +37,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// </summary>
         /// <param name="channelId">The ID of the channel.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-        public IHttpResponse GetInfo(long channelId) {
+        public IHttpResponse GetChannel(long channelId) {
             return Client.Get($"/channels/{channelId}");
         }
 

@@ -42,8 +42,8 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// <see>
         ///     <cref>https://developer.vimeo.com/api/endpoints/me#GET/me</cref>
         /// </see>
-        public VimeoUserResponse GetInfo() {
-            return new VimeoUserResponse(Raw.GetInfo());
+        public VimeoUserResponse GetUser() {
+            return new VimeoUserResponse(Raw.GetUser());
         }
 
         #endregion

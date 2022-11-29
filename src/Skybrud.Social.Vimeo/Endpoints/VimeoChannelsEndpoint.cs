@@ -42,8 +42,8 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// </summary>
         /// <param name="channelId">The ID of the user.</param>
         /// <returns>An instance of <see cref="VimeoChannelResponse"/> representing the response.</returns>
-        public VimeoChannelResponse GetInfo(long channelId) {
-            return new VimeoChannelResponse(Raw.GetInfo(channelId));
+        public VimeoChannelResponse GetChannel(long channelId) {
+            return new VimeoChannelResponse(Raw.GetChannel(channelId));
         }
 
         /// <summary>
