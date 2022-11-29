@@ -90,26 +90,13 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Static methods
 
         private static VimeoVideoQuality ParseQuality(string value) {
-
-            switch (value) {
-                
-                case "sd":
-                    return VimeoVideoQuality.Standard;
-
-                case "hd":
-                    return VimeoVideoQuality.HighDefinition;
-
-                case "mobile":
-                    return VimeoVideoQuality.Mobile;
-
-                case "hls":
-                    return VimeoVideoQuality.Streaming;
-
-                default:
-                    return VimeoVideoQuality.Unrecognized;
-
-            }
-
+            return value switch {
+                "sd" => VimeoVideoQuality.Standard,
+                "hd" => VimeoVideoQuality.HighDefinition,
+                "mobile" => VimeoVideoQuality.Mobile,
+                "hls" => VimeoVideoQuality.Streaming,
+                _ => VimeoVideoQuality.Unrecognized
+            };
         }
 
         /// <summary>

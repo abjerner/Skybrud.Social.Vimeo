@@ -31,6 +31,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// Gets whether the website has a description. If true, the description can be read from the
         /// <see cref="Description"/> property.
         /// </summary>
+        [MemberNotNullWhen(true, "Description")]
         public bool HasDescription => string.IsNullOrWhiteSpace(Description) == false;
 
         #endregion

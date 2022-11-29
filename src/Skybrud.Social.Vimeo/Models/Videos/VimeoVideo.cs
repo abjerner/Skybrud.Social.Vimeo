@@ -147,7 +147,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets a reference to the files for the video.
         /// </summary>
-        public VimeoVideoFile[] Files { get; }
+        public IReadOnlyList<VimeoVideoFile> Files { get; }
 
         // TODO: Add support for property "upload": (????)
 
@@ -170,7 +170,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
             Duration = obj.GetDouble("duration", TimeSpan.FromSeconds);
             Width = obj.GetInt32("width");
             Language = obj.GetString("language")!;
-            Height = obj.GetInt32("height")!;
+            Height = obj.GetInt32("height");
             Embed = obj.GetObject("embed", VimeoVideoEmbed.Parse)!;
             CreatedTime = obj.GetString("created_time", EssentialsTime.Parse)!;
             ModifiedTime = obj.GetString("modified_time", EssentialsTime.Parse)!;
