@@ -103,20 +103,20 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
 
         #region Constructors
 
-        private VimeoChannel(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri")!;
+        private VimeoChannel(JObject json) : base(json) {
+            Uri = json.GetString("uri")!;
             Id = long.Parse(Uri.Split('/').Last());
-            Name = obj.GetString("name")!;
-            Description = obj.GetString("description")!;
-            Link = obj.GetString("link")!;
-            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse)!;
-            ModifiedTime = obj.GetString("modified_time", EssentialsTime.Parse)!;
-            User = obj.GetObject("user", VimeoUser.Parse)!;
-            Picture = obj.GetObject("pictures", VimeoPicture.Parse);
-            Header = obj.GetObject("header", VimeoPicture.Parse);
-            Privacy = obj.GetObject("privacy", VimeoChannelPrivacy.Parse)!;
-            MetaData = obj.GetObject("metadata", VimeoChannelMetaData.Parse)!;
-            ResourceKey = obj.GetString("resource_key")!;
+            Name = json.GetString("name")!;
+            Description = json.GetString("description")!;
+            Link = json.GetString("link")!;
+            CreatedTime = json.GetString("created_time", EssentialsTime.Parse)!;
+            ModifiedTime = json.GetString("modified_time", EssentialsTime.Parse)!;
+            User = json.GetObject("user", VimeoUser.Parse)!;
+            Picture = json.GetObject("pictures", VimeoPicture.Parse);
+            Header = json.GetObject("header", VimeoPicture.Parse);
+            Privacy = json.GetObject("privacy", VimeoChannelPrivacy.Parse)!;
+            MetaData = json.GetObject("metadata", VimeoChannelMetaData.Parse)!;
+            ResourceKey = json.GetString("resource_key")!;
         }
 
         #endregion
@@ -124,13 +124,13 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoChannel"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoChannel"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoChannel"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoChannel? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoChannel(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoChannel? Parse(JObject? json) {
+            return json == null ? null : new VimeoChannel(json);
         }
 
         #endregion

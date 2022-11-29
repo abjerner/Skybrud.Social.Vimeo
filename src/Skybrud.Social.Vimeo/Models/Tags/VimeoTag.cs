@@ -45,13 +45,13 @@ namespace Skybrud.Social.Vimeo.Models.Tags {
 
         #region Constructors
 
-        private VimeoTag(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri")!;
-            Name = obj.GetString("name")!;
-            Tag = obj.GetString("tag")!;
-            Canonical = obj.GetString("canonical")!;
-            MetaData = obj.GetObject("metadata", VimeoTagMetaData.Parse)!;
-            ResourceKey = obj.GetString("resource_key")!;
+        private VimeoTag(JObject json) : base(json) {
+            Uri = json.GetString("uri")!;
+            Name = json.GetString("name")!;
+            Tag = json.GetString("tag")!;
+            Canonical = json.GetString("canonical")!;
+            MetaData = json.GetObject("metadata", VimeoTagMetaData.Parse)!;
+            ResourceKey = json.GetString("resource_key")!;
         }
 
         #endregion
@@ -59,13 +59,13 @@ namespace Skybrud.Social.Vimeo.Models.Tags {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoTag"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoTag"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoTag"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoTag? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoTag(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoTag? Parse(JObject? json) {
+            return json == null ? null : new VimeoTag(json);
         }
 
         #endregion

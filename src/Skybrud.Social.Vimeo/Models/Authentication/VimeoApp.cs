@@ -25,9 +25,9 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
 
         #region Constructors
 
-        private VimeoApp(JObject obj) : base(obj) {
-            Name = obj.GetString("name")!;
-            Uri = obj.GetString("uri")!;
+        private VimeoApp(JObject json) : base(json) {
+            Name = json.GetString("name")!;
+            Uri = json.GetString("uri")!;
         }
 
         #endregion
@@ -35,13 +35,13 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoApp"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoApp"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoApp"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoApp? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoApp(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoApp? Parse(JObject? json) {
+            return json == null ? null : new VimeoApp(json);
         }
 
         #endregion

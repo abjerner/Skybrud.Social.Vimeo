@@ -20,8 +20,8 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Constructors
 
-        private VimeoVideoEmbed(JObject obj) : base(obj) {
-            Html = obj.GetString("html")!;
+        private VimeoVideoEmbed(JObject json) : base(json) {
+            Html = json.GetString("html")!;
         }
 
         #endregion
@@ -29,13 +29,13 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoVideoEmbed"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoVideoEmbed"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideoEmbed"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoVideoEmbed? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoVideoEmbed(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoVideoEmbed? Parse(JObject? json) {
+            return json == null ? null : new VimeoVideoEmbed(json);
         }
 
         #endregion

@@ -57,16 +57,16 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
 
         #region Constructors
 
-        private VimeoPicture(JObject obj) : base(obj) {
+        private VimeoPicture(JObject json) : base(json) {
             try {
-                Uri = obj.GetString("uri");
+                Uri = json.GetString("uri");
                 Id = Uri?.Split('/').Last().ToInt64();
-                IsActive = obj.GetBoolean("active");
-                Type = obj.GetString("type")!;
-                Sizes = obj.GetArrayItems("sizes", VimeoPictureSize.Parse)!;
-                ResourceKey = obj.GetString("resource_key")!;
+                IsActive = json.GetBoolean("active");
+                Type = json.GetString("type")!;
+                Sizes = json.GetArrayItems("sizes", VimeoPictureSize.Parse)!;
+                ResourceKey = json.GetString("resource_key")!;
             } catch (Exception ex) {
-                throw new VimeoJsonParseException(obj, ex);
+                throw new VimeoJsonParseException(json, ex);
             }
         }
 
@@ -75,13 +75,13 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoPicture"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoPicture"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoPicture"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoPicture? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoPicture(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoPicture? Parse(JObject? json) {
+            return json == null ? null : new VimeoPicture(json);
         }
 
         #endregion

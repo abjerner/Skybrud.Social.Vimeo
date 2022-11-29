@@ -26,9 +26,9 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
 
         #region Constructors
 
-        private VimeoChannelConnections(JObject obj) : base(obj) {
-            Users = obj.GetObject("users", VimeoConnectionsItem.Parse)!;
-            Videos = obj.GetObject("videos", VimeoConnectionsItem.Parse)!;
+        private VimeoChannelConnections(JObject json) : base(json) {
+            Users = json.GetObject("users", VimeoConnectionsItem.Parse)!;
+            Videos = json.GetObject("videos", VimeoConnectionsItem.Parse)!;
         }
 
         #endregion
@@ -36,13 +36,13 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoChannelConnections"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoChannelConnections"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoChannelConnections"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoChannelConnections? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoChannelConnections(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoChannelConnections? Parse(JObject? json) {
+            return json == null ? null : new VimeoChannelConnections(json);
         }
 
         #endregion

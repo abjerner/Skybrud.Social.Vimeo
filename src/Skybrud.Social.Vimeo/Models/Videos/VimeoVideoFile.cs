@@ -71,18 +71,18 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Constructors
 
-        private VimeoVideoFile(JObject obj) : base(obj) {
-            Quality = obj.GetString("quality", ParseQuality);
-            Type = obj.GetString("type")!;
-            Width = obj.GetInt32("width");
-            Height = obj.GetInt32("height");
-            Link = obj.GetString("link")!;
-            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse)!;
-            Fps = obj.GetInt32("fps");
-            Size = obj.GetInt64("size");
-            Md5 = obj.GetString("md5")!;
-            PublicName = obj.GetString("public_name")!;
-            SizeShort = obj.GetString("size_short")!;
+        private VimeoVideoFile(JObject json) : base(json) {
+            Quality = json.GetString("quality", ParseQuality);
+            Type = json.GetString("type")!;
+            Width = json.GetInt32("width");
+            Height = json.GetInt32("height");
+            Link = json.GetString("link")!;
+            CreatedTime = json.GetString("created_time", EssentialsTime.Parse)!;
+            Fps = json.GetInt32("fps");
+            Size = json.GetInt64("size");
+            Md5 = json.GetString("md5")!;
+            PublicName = json.GetString("public_name")!;
+            SizeShort = json.GetString("size_short")!;
         }
 
         #endregion
@@ -100,13 +100,13 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoVideoFile"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoVideoFile"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideoFile"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoVideoFile? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoVideoFile(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoVideoFile? Parse(JObject? json) {
+            return json == null ? null : new VimeoVideoFile(json);
         }
 
         #endregion

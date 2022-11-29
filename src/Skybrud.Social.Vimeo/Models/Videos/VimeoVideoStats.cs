@@ -20,8 +20,8 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Constructors
 
-        private VimeoVideoStats(JObject obj) : base(obj) {
-            Plays = obj.GetInt64("plays");
+        private VimeoVideoStats(JObject json) : base(json) {
+            Plays = json.GetInt64("plays");
         }
 
         #endregion
@@ -29,13 +29,13 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoVideoStats"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoVideoStats"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideoStats"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoVideoStats? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoVideoStats(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoVideoStats? Parse(JObject? json) {
+            return json == null ? null : new VimeoVideoStats(json);
         }
 
         #endregion

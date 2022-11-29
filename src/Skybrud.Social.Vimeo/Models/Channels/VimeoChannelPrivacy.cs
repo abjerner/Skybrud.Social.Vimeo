@@ -20,8 +20,8 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
 
         #region Constructors
 
-        private VimeoChannelPrivacy(JObject obj) : base(obj) {
-            View = obj.GetEnum<VimeoChannelPrivacyStatus>("view");
+        private VimeoChannelPrivacy(JObject json) : base(json) {
+            View = json.GetEnum<VimeoChannelPrivacyStatus>("view");
         }
 
         #endregion
@@ -29,13 +29,13 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoChannelPrivacy"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoChannelPrivacy"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoChannelPrivacy"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoChannelPrivacy? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoChannelPrivacy(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoChannelPrivacy? Parse(JObject? json) {
+            return json == null ? null : new VimeoChannelPrivacy(json);
         }
 
         #endregion

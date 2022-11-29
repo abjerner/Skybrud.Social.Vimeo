@@ -117,21 +117,21 @@ namespace Skybrud.Social.Vimeo.Models.Users {
 
         #region Constructors
 
-        private VimeoUser(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri")!;
+        private VimeoUser(JObject json) : base(json) {
+            Uri = json.GetString("uri")!;
             Id = long.Parse(Uri.Split('/').Last());
-            Name = obj.GetString("name")!;
-            Link = obj.GetString("link")!;
-            Location = obj.GetString("location");
-            Gender = obj.GetString("gender", ParseGender);
-            Bio = obj.GetString("bio");
-            ShortBio = obj.GetString("short_bio");
-            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse)!;
-            Account = obj.GetEnum<VimeoAccountType>("account");
-            Picture = obj.GetObject("pictures", VimeoPicture.Parse);
-            Websites = obj.GetArrayItems("websites", VimeoUserWebsite.Parse)!;
+            Name = json.GetString("name")!;
+            Link = json.GetString("link")!;
+            Location = json.GetString("location");
+            Gender = json.GetString("gender", ParseGender);
+            Bio = json.GetString("bio");
+            ShortBio = json.GetString("short_bio");
+            CreatedTime = json.GetString("created_time", EssentialsTime.Parse)!;
+            Account = json.GetEnum<VimeoAccountType>("account");
+            Picture = json.GetObject("pictures", VimeoPicture.Parse);
+            Websites = json.GetArrayItems("websites", VimeoUserWebsite.Parse)!;
             // "metadata"
-            ResourceKey = obj.GetString("resource_key")!;
+            ResourceKey = json.GetString("resource_key")!;
             // "preferences"
         }
 
@@ -155,13 +155,13 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoUser"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoUser"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoUser"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoUser? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoUser(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoUser? Parse(JObject? json) {
+            return json == null ? null : new VimeoUser(json);
         }
 
         #endregion

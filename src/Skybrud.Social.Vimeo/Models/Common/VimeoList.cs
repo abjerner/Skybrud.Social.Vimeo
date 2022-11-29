@@ -36,14 +36,14 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new list based on the specified <paramref name="obj"/>.
+        /// Initializes a new list based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The <see cref="JObject"/> representing the list.</param>
-        protected VimeoList(JObject obj) : base(obj) {
-            Total = obj.GetInt32("total");
-            Page = obj.GetInt32("page");
-            PerPage = obj.GetInt32("per_page");
-            Paging = obj.GetObject("paging", VimeoPaging.Parse)!;
+        /// <param name="json">The <see cref="JObject"/> representing the list.</param>
+        protected VimeoList(JObject json) : base(json) {
+            Total = json.GetInt32("total");
+            Page = json.GetInt32("page");
+            PerPage = json.GetInt32("per_page");
+            Paging = json.GetObject("paging", VimeoPaging.Parse)!;
         }
 
         #endregion
@@ -51,13 +51,13 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoList"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoList"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoList"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoList? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoList(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoList? Parse(JObject? json) {
+            return json == null ? null : new VimeoList(json);
         }
 
         #endregion

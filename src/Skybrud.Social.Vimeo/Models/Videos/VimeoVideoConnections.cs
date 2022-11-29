@@ -46,13 +46,13 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Constructors
 
-        private VimeoVideoConnections(JObject obj) : base(obj) {
-            Comments = obj.GetObject("comments", VimeoConnectionsItem.Parse)!;
-            Credits = obj.GetObject("credits", VimeoConnectionsItem.Parse)!;
-            Likes = obj.GetObject("likes", VimeoConnectionsItem.Parse)!;
-            Pictures = obj.GetObject("pictures", VimeoConnectionsItem.Parse)!;
-            TextTracks = obj.GetObject("texttracks", VimeoConnectionsItem.Parse)!;
-            Related = obj.GetObject("related", VimeoConnectionsItem.Parse)!;
+        private VimeoVideoConnections(JObject json) : base(json) {
+            Comments = json.GetObject("comments", VimeoConnectionsItem.Parse)!;
+            Credits = json.GetObject("credits", VimeoConnectionsItem.Parse)!;
+            Likes = json.GetObject("likes", VimeoConnectionsItem.Parse)!;
+            Pictures = json.GetObject("pictures", VimeoConnectionsItem.Parse)!;
+            TextTracks = json.GetObject("texttracks", VimeoConnectionsItem.Parse)!;
+            Related = json.GetObject("related", VimeoConnectionsItem.Parse)!;
         }
 
         #endregion
@@ -60,13 +60,13 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoVideoConnections"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoVideoConnections"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideoConnections"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoVideoConnections? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoVideoConnections(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoVideoConnections? Parse(JObject? json) {
+            return json == null ? null : new VimeoVideoConnections(json);
         }
 
         #endregion

@@ -38,10 +38,10 @@ namespace Skybrud.Social.Vimeo.Models.Users {
 
         #region Constructors
 
-        private VimeoUserWebsite(JObject obj) : base(obj) {
-            Name = obj.GetString("name")!;
-            Link = obj.GetString("link")!;
-            Description = obj.GetString("description");
+        private VimeoUserWebsite(JObject json) : base(json) {
+            Name = json.GetString("name")!;
+            Link = json.GetString("link")!;
+            Description = json.GetString("description");
         }
 
         #endregion
@@ -49,13 +49,13 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoUserWebsite"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoUserWebsite"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoUserWebsite"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoUserWebsite? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoUserWebsite(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoUserWebsite? Parse(JObject? json) {
+            return json == null ? null : new VimeoUserWebsite(json);
         }
 
         #endregion

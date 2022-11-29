@@ -31,10 +31,10 @@ namespace Skybrud.Social.Vimeo.Models.Common {
 
         #region Constructors
 
-        private VimeoConnectionsItem(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri")!;
-            Options = obj.GetStringArray("options");
-            Total = obj.GetInt32("total");
+        private VimeoConnectionsItem(JObject json) : base(json) {
+            Uri = json.GetString("uri")!;
+            Options = json.GetStringArray("options");
+            Total = json.GetInt32("total");
         }
 
         #endregion
@@ -42,13 +42,13 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoConnectionsItem"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoConnectionsItem"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoConnectionsItem"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoConnectionsItem? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoConnectionsItem(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoConnectionsItem? Parse(JObject? json) {
+            return json == null ? null : new VimeoConnectionsItem(json);
         }
 
         #endregion

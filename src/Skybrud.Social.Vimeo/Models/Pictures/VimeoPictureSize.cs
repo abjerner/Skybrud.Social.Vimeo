@@ -40,11 +40,11 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
 
         #region Constructors
 
-        private VimeoPictureSize(JObject obj) : base(obj) {
-            Width = obj.GetInt32("width");
-            Height = obj.GetInt32("height");
-            Link = obj.GetString("link")!;
-            LinkWithPlayButton = obj.GetString("link_with_play_button")!;
+        private VimeoPictureSize(JObject json) : base(json) {
+            Width = json.GetInt32("width");
+            Height = json.GetInt32("height");
+            Link = json.GetString("link")!;
+            LinkWithPlayButton = json.GetString("link_with_play_button")!;
         }
 
         #endregion
@@ -52,13 +52,13 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoPictureSize"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoPictureSize"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoPicture"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoPictureSize? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoPictureSize(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoPictureSize? Parse(JObject? json) {
+            return json == null ? null : new VimeoPictureSize(json);
         }
 
         #endregion

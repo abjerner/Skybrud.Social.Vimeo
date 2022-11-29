@@ -161,33 +161,33 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         #region Constructors
 
-        private VimeoVideo(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri")!;
+        private VimeoVideo(JObject json) : base(json) {
+            Uri = json.GetString("uri")!;
             Id = long.Parse(Uri.Split('/').Last());
-            Name = obj.GetString("name")!;
-            Description = obj.GetString("description");
-            Link = obj.GetString("link")!;
-            Duration = obj.GetDouble("duration", TimeSpan.FromSeconds);
-            Width = obj.GetInt32("width");
-            Language = obj.GetString("language")!;
-            Height = obj.GetInt32("height");
-            Embed = obj.GetObject("embed", VimeoVideoEmbed.Parse)!;
-            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse)!;
-            ModifiedTime = obj.GetString("modified_time", EssentialsTime.Parse)!;
-            ReleaseTime = obj.GetString("release_time", EssentialsTime.Parse)!;
+            Name = json.GetString("name")!;
+            Description = json.GetString("description");
+            Link = json.GetString("link")!;
+            Duration = json.GetDouble("duration", TimeSpan.FromSeconds);
+            Width = json.GetInt32("width");
+            Language = json.GetString("language")!;
+            Height = json.GetInt32("height");
+            Embed = json.GetObject("embed", VimeoVideoEmbed.Parse)!;
+            CreatedTime = json.GetString("created_time", EssentialsTime.Parse)!;
+            ModifiedTime = json.GetString("modified_time", EssentialsTime.Parse)!;
+            ReleaseTime = json.GetString("release_time", EssentialsTime.Parse)!;
             // "content_rating"
             // "license"
             // "privacy"
-            Pictures = obj.GetObject("pictures", VimeoVideoPictureList.Parse)!;
-            Tags = obj.GetArrayItems("tags", VimeoTag.Parse)!;
-            Stats = obj.GetObject("stats", VimeoVideoStats.Parse)!;
-            MetaData = obj.GetObject("metadata", VimeoVideoMetaData.Parse)!;
-            User = obj.GetObject("user", VimeoUser.Parse)!;
+            Pictures = json.GetObject("pictures", VimeoVideoPictureList.Parse)!;
+            Tags = json.GetArrayItems("tags", VimeoTag.Parse)!;
+            Stats = json.GetObject("stats", VimeoVideoStats.Parse)!;
+            MetaData = json.GetObject("metadata", VimeoVideoMetaData.Parse)!;
+            User = json.GetObject("user", VimeoUser.Parse)!;
             // "app"
             // "status"
-            ResourceKey = obj.GetString("resource_key")!;
+            ResourceKey = json.GetString("resource_key")!;
             // "embed_presets"
-            Files = obj.GetArrayItems("files", VimeoVideoFile.Parse)!;
+            Files = json.GetArrayItems("files", VimeoVideoFile.Parse)!;
         }
 
         #endregion
@@ -195,13 +195,13 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoVideo"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoVideo"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideo"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoVideo? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoVideo(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoVideo? Parse(JObject? json) {
+            return json == null ? null : new VimeoVideo(json);
         }
 
         #endregion

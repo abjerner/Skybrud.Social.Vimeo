@@ -20,8 +20,8 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
 
         #region Constructors
 
-        private VimeoChannelMetaData(JObject obj) : base(obj) {
-            Connections = obj.GetObject("connections", VimeoChannelConnections.Parse)!;
+        private VimeoChannelMetaData(JObject json) : base(json) {
+            Connections = json.GetObject("connections", VimeoChannelConnections.Parse)!;
         }
 
         #endregion
@@ -29,13 +29,13 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoChannelMetaData"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoChannelMetaData"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoChannelMetaData"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoChannelMetaData? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoChannelMetaData(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoChannelMetaData? Parse(JObject? json) {
+            return json == null ? null : new VimeoChannelMetaData(json);
         }
 
         #endregion

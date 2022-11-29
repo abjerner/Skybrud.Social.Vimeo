@@ -21,8 +21,8 @@ namespace Skybrud.Social.Vimeo.Models.Tags {
 
         #region Constructors
 
-        private VimeoTagConnections(JObject obj) : base(obj) {
-            Videos = obj.GetObject("videos", VimeoConnectionsItem.Parse)!;
+        private VimeoTagConnections(JObject json) : base(json) {
+            Videos = json.GetObject("videos", VimeoConnectionsItem.Parse)!;
         }
 
         #endregion
@@ -30,13 +30,13 @@ namespace Skybrud.Social.Vimeo.Models.Tags {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="VimeoTagConnections"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoTagConnections"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoTagConnections"/>.</returns>
-        [return: NotNullIfNotNull("obj")]
-        public static VimeoTagConnections? Parse(JObject? obj) {
-            return obj == null ? null : new VimeoTagConnections(obj);
+        [return: NotNullIfNotNull("json")]
+        public static VimeoTagConnections? Parse(JObject? json) {
+            return json == null ? null : new VimeoTagConnections(json);
         }
 
         #endregion
