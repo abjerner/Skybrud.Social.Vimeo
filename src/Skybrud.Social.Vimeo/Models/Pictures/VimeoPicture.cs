@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
+using Skybrud.Essentials.Strings.Extensions;
+using Skybrud.Social.Vimeo.Exceptions;
 
 namespace Skybrud.Social.Vimeo.Models.Pictures {
 
@@ -16,12 +19,19 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         /// <summary>
         /// Gets the ID of the picture.
         /// </summary>
-        public long Id { get; }
+        public long? Id { get; }
 
         /// <summary>
-        /// Gets the URI of the picture.
+        /// Gets the URI of the picture. If this object describes the default picture in a given context, the value of
+        /// this property may be <see langword="null"/>.
         /// </summary>
-        public string Uri { get; }
+        public string? Uri { get; }
+
+        /// <summary>
+        /// Gets whether the <see cref="Uri"/> property has a value.
+        /// </summary>
+        [MemberNotNullWhen(true, "Id", "Uri")]
+        public bool HasUri => Uri is not null;
 
         /// <summary>
         /// Gets whether the picture is currently active.
@@ -48,12 +58,16 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         #region Constructors
 
         private VimeoPicture(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri")!;
-            Id = long.Parse(Uri.Split('/').Last());
-            IsActive = obj.GetBoolean("active");
-            Type = obj.GetString("type")!;
-            Sizes = obj.GetArrayItems("sizes", VimeoPictureSize.Parse)!;
-            ResourceKey = obj.GetString("resource_key")!;
+            try {
+                Uri = obj.GetString("uri");
+                Id = Uri?.Split('/').Last().ToInt64();
+                IsActive = obj.GetBoolean("active");
+                Type = obj.GetString("type")!;
+                Sizes = obj.GetArrayItems("sizes", VimeoPictureSize.Parse)!;
+                ResourceKey = obj.GetString("resource_key")!;
+            } catch (Exception ex) {
+                throw new VimeoJsonParseException(obj, ex);
+            }
         }
 
         #endregion
