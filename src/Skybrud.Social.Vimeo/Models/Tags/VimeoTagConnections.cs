@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Vimeo.Models.Common;
 
@@ -21,7 +22,7 @@ namespace Skybrud.Social.Vimeo.Models.Tags {
         #region Constructors
 
         private VimeoTagConnections(JObject obj) : base(obj) {
-            Videos = obj.GetObject("videos", VimeoConnectionsItem.Parse);
+            Videos = obj.GetObject("videos", VimeoConnectionsItem.Parse)!;
         }
 
         #endregion
@@ -33,7 +34,8 @@ namespace Skybrud.Social.Vimeo.Models.Tags {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoTagConnections"/>.</returns>
-        public static VimeoTagConnections Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoTagConnections? Parse(JObject? obj) {
             return obj == null ? null : new VimeoTagConnections(obj);
         }
 

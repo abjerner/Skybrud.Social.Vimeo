@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -38,7 +39,13 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// <summary>
         /// Gets the location of the user. Use the <see cref="HasLocation"/> property to check whether a location has been specified.
         /// </summary>
-        public string Location { get; }
+        public string? Location { get; }
+
+        /// <summary>
+        /// Gets whether the user has specified a location. If true, the location can be read from the <see cref="Location"/> property.
+        /// </summary>
+        [MemberNotNullWhen(true, "Location")]
+        public bool HasLocation => string.IsNullOrWhiteSpace(Location) == false;
 
         /// <summary>
         /// Gets the gender of the user.
@@ -46,28 +53,25 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         public VimeoGender Gender { get; }
 
         /// <summary>
-        /// Gets whether the user has specified a location. If true, the location can be read from the <see cref="Location"/> property.
-        /// </summary>
-        public bool HasLocation => string.IsNullOrWhiteSpace(Location) == false;
-
-        /// <summary>
         /// Gets the bio of the user. Use the <see cref="HasBio"/> property to check whether a bio has been specified.
         /// </summary>
-        public string Bio { get; }
+        public string? Bio { get; }
 
         /// <summary>
         /// Gets whether the user has specified a bio. If true, the bio can be read from the <see cref="Bio"/> property.
         /// </summary>
+        [MemberNotNullWhen(true, "Bio")]
         public bool HasBio => string.IsNullOrWhiteSpace(Bio) == false;
 
         /// <summary>
         /// Gets the short bio of the user. Use the <see cref="HasShortBio"/> property to check whether a short bio has been specified.
         /// </summary>
-        public string ShortBio { get; }
+        public string? ShortBio { get; }
 
         /// <summary>
         /// Gets whether the user has specified a short bio. If true, the short bio can be read from the <see cref="ShortBio"/> property.
         /// </summary>
+        [MemberNotNullWhen(true, "ShortBio")]
         public bool HasShortBio => string.IsNullOrWhiteSpace(ShortBio) == false;
 
         /// <summary>
@@ -84,13 +88,14 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// Gets the default picture of the user. Use the <see cref="HasPicture"/> property to check whether the user
         /// has a default picture.
         /// </summary>
-        public VimeoPicture Picture { get; }
+        public VimeoPicture? Picture { get; }
 
         /// <summary>
         /// Gets whether the user has default picture. If true, information about the picture can be read from the
         /// <see cref="Picture"/> property.
         /// </summary>
-        public bool HasPicture => string.IsNullOrWhiteSpace(Bio) == false;
+        [MemberNotNullWhen(true, "Picture")]
+        public bool HasPicture => Picture is not null;
 
         /// <summary>
         /// Gets an array of websites of the user.
@@ -113,20 +118,20 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         #region Constructors
 
         private VimeoUser(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri");
+            Uri = obj.GetString("uri")!;
             Id = long.Parse(Uri.Split('/').Last());
-            Name = obj.GetString("name");
-            Link = obj.GetString("link");
+            Name = obj.GetString("name")!;
+            Link = obj.GetString("link")!;
             Location = obj.GetString("location");
             Gender = obj.GetString("gender", ParseGender);
             Bio = obj.GetString("bio");
             ShortBio = obj.GetString("short_bio");
-            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse);
+            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse)!;
             Account = obj.GetEnum<VimeoAccountType>("account");
             Picture = obj.GetObject("pictures", VimeoPicture.Parse);
-            Websites = obj.GetArrayItems("websites", VimeoUserWebsite.Parse);
+            Websites = obj.GetArrayItems("websites", VimeoUserWebsite.Parse)!;
             // "metadata"
-            ResourceKey = obj.GetString("resource_key");
+            ResourceKey = obj.GetString("resource_key")!;
             // "preferences"
         }
 
@@ -154,7 +159,8 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoUser"/>.</returns>
-        public static VimeoUser Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoUser? Parse(JObject? obj) {
             return obj == null ? null : new VimeoUser(obj);
         }
 

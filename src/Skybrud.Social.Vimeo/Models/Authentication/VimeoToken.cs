@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Vimeo.Models.Users;
 using Skybrud.Social.Vimeo.Scopes;
@@ -45,11 +46,11 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         #region Constructors
 
         private VimeoToken(JObject obj) : base(obj) {
-            AccessToken = obj.GetString("access_token");
-            TokenType = obj.GetString("token_type");
-            Scope = obj.GetString("scope", VimeoScopeList.Parse);
-            App = obj.GetObject("app", VimeoApp.Parse);
-            User = obj.GetObject("user", VimeoUser.Parse);
+            AccessToken = obj.GetString("access_token")!;
+            TokenType = obj.GetString("token_type")!;
+            Scope = obj.GetString("scope", VimeoScopeList.Parse)!;
+            App = obj.GetObject("app", VimeoApp.Parse)!;
+            User = obj.GetObject("user", VimeoUser.Parse)!;
         }
 
         #endregion
@@ -61,7 +62,8 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoToken"/>.</returns>
-        public static VimeoToken Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoToken? Parse(JObject? obj) {
             return obj == null ? null : new VimeoToken(obj);
         }
 

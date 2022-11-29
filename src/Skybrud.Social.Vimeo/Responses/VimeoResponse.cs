@@ -5,6 +5,8 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Vimeo.Exceptions;
 using Skybrud.Social.Vimeo.Models.Common;
 
+// ReSharper disable ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+
 namespace Skybrud.Social.Vimeo.Responses {
 
     /// <summary>
@@ -55,7 +57,7 @@ namespace Skybrud.Social.Vimeo.Responses {
 
                 case HttpConstants.ApplicationJson:
                     JObject obj = ParseJsonObject(response.Body);
-                    throw new VimeoHttpException(response, obj.GetString("error"), obj.GetString("error_description"));
+                    throw new VimeoHttpException(response, obj.GetString("error")!, obj.GetString("error_description")!);
 
                 default:
                     throw new VimeoHttpException(response, null, null);
@@ -78,7 +80,7 @@ namespace Skybrud.Social.Vimeo.Responses {
         /// <summary>
         /// Gets the body of the response.
         /// </summary>
-        public T Body { get; protected set; }
+        public T Body { get; protected set; } = default!;
 
         #endregion
 

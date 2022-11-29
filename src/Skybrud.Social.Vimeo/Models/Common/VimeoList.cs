@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Common {
@@ -42,7 +43,7 @@ namespace Skybrud.Social.Vimeo.Models.Common {
             Total = obj.GetInt32("total");
             Page = obj.GetInt32("page");
             PerPage = obj.GetInt32("per_page");
-            Paging = obj.GetObject("paging", VimeoPaging.Parse);
+            Paging = obj.GetObject("paging", VimeoPaging.Parse)!;
         }
 
         #endregion
@@ -54,7 +55,8 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoList"/>.</returns>
-        public static VimeoList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoList? Parse(JObject? obj) {
             return obj == null ? null : new VimeoList(obj);
         }
 

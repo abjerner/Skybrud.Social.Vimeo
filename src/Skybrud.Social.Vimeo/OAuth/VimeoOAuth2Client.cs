@@ -22,22 +22,22 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// <summary>
         /// Gets or sets the client ID of the app.
         /// </summary>
-        public string ClientId { get; set; }
+        public string? ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets the client secret of the app.
         /// </summary>
-        public string ClientSecret { get; set; }
+        public string? ClientSecret { get; set; }
         
         /// <summary>
         /// Gets or sets the redirect URI of your application.
         /// </summary>
-        public string RedirectUri { get; set; }
+        public string? RedirectUri { get; set; }
 
         /// <summary>
         /// Gets or sets the access token.
         /// </summary>
-        public string AccessToken { get; set; }
+        public string? AccessToken { get; set; }
 
         #endregion
 
@@ -122,7 +122,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// <param name="scope">The scope of the application.</param>
         /// <returns>An authorization URL based on <see cref="ClientId"/>, <see cref="RedirectUri"/>,
         /// <paramref name="state"/> and <paramref name="scope"/>.</returns>
-        public string GetAuthorizationUrl(string state, string scope = null) {
+        public string GetAuthorizationUrl(string state, string? scope = null) {
 
             // Validate the input
             if (string.IsNullOrWhiteSpace(state)) throw new ArgumentNullException(nameof(state));
@@ -132,8 +132,8 @@ namespace Skybrud.Social.Vimeo.OAuth {
             // Construct the query string
             IHttpQueryString query = new HttpQueryString();
             query.Add("response_type", "code");
-            query.Add("client_id", ClientId);
-            query.Add("redirect_uri", RedirectUri);
+            query.Add("client_id", ClientId!);
+            query.Add("redirect_uri", RedirectUri!);
             query.Add("scope", scope + "");
             query.Add("state", state);
 
@@ -171,7 +171,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
             IHttpPostData data = new HttpPostData();
             data.Add("grant_type", "authorization_code");
             data.Add("code", authCode);
-            data.Add("redirect_uri", RedirectUri);
+            data.Add("redirect_uri", RedirectUri!);
 
             // Initialize the request
             IHttpRequest request = new HttpRequest {

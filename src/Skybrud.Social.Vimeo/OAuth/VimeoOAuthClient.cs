@@ -48,7 +48,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// </summary>
         /// <param name="consumerKey">The comsumer key of your application.</param>
         /// <param name="consumerSecret">The consumer secret of your application.</param>
-        public VimeoOAuthClient(string consumerKey, string consumerSecret) : this(consumerKey, consumerSecret, null, null, null) { }
+        public VimeoOAuthClient(string? consumerKey, string? consumerSecret) : this(consumerKey, consumerSecret, null, null, null) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VimeoOAuthClient"/> class.
@@ -57,7 +57,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// <param name="consumerSecret">The consumer secret of your application.</param>
         /// <param name="token">The access token of the user.</param>
         /// <param name="tokenSecret">The access token secret of the user.</param>
-        public VimeoOAuthClient(string consumerKey, string consumerSecret, string token, string tokenSecret) : this(consumerKey, consumerSecret, token, tokenSecret, null) { }
+        public VimeoOAuthClient(string? consumerKey, string? consumerSecret, string? token, string? tokenSecret) : this(consumerKey, consumerSecret, token, tokenSecret, null) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VimeoOAuthClient"/> class.
@@ -67,7 +67,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// <param name="token">The access token of the user.</param>
         /// <param name="tokenSecret">The access token secret of the user.</param>
         /// <param name="callback">The callback URI used for authentication.</param>
-        public VimeoOAuthClient(string consumerKey, string consumerSecret, string token, string tokenSecret, string callback) {
+        public VimeoOAuthClient(string? consumerKey, string? consumerSecret, string? token, string? tokenSecret, string? callback) {
         
             // Common properties
             ConsumerKey = consumerKey;

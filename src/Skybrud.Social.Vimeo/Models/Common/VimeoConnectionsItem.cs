@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
@@ -31,7 +32,7 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Constructors
 
         private VimeoConnectionsItem(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri");
+            Uri = obj.GetString("uri")!;
             Options = obj.GetStringArray("options");
             Total = obj.GetInt32("total");
         }
@@ -45,7 +46,8 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoConnectionsItem"/>.</returns>
-        public static VimeoConnectionsItem Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoConnectionsItem? Parse(JObject? obj) {
             return obj == null ? null : new VimeoConnectionsItem(obj);
         }
 

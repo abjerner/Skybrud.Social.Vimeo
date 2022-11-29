@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
 
@@ -72,16 +73,16 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
 
         private VimeoVideoFile(JObject obj) : base(obj) {
             Quality = obj.GetString("quality", ParseQuality);
-            Type = obj.GetString("type");
+            Type = obj.GetString("type")!;
             Width = obj.GetInt32("width");
             Height = obj.GetInt32("height");
-            Link = obj.GetString("link");
-            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse);
+            Link = obj.GetString("link")!;
+            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse)!;
             Fps = obj.GetInt32("fps");
             Size = obj.GetInt64("size");
-            Md5 = obj.GetString("md5");
-            PublicName = obj.GetString("public_name");
-            SizeShort = obj.GetString("size_short");
+            Md5 = obj.GetString("md5")!;
+            PublicName = obj.GetString("public_name")!;
+            SizeShort = obj.GetString("size_short")!;
         }
 
         #endregion
@@ -116,7 +117,8 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideoFile"/>.</returns>
-        public static VimeoVideoFile Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoVideoFile? Parse(JObject? obj) {
             return obj == null ? null : new VimeoVideoFile(obj);
         }
 

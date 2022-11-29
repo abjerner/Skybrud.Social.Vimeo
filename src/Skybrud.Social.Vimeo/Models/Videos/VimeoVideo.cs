@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -34,12 +35,13 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets the description of the Vimeo video.
         /// </summary>
-        public string Description  { get; }
+        public string? Description  { get; }
 
         /// <summary>
         /// Gets whether the video has a description. If true, the description can be read from the
         /// <see cref="Description"/> property.
         /// </summary>
+        [MemberNotNullWhen(true, "Description")]
         public bool HasDescription => string.IsNullOrWhiteSpace(Description) == false;
 
         // TODO: Add support for property "type": (enum: video)
@@ -160,32 +162,32 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Constructors
 
         private VimeoVideo(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri");
+            Uri = obj.GetString("uri")!;
             Id = long.Parse(Uri.Split('/').Last());
-            Name = obj.GetString("name");
+            Name = obj.GetString("name")!;
             Description = obj.GetString("description");
-            Link = obj.GetString("link");
+            Link = obj.GetString("link")!;
             Duration = obj.GetDouble("duration", TimeSpan.FromSeconds);
             Width = obj.GetInt32("width");
-            Language = obj.GetString("language");
-            Height = obj.GetInt32("height");
-            Embed = obj.GetObject("embed", VimeoVideoEmbed.Parse);
-            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse);
-            ModifiedTime = obj.GetString("modified_time", EssentialsTime.Parse);
-            ReleaseTime = obj.GetString("release_time", EssentialsTime.Parse);
+            Language = obj.GetString("language")!;
+            Height = obj.GetInt32("height")!;
+            Embed = obj.GetObject("embed", VimeoVideoEmbed.Parse)!;
+            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse)!;
+            ModifiedTime = obj.GetString("modified_time", EssentialsTime.Parse)!;
+            ReleaseTime = obj.GetString("release_time", EssentialsTime.Parse)!;
             // "content_rating"
             // "license"
             // "privacy"
-            Pictures = obj.GetObject("pictures", VimeoVideoPictureList.Parse);
-            Tags = obj.GetArrayItems("tags", VimeoTag.Parse);
-            Stats = obj.GetObject("stats", VimeoVideoStats.Parse);
-            MetaData = obj.GetObject("metadata", VimeoVideoMetaData.Parse);
-            User = obj.GetObject("user", VimeoUser.Parse);
+            Pictures = obj.GetObject("pictures", VimeoVideoPictureList.Parse)!;
+            Tags = obj.GetArrayItems("tags", VimeoTag.Parse)!;
+            Stats = obj.GetObject("stats", VimeoVideoStats.Parse)!;
+            MetaData = obj.GetObject("metadata", VimeoVideoMetaData.Parse)!;
+            User = obj.GetObject("user", VimeoUser.Parse)!;
             // "app"
             // "status"
-            ResourceKey = obj.GetString("resource_key");
+            ResourceKey = obj.GetString("resource_key")!;
             // "embed_presets"
-            Files = obj.GetArrayItems("files", VimeoVideoFile.Parse);
+            Files = obj.GetArrayItems("files", VimeoVideoFile.Parse)!;
         }
 
         #endregion
@@ -197,7 +199,8 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideo"/>.</returns>
-        public static VimeoVideo Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoVideo? Parse(JObject? obj) {
             return obj == null ? null : new VimeoVideo(obj);
         }
 

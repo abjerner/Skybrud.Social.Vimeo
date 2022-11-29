@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Users {
@@ -24,7 +25,7 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// Gets the description of the website. Use the <see cref="HasDescription"/> property to check whether a
         /// description has been specified.
         /// </summary>
-        public string Description { get; }
+        public string? Description { get; }
 
         /// <summary>
         /// Gets whether the website has a description. If true, the description can be read from the
@@ -37,8 +38,8 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         #region Constructors
 
         private VimeoUserWebsite(JObject obj) : base(obj) {
-            Name = obj.GetString("name");
-            Link = obj.GetString("link");
+            Name = obj.GetString("name")!;
+            Link = obj.GetString("link")!;
             Description = obj.GetString("description");
         }
 
@@ -51,7 +52,8 @@ namespace Skybrud.Social.Vimeo.Models.Users {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoUserWebsite"/>.</returns>
-        public static VimeoUserWebsite Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoUserWebsite? Parse(JObject? obj) {
             return obj == null ? null : new VimeoUserWebsite(obj);
         }
 

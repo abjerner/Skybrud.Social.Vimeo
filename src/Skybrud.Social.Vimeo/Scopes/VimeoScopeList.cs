@@ -68,7 +68,7 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// </summary>
         /// <returns>Array of strings representing each scope in the collection.</returns>
         public string[] ToStringArray() {
-            return (from scope in _list select scope.Name).ToArray();
+            return (from scope in _list select scope.Alias).ToArray();
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// </summary>
         /// <returns>String of scopes separated by a space.</returns>
         public override string ToString() {
-            return string.Join(" ", from scope in _list select scope.Name);
+            return string.Join(" ", from scope in _list select scope.Alias);
         }
 
         IEnumerator IEnumerable.GetEnumerator() {
@@ -99,7 +99,7 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// </summary>
         /// <param name="str">String containing the individual scopes.</param>
         /// <returns>An instance of <see cref="VimeoScopeList"/> with the specified scopes.</returns>
-        public static VimeoScopeList Parse(string str) {
+        public static VimeoScopeList Parse(string? str) {
             return new VimeoScopeList(
                 from alias in (str ?? string.Empty).Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 let scope = VimeoScope.All.FirstOrDefault(x => x.Alias == alias)
@@ -125,7 +125,7 @@ namespace Skybrud.Social.Vimeo.Scopes {
         /// </summary>
         /// <param name="array">The array of scopes the collection should be based on.</param>
         /// <returns>A new collection based on an <paramref name="array"/> of scopes.</returns>
-        public static implicit operator VimeoScopeList(VimeoScope[] array) {
+        public static implicit operator VimeoScopeList(VimeoScope[]? array) {
             return new VimeoScopeList(array ?? ArrayUtils.Empty<VimeoScope>());
         }
 

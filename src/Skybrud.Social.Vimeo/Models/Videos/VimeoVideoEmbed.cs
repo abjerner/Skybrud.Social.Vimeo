@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Videos
@@ -21,7 +22,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos
         #region Constructors
 
         private VimeoVideoEmbed(JObject obj) : base(obj) {
-            Html = obj.GetString("html");
+            Html = obj.GetString("html")!;
         }
 
         #endregion
@@ -33,7 +34,8 @@ namespace Skybrud.Social.Vimeo.Models.Videos
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideoEmbed"/>.</returns>
-        public static VimeoVideoEmbed Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoVideoEmbed? Parse(JObject? obj) {
             return obj == null ? null : new VimeoVideoEmbed(obj);
         }
 

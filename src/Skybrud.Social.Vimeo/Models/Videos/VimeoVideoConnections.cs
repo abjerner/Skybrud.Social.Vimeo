@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Vimeo.Models.Common;
 
@@ -46,12 +47,12 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Constructors
 
         private VimeoVideoConnections(JObject obj) : base(obj) {
-            Comments = obj.GetObject("comments", VimeoConnectionsItem.Parse);
-            Credits = obj.GetObject("credits", VimeoConnectionsItem.Parse);
-            Likes = obj.GetObject("likes", VimeoConnectionsItem.Parse);
-            Pictures = obj.GetObject("pictures", VimeoConnectionsItem.Parse);
-            TextTracks = obj.GetObject("texttracks", VimeoConnectionsItem.Parse);
-            Related = obj.GetObject("related", VimeoConnectionsItem.Parse);
+            Comments = obj.GetObject("comments", VimeoConnectionsItem.Parse)!;
+            Credits = obj.GetObject("credits", VimeoConnectionsItem.Parse)!;
+            Likes = obj.GetObject("likes", VimeoConnectionsItem.Parse)!;
+            Pictures = obj.GetObject("pictures", VimeoConnectionsItem.Parse)!;
+            TextTracks = obj.GetObject("texttracks", VimeoConnectionsItem.Parse)!;
+            Related = obj.GetObject("related", VimeoConnectionsItem.Parse)!;
         }
 
         #endregion
@@ -63,7 +64,8 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideoConnections"/>.</returns>
-        public static VimeoVideoConnections Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoVideoConnections? Parse(JObject? obj) {
             return obj == null ? null : new VimeoVideoConnections(obj);
         }
 

@@ -21,7 +21,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Constructors
 
         private VimeoVideoPictureList(JObject obj) : base(obj) {
-            Sizes = obj.GetArrayItems("sizes", VimeoVideoPicture.Parse);
+            Sizes = obj.GetArrayItems("sizes", VimeoVideoPicture.Parse)!;
         }
 
         #endregion
@@ -33,7 +33,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoVideoPictureList"/>.</returns>
-        public static VimeoVideoPictureList Parse(JObject obj) {
+        public static VimeoVideoPictureList? Parse(JObject? obj) {
             return obj == null ? null : new VimeoVideoPictureList(obj);
         }
 

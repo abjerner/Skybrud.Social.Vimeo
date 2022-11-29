@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Common {
@@ -35,10 +36,10 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         #region Constructors
 
         private VimeoPaging(JObject obj) : base(obj) {
-            Next = obj.GetString("next");
-            Previous = obj.GetString("previous");
-            First = obj.GetString("first");
-            Last = obj.GetString("last");
+            Next = obj.GetString("next")!;
+            Previous = obj.GetString("previous")!;
+            First = obj.GetString("first")!;
+            Last = obj.GetString("last")!;
         }
 
         #endregion
@@ -50,7 +51,8 @@ namespace Skybrud.Social.Vimeo.Models.Common {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoPaging"/>.</returns>
-        public static VimeoPaging Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoPaging? Parse(JObject? obj) {
             return obj == null ? null : new VimeoPaging(obj);
         }
 

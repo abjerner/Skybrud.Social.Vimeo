@@ -22,7 +22,7 @@ namespace Skybrud.Social.Vimeo.Options.Channels {
         /// <summary>
         /// Gets or sets a text based query the videos should match.
         /// </summary>
-        public string Query { get; set; }
+        public string? Query { get; set; }
 
         /// <summary>
         /// Gets or sets the field to be sorted by.

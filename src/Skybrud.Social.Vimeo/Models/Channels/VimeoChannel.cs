@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
@@ -35,9 +36,9 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         public string Description { get; }
 
         /// <summary>
-        /// Gets whether the channel has a description. If true, the description can be read from the
-        /// <see cref="Description"/> property.
+        /// Gets whether the channel has a description. If true, the description can be read from the <see cref="Description"/> property.
         /// </summary>
+        [MemberNotNullWhen(true, "Description")]
         public bool HasDescription => string.IsNullOrWhiteSpace(Description) == false;
 
         /// <summary>
@@ -64,21 +65,23 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         /// Gets the default picture of the channel. Use the <see cref="HasPicture"/> property to check whether the
         /// channel has a default picture.
         /// </summary>
-        public VimeoPicture Picture { get; }
+        public VimeoPicture? Picture { get; }
 
         /// <summary>
         /// Gets whether the channel has a default picture.
         /// </summary>
+        [MemberNotNullWhen(true, "Picture")]
         public bool HasPicture => Picture != null;
 
         /// <summary>
         /// Gets information about the header picture of the channel.
         /// </summary>
-        public VimeoPicture Header { get; }
+        public VimeoPicture? Header { get; }
 
         /// <summary>
         /// Gets whether the channel has header picture.
         /// </summary>
+        [MemberNotNullWhen(true, "Header")]
         public bool HasHeader => Header != null;
 
         /// <summary>
@@ -101,19 +104,19 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         #region Constructors
 
         private VimeoChannel(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri");
+            Uri = obj.GetString("uri")!;
             Id = long.Parse(Uri.Split('/').Last());
-            Name = obj.GetString("name");
-            Description = obj.GetString("description");
-            Link = obj.GetString("link");
-            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse);
-            ModifiedTime = obj.GetString("modified_time", EssentialsTime.Parse);
-            User = obj.GetObject("user", VimeoUser.Parse);
+            Name = obj.GetString("name")!;
+            Description = obj.GetString("description")!;
+            Link = obj.GetString("link")!;
+            CreatedTime = obj.GetString("created_time", EssentialsTime.Parse)!;
+            ModifiedTime = obj.GetString("modified_time", EssentialsTime.Parse)!;
+            User = obj.GetObject("user", VimeoUser.Parse)!;
             Picture = obj.GetObject("pictures", VimeoPicture.Parse);
             Header = obj.GetObject("header", VimeoPicture.Parse);
-            Privacy = obj.GetObject("privacy", VimeoChannelPrivacy.Parse);
-            MetaData = obj.GetObject("metadata", VimeoChannelMetaData.Parse);
-            ResourceKey = obj.GetString("resource_key");
+            Privacy = obj.GetObject("privacy", VimeoChannelPrivacy.Parse)!;
+            MetaData = obj.GetObject("metadata", VimeoChannelMetaData.Parse)!;
+            ResourceKey = obj.GetString("resource_key")!;
         }
 
         #endregion
@@ -125,7 +128,8 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoChannel"/>.</returns>
-        public static VimeoChannel Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoChannel? Parse(JObject? obj) {
             return obj == null ? null : new VimeoChannel(obj);
         }
 

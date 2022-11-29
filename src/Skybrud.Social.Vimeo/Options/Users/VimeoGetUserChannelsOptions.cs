@@ -22,7 +22,7 @@ namespace Skybrud.Social.Vimeo.Options.Users {
         /// <summary>
         /// Gets or sets the username of the parent user.
         /// </summary>
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
         /// <summary>
         /// Gets whether a username has been specified.

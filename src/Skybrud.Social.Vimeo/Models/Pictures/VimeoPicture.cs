@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -47,12 +48,12 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         #region Constructors
 
         private VimeoPicture(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri");
+            Uri = obj.GetString("uri")!;
             Id = long.Parse(Uri.Split('/').Last());
             IsActive = obj.GetBoolean("active");
-            Type = obj.GetString("type");
-            Sizes = obj.GetArrayItems("sizes", VimeoPictureSize.Parse);
-            ResourceKey = obj.GetString("resource_key");
+            Type = obj.GetString("type")!;
+            Sizes = obj.GetArrayItems("sizes", VimeoPictureSize.Parse)!;
+            ResourceKey = obj.GetString("resource_key")!;
         }
 
         #endregion
@@ -64,7 +65,8 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoPicture"/>.</returns>
-        public static VimeoPicture Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoPicture? Parse(JObject? obj) {
             return obj == null ? null : new VimeoPicture(obj);
         }
 

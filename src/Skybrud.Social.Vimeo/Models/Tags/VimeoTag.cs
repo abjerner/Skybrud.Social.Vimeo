@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Tags {
@@ -45,12 +46,12 @@ namespace Skybrud.Social.Vimeo.Models.Tags {
         #region Constructors
 
         private VimeoTag(JObject obj) : base(obj) {
-            Uri = obj.GetString("uri");
-            Name = obj.GetString("name");
-            Tag = obj.GetString("tag");
-            Canonical = obj.GetString("canonical");
-            MetaData = obj.GetObject("metadata", VimeoTagMetaData.Parse);
-            ResourceKey = obj.GetString("resource_key");
+            Uri = obj.GetString("uri")!;
+            Name = obj.GetString("name")!;
+            Tag = obj.GetString("tag")!;
+            Canonical = obj.GetString("canonical")!;
+            MetaData = obj.GetObject("metadata", VimeoTagMetaData.Parse)!;
+            ResourceKey = obj.GetString("resource_key")!;
         }
 
         #endregion
@@ -62,7 +63,8 @@ namespace Skybrud.Social.Vimeo.Models.Tags {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoTag"/>.</returns>
-        public static VimeoTag Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoTag? Parse(JObject? obj) {
             return obj == null ? null : new VimeoTag(obj);
         }
 

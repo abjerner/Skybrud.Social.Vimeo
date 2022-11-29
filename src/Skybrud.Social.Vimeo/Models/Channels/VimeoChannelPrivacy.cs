@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Channels {
@@ -32,7 +33,8 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoChannelPrivacy"/>.</returns>
-        public static VimeoChannelPrivacy Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoChannelPrivacy? Parse(JObject? obj) {
             return obj == null ? null : new VimeoChannelPrivacy(obj);
         }
 

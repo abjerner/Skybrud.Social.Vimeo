@@ -26,7 +26,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// Gets or sets the username of the user. Use <c>me</c> to get videos of the authenticated user.
         /// instead.
         /// </summary>
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
         /// <summary>
         /// Gets whether a username has been specified.
@@ -36,7 +36,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// <summary>
         /// Gets or sets a text based query the videos should match.
         /// </summary>
-        public string Query { get; set; }
+        public string? Query { get; set; }
 
         /// <summary>
         /// Gets or sets the field to be sorted by.

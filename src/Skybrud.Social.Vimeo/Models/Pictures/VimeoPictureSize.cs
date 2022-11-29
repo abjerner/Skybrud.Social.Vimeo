@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
@@ -43,8 +43,8 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         private VimeoPictureSize(JObject obj) : base(obj) {
             Width = obj.GetInt32("width");
             Height = obj.GetInt32("height");
-            Link = obj.GetString("link");
-            LinkWithPlayButton = obj.GetString("link_with_play_button");
+            Link = obj.GetString("link")!;
+            LinkWithPlayButton = obj.GetString("link_with_play_button")!;
         }
 
         #endregion
@@ -56,7 +56,8 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoPicture"/>.</returns>
-        public static VimeoPictureSize Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoPictureSize? Parse(JObject? obj) {
             return obj == null ? null : new VimeoPictureSize(obj);
         }
 

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Authentication {
@@ -25,8 +26,8 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         #region Constructors
 
         private VimeoApp(JObject obj) : base(obj) {
-            Name = obj.GetString("name");
-            Uri = obj.GetString("uri");
+            Name = obj.GetString("name")!;
+            Uri = obj.GetString("uri")!;
         }
 
         #endregion
@@ -38,7 +39,8 @@ namespace Skybrud.Social.Vimeo.Models.Authentication {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoApp"/>.</returns>
-        public static VimeoApp Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoApp? Parse(JObject? obj) {
             return obj == null ? null : new VimeoApp(obj);
         }
 

@@ -54,7 +54,7 @@ namespace Skybrud.Social.Vimeo.Models.Common {
                 remaining = -1;
             }
 
-            EssentialsTime reset = EssentialsTime.Parse(response.Headers["X-RateLimit-Reset"]);
+            EssentialsTime reset = EssentialsTime.Parse(response.Headers["X-RateLimit-Reset"])!;
 
             return new VimeoRateLimiting(limit, remaining, reset);
 

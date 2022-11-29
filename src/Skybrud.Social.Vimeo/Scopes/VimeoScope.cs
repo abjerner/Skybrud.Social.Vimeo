@@ -88,12 +88,12 @@
         /// <summary>
         /// Gets the name of the scope.
         /// </summary>
-        public string Name { get; }
+        public string? Name { get; }
 
         /// <summary>
         /// Gets the description of the scope.
         /// </summary>
-        public string Description { get; }
+        public string? Description { get; }
 
         #endregion
 
@@ -106,7 +106,7 @@
         /// <param name="alias">The alias of the scope.</param>
         /// <param name="name">The name of the scope.</param>
         /// <param name="description">The description of the scope.</param>
-        public VimeoScope(string alias, string name, string description) {
+        public VimeoScope(string alias, string? name, string? description) {
             Alias = alias;
             Name = name;
             Description = description;

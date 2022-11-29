@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Vimeo.Models.Common;
 
@@ -26,8 +27,8 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         #region Constructors
 
         private VimeoChannelConnections(JObject obj) : base(obj) {
-            Users = obj.GetObject("users", VimeoConnectionsItem.Parse);
-            Videos = obj.GetObject("videos", VimeoConnectionsItem.Parse);
+            Users = obj.GetObject("users", VimeoConnectionsItem.Parse)!;
+            Videos = obj.GetObject("videos", VimeoConnectionsItem.Parse)!;
         }
 
         #endregion
@@ -39,7 +40,8 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="VimeoChannelConnections"/>.</returns>
-        public static VimeoChannelConnections Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static VimeoChannelConnections? Parse(JObject? obj) {
             return obj == null ? null : new VimeoChannelConnections(obj);
         }
 
