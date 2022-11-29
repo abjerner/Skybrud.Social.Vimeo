@@ -21,7 +21,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <PackageTags>Vimeo, API, Skybrud, Social, OAuth, JSON</PackageTags>
+    <PackageTags>Vimeo, API, Skybrud, Social, OAuth, JSON, Limbo</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://social.skybrud.dk/vimeo/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
