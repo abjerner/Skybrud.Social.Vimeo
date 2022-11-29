@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <RootNamespace>Skybrud.Social.Vimeo</RootNamespace>
-    <Version>1.0.0-beta006</Version>
+    <VersionPrefix>1.0.0-beta006</VersionPrefix>
+    <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Product>Skybrud.Social</Product>
     <Authors>Anders Bjerner</Authors>
