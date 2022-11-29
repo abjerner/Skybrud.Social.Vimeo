@@ -1,7 +1,7 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Exceptions;
+using Skybrud.Social.Vimeo.Models.Errors;
 
 namespace Skybrud.Social.Vimeo.Exceptions {
 
@@ -23,14 +23,14 @@ namespace Skybrud.Social.Vimeo.Exceptions {
         public HttpStatusCode StatusCode { get; }
 
         /// <summary>
-        /// Gets the error.
+        /// Gets the error object returned by the Vimeo API - or <see langword="null"/> if not available.
         /// </summary>
-        public string? Error { get; }
+        public VimeoError? Error { get; }
 
         /// <summary>
-        /// Gets the error description.
+        /// Gets the error message - or <see langword="null"/> if not available.
         /// </summary>
-        public string? ErrorDescription { get; }
+        public string? ErrorMessage { get; }
 
         #endregion
 
@@ -39,14 +39,32 @@ namespace Skybrud.Social.Vimeo.Exceptions {
         /// <summary>
         /// Initializes a new exception based on the specified <paramref name="response"/>.
         /// </summary>
+        public VimeoHttpException(IHttpResponse response) : base($"Invalid response received from the Vimeo API (status: {(int) response.StatusCode})") {
+            Response = response;
+            StatusCode = response.StatusCode;
+        }
+
+        /// <summary>
+        /// Initializes a new exception based on the specified <paramref name="response"/>.
+        /// </summary>
         /// <param name="response">The response that contained or triggered the error.</param>
-        /// <param name="error">The error code.</param>
-        /// <param name="errorDescription">The description about the error.</param>
-        public VimeoHttpException(IHttpResponse response, string? error, string? errorDescription) : base($"Invalid response received from the Vimeo API (status: {(int) response.StatusCode})") {
+        /// <param name="error">An instance of <see cref="VimeoError"/> representing the error.</param>
+        public VimeoHttpException(IHttpResponse response, VimeoError error) : base($"Invalid response received from the Vimeo API (status: {(int) response.StatusCode})") {
             Response = response;
             StatusCode = response.StatusCode;
             Error = error;
-            ErrorDescription = errorDescription;
+            ErrorMessage = error.Error;
+        }
+
+        /// <summary>
+        /// Initializes a new exception based on the specified <paramref name="response"/>.
+        /// </summary>
+        /// <param name="response">The response that contained or triggered the error.</param>
+        /// <param name="errorMessage">The error message.</param>
+        public VimeoHttpException(IHttpResponse response, string? errorMessage) : base($"Invalid response received from the Vimeo API (status: {(int) response.StatusCode})") {
+            Response = response;
+            StatusCode = response.StatusCode;
+            ErrorMessage = errorMessage;
         }
 
         #endregion
