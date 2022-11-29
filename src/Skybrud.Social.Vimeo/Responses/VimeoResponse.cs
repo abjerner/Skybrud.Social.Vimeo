@@ -1,6 +1,8 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Json.Newtonsoft;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Vimeo.Exceptions;
 using Skybrud.Social.Vimeo.Models.Common;
@@ -39,6 +41,25 @@ namespace Skybrud.Social.Vimeo.Responses {
 
         #endregion
 
+        #region Member methods
+
+        /// <summary>
+        /// Parses the specified <paramref name="json"/> string into an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to be returned.</typeparam>
+        /// <param name="json">The JSON string to be parsed.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into an instance of <typeparamref name="T"/>.</param>
+        /// <returns>An instance of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
+        protected new T ParseJsonObject<T>(string json, Func<JObject, T?> func) {
+            try {
+                return JsonUtils.ParseJsonObject(json, func)!;
+            } catch (Exception ex) {
+                throw new VimeoResponseParseException(Response, ex);
+            }
+        }
+
+        #endregion
+
         #region Static methods
 
         /// <summary>
@@ -56,6 +77,7 @@ namespace Skybrud.Social.Vimeo.Responses {
                     throw new VimeoHttpException(response, response.Body, null);
 
                 case HttpConstants.ApplicationJson:
+                case "application/vnd.vimeo.error+json":
                     JObject obj = ParseJsonObject(response.Body);
                     throw new VimeoHttpException(response, obj.GetString("error")!, obj.GetString("error_description")!);
 
