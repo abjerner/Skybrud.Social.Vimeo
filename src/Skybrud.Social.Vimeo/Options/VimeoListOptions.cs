@@ -49,8 +49,7 @@ namespace Skybrud.Social.Vimeo.Options {
         /// </summary>
         public virtual IHttpQueryString GetQueryString() {
 
-            HttpQueryString query = new HttpQueryString();
-
+            HttpQueryString query = new();
             if (Page != null) query.Add("page", Page.Value);
             if (PerPage != null) query.Add("per_page", PerPage.Value);
 
