@@ -19,13 +19,13 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the OAuth client.
         /// </summary>
-        public IVimeoOAuthClient Client { get; }
+        public VimeoOAuthClient Client { get; }
 
         #endregion
 
         #region Constructors
 
-        internal VimeoUsersRawEndpoint(IVimeoOAuthClient client) {
+        internal VimeoUsersRawEndpoint(VimeoOAuthClient client) {
             Client = client;
         }
 
