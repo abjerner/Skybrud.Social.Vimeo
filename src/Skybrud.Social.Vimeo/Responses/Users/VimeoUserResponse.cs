@@ -13,7 +13,7 @@ namespace Skybrud.Social.Vimeo.Responses.Users {
         /// </summary>
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         public VimeoUserResponse(IHttpResponse response) : base(response) {
-            Body = ParseJsonObject(response.Body, VimeoUser.Parse)!;
+            Body = ParseJsonObject(response.Body, VimeoUser.Parse);
         }
 
     }
