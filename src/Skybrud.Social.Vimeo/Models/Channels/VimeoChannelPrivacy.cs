@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Channels {
-    
+
     /// <summary>
     /// Class with privacy information about a Vimeo channel.
     /// </summary>

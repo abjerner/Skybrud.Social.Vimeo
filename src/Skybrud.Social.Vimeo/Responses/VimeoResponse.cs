@@ -30,7 +30,7 @@ namespace Skybrud.Social.Vimeo.Responses {
         /// </summary>
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         protected VimeoResponse(IHttpResponse response) : base(response) {
-            
+
             RateLimiting = VimeoRateLimiting.GetFromResponse(response);
 
             ValidateResponse(response);

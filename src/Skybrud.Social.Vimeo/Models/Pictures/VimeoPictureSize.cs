@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Pictures {
-    
+
     /// <summary>
     /// Class representing a size (thumbnail) of a <see cref="VimeoPicture"/>.
     /// </summary>
@@ -15,7 +15,7 @@ namespace Skybrud.Social.Vimeo.Models.Pictures {
         /// Gets the width of the size.
         /// </summary>
         public int Width { get; }
-        
+
         /// <summary>
         /// Gets the height of the size.
         /// </summary>

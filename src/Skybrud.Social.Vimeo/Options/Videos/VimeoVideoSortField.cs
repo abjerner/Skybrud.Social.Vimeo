@@ -1,5 +1,5 @@
 ﻿namespace Skybrud.Social.Vimeo.Options.Videos {
-    
+
     /// <summary>
     /// Enum class indicating how a list of videos should be sorted.
     /// </summary>

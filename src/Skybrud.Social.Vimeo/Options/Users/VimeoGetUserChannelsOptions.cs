@@ -1,12 +1,12 @@
 ﻿using Skybrud.Essentials.Http;
 
 namespace Skybrud.Social.Vimeo.Options.Users {
-    
+
     /// <summary>
     /// Class representing the options for getting a list of user channels.
     /// </summary>
     public class VimeoGetUserChannelsOptions : VimeoListOptions {
-        
+
         #region Properties
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Skybrud.Social.Vimeo.Options.Users {
         public override IHttpRequest GetRequest() {
 
             // Get channels of the authenticated user?
-            if (Username == "me" || HasUserId == false && HasUsername == false)  {
+            if (Username == "me" || HasUserId == false && HasUsername == false) {
                 return new HttpRequest(HttpMethod.Get, "/me/channels", GetQueryString());
             }
 

@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Videos {
-    
+
     /// <summary>
     /// Class with statistics about a Vimeo video.
     /// </summary>

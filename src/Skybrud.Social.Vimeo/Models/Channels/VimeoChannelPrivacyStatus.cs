@@ -1,5 +1,5 @@
 ﻿namespace Skybrud.Social.Vimeo.Models.Channels {
-    
+
     /// <summary>
     /// ENum class representing the privacy status of a Vimeo channel.
     /// </summary>

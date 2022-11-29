@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Pictures {
-    
+
     /// <summary>
     /// Class representing a Vimeo picture (eg. of a channel or user).
     /// </summary>

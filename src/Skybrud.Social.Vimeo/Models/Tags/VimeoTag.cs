@@ -3,43 +3,43 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Tags {
-    
+
     /// <summary>
     /// Class describing a Vimeo tag.
     /// </summary>
     public class VimeoTag : VimeoObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the URI of the Vimeo tag.
         /// </summary>
-        public string Uri  { get; }
+        public string Uri { get; }
 
         /// <summary>
         /// Gets the name of the Vimeo tag.
         /// </summary>
-        public string Name  { get; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the URL name of the Vimeo tag.
         /// </summary>
-        public string Tag  { get; }
+        public string Tag { get; }
 
         /// <summary>
         /// Gets the canonical name of the Vimeo tag.
         /// </summary>
         public string Canonical { get; }
-        
+
         /// <summary>
         /// Gets the meta data of the tag.
         /// </summary>
         public VimeoTagMetaData MetaData { get; }
-        
+
         /// <summary>
         /// Gets the resource key of the tag.
         /// </summary>
-        public string ResourceKey  { get; }
+        public string ResourceKey { get; }
 
         #endregion
 

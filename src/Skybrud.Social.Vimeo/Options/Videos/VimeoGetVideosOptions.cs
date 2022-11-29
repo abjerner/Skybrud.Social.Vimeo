@@ -118,7 +118,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         public override IHttpRequest GetRequest() {
 
             // Get videos of the authenticated user?
-            if (Username == "me" || HasUserId == false && HasUsername == false)  {
+            if (Username == "me" || HasUserId == false && HasUsername == false) {
                 return new HttpRequest(HttpMethod.Get, "/me/videos", GetQueryString());
             }
 

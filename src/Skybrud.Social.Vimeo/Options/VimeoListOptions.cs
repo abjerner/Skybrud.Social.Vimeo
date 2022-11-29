@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Vimeo.Options {
-    
+
     /// <summary>
     /// Class with basic options for a paginated request to the Vimeo API.
     /// </summary>
@@ -48,12 +48,12 @@ namespace Skybrud.Social.Vimeo.Options {
         /// Gets an instance of <see cref="IHttpQueryString"/> representing the GET parameters.
         /// </summary>
         public virtual IHttpQueryString GetQueryString() {
-            
+
             HttpQueryString query = new HttpQueryString();
-            
+
             if (Page != null) query.Add("page", Page.Value);
             if (PerPage != null) query.Add("per_page", PerPage.Value);
-            
+
             return query;
 
         }

@@ -1,5 +1,5 @@
 ﻿namespace Skybrud.Social.Vimeo.Models.Users {
-    
+
     /// <summary>
     /// Enum class indicating the gender of a Vimeo user.
     /// </summary>

@@ -2,7 +2,7 @@
 using Skybrud.Social.Vimeo.Models.Videos;
 
 namespace Skybrud.Social.Vimeo.Responses.Videos {
-    
+
     /// <summary>
     /// Class representing a response with a collection of Vimeo videos.
     /// </summary>

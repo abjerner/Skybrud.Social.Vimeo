@@ -11,7 +11,7 @@ namespace Skybrud.Social.Vimeo.Models.Tags {
     public class VimeoTagConnections : VimeoObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets information about the videos with this tag.
         /// </summary>

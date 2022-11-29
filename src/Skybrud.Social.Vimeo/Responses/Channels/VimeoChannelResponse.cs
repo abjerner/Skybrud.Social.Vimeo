@@ -2,7 +2,7 @@
 using Skybrud.Social.Vimeo.Models.Channels;
 
 namespace Skybrud.Social.Vimeo.Responses.Channels {
-    
+
     /// <summary>
     /// Class representing a response with information about a Vimeo channel.
     /// </summary>

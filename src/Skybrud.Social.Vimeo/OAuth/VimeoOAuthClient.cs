@@ -68,7 +68,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// <param name="tokenSecret">The access token secret of the user.</param>
         /// <param name="callback">The callback URI used for authentication.</param>
         public VimeoOAuthClient(string? consumerKey, string? consumerSecret, string? token, string? tokenSecret, string? callback) {
-        
+
             // Common properties
             ConsumerKey = consumerKey;
             ConsumerSecret = consumerSecret;
@@ -91,7 +91,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         #endregion
 
         #region Member methods
-        
+
         /// <summary>
         /// Virtual method that can be used for configuring a request.
         /// </summary>

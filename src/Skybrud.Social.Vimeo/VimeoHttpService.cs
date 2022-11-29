@@ -3,7 +3,7 @@ using Skybrud.Social.Vimeo.Endpoints;
 using Skybrud.Social.Vimeo.OAuth;
 
 namespace Skybrud.Social.Vimeo {
-    
+
     /// <summary>
     /// Class working as an entry point to the Vimeo API.
     /// </summary>

@@ -1,5 +1,5 @@
 ﻿namespace Skybrud.Social.Vimeo.Models.Users {
-    
+
     /// <summary>
     /// Indicates the account type of a Vimeo user.
     /// </summary>

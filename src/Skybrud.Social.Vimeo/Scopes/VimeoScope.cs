@@ -14,7 +14,7 @@
         /// View private videos.
         /// </summary>
         public static readonly VimeoScope Private = new VimeoScope("private", "Private", "View private videos.");
-        
+
         /// <summary>
         /// View public videos.
         /// </summary>
@@ -34,17 +34,17 @@
         /// Create new videos, groups, albums, etc.
         /// </summary>
         public static readonly VimeoScope Create = new VimeoScope("create", "Create", "Create new videos, groups, albums, etc.");
-        
+
         /// <summary>
         /// Edit videos, groups, albums, etc.
         /// </summary>
         public static readonly VimeoScope Edit = new VimeoScope("edit", "Edit", "Edit videos, groups, albums, etc.");
-        
+
         /// <summary>
         /// Delete videos, groups, albums, etc.
         /// </summary>
         public static readonly VimeoScope Delete = new VimeoScope("delete", "Delete", "Delete videos, groups, albums, etc.");
-        
+
         /// <summary>
         /// Interact with a video on behalf of a user, such as liking a video or adding it to your Watch Later list.
         /// </summary>
@@ -70,7 +70,7 @@
         /// </summary>
         public static VimeoScope[] All {
             get {
-                return new [] {
+                return new[] {
                     Private, Public, Purchased, Purchase, Create, Edit, Delete, Interact, Upload, PromoCodes, VideoFiles
                 };
             }

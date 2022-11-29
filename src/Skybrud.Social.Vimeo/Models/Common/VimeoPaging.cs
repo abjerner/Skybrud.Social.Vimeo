@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Common {
-    
+
     /// <summary>
     /// Class with pagination about an instance of <see cref="VimeoList"/>.
     /// </summary>

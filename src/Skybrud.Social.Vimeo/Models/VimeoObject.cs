@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Newtonsoft;
 
 namespace Skybrud.Social.Vimeo.Models {
-    
+
     /// <summary>
     /// Class representing a basic object from the Vimeo API derived from an instance of <see cref="JObject"/>.
     /// </summary>

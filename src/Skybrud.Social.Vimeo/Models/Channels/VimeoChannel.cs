@@ -7,7 +7,7 @@ using Skybrud.Social.Vimeo.Models.Pictures;
 using Skybrud.Social.Vimeo.Models.Users;
 
 namespace Skybrud.Social.Vimeo.Models.Channels {
-    
+
     /// <summary>
     /// Class describing a Vimeo channel.
     /// </summary>
@@ -50,7 +50,7 @@ namespace Skybrud.Social.Vimeo.Models.Channels {
         /// Gets the timestamp for when the channel was created.
         /// </summary>
         public EssentialsTime CreatedTime { get; }
-        
+
         /// <summary>
         /// Gets the timestamp for when the channel was last modified.
         /// </summary>

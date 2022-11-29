@@ -4,7 +4,7 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Videos {
 
-    
+
     /// <summary>
     /// Class describing a picture of a Vimeo video.
     /// </summary>

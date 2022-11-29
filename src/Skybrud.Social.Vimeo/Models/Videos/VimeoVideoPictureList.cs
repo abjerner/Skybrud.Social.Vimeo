@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Vimeo.Models.Videos {
-    
+
     /// <summary>
     /// Class describing the pictures of a Vimeo video.
     /// </summary>
@@ -14,7 +14,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets the size variations of the picture.
         /// </summary>
-        public IReadOnlyList<VimeoVideoPicture> Sizes  { get; }
+        public IReadOnlyList<VimeoVideoPicture> Sizes { get; }
 
         #endregion
 

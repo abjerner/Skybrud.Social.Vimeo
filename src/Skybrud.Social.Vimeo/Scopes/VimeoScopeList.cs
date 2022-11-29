@@ -5,7 +5,7 @@ using System.Linq;
 using Skybrud.Essentials.Collections;
 
 namespace Skybrud.Social.Vimeo.Scopes {
-    
+
     /// <summary>
     /// Class representing a collection of scopes for the Vimeo API.
     /// </summary>

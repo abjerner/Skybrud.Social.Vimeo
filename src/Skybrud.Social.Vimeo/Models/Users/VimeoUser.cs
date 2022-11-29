@@ -8,7 +8,7 @@ using Skybrud.Essentials.Time;
 using Skybrud.Social.Vimeo.Models.Pictures;
 
 namespace Skybrud.Social.Vimeo.Models.Users {
-    
+
     /// <summary>
     /// Class describing a Vimeo user.
     /// </summary>

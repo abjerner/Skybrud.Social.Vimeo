@@ -28,7 +28,7 @@ namespace Skybrud.Social.Vimeo.OAuth {
         /// Gets or sets the client secret of the app.
         /// </summary>
         public string? ClientSecret { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the redirect URI of your application.
         /// </summary>

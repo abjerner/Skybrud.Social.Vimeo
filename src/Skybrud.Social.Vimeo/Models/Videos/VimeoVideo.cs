@@ -9,7 +9,7 @@ using Skybrud.Social.Vimeo.Models.Tags;
 using Skybrud.Social.Vimeo.Models.Users;
 
 namespace Skybrud.Social.Vimeo.Models.Videos {
-    
+
     /// <summary>
     /// Class describing a Vimeo video.
     /// </summary>
@@ -20,22 +20,22 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets the ID of the video. The ID isn't directly specified by the Vimeo API, but is derived from the <see cref="Uri"/> property.
         /// </summary>
-        public long Id  { get; }
+        public long Id { get; }
 
         /// <summary>
         /// Gets the URI of the Vimeo video.
         /// </summary>
-        public string Uri  { get; }
+        public string Uri { get; }
 
         /// <summary>
         /// Gets the name of the Vimeo video.
         /// </summary>
-        public string Name  { get; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the description of the Vimeo video.
         /// </summary>
-        public string? Description  { get; }
+        public string? Description { get; }
 
         /// <summary>
         /// Gets whether the video has a description. If true, the description can be read from the
@@ -49,29 +49,29 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets the link (URL for the video page) of the Vimeo video.
         /// </summary>
-        public string Link  { get; }
+        public string Link { get; }
 
         // TODO: Add support for property "player_embed_url": (string)
 
         /// <summary>
         /// Gets the duration of the video.
         /// </summary>
-        public TimeSpan Duration  { get; }
+        public TimeSpan Duration { get; }
 
         /// <summary>
         /// Gets the width of the video.
         /// </summary>
-        public int Width  { get; }
+        public int Width { get; }
 
         /// <summary>
         /// Gets the language of the video.
         /// </summary>
-        public string Language  { get; }
+        public string Language { get; }
 
         /// <summary>
         /// Gets the height of the video.
         /// </summary>
-        public int Height  { get; }
+        public int Height { get; }
 
         /// <summary>
         /// Gets embedding details for the video.
@@ -81,17 +81,17 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets the timestamp for when the video was created.
         /// </summary>
-        public EssentialsTime CreatedTime  { get; }
+        public EssentialsTime CreatedTime { get; }
 
         /// <summary>
         /// Gets the timestamp for when the video was last modified.
         /// </summary>
-        public EssentialsTime ModifiedTime  { get; }
+        public EssentialsTime ModifiedTime { get; }
 
         /// <summary>
         /// Gets the timestamp for when the video was released.
         /// </summary>
-        public EssentialsTime ReleaseTime  { get; }
+        public EssentialsTime ReleaseTime { get; }
 
         // TODO: Add support for property "content_rating": (array)
         // TODO: Add support for property "content_rating_class": (string/enum: "safe")
@@ -142,7 +142,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         /// <summary>
         /// Gets the resource key of the video.
         /// </summary>
-        public string ResourceKey  { get; }
+        public string ResourceKey { get; }
 
         /// <summary>
         /// Gets a reference to the files for the video.
