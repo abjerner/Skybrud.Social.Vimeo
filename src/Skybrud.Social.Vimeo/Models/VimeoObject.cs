@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft;
 
 namespace Skybrud.Social.Vimeo.Models {
@@ -7,6 +8,16 @@ namespace Skybrud.Social.Vimeo.Models {
     /// Class representing a basic object from the Vimeo API derived from an instance of <see cref="JObject"/>.
     /// </summary>
     public class VimeoObject : JsonObjectBase {
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the internal <see cref="Newtonsoft.Json.Linq.JObject"/> the object was created from.
+        /// </summary>
+        [JsonIgnore]
+        public new JObject JObject => base.JObject!;
+
+        #endregion
 
         #region Constructor
 
