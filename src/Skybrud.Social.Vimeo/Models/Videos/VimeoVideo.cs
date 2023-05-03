@@ -23,6 +23,11 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         public long Id { get; }
 
         /// <summary>
+        /// Gets the secret hash of the video (if private).
+        /// </summary>
+        public string? Hash { get; }
+
+        /// <summary>
         /// Gets the URI of the Vimeo video.
         /// </summary>
         public string Uri { get; }
@@ -162,8 +167,14 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
         #region Constructors
 
         private VimeoVideo(JObject json) : base(json) {
-            Uri = json.GetString("uri")!;
-            Id = long.Parse(Uri.Split('/').Last());
+
+            string uri = json.GetString("uri")!;
+            string idAndHash = uri.Split('/').Last();
+            int colon = idAndHash.IndexOf(':');
+
+            Id = long.Parse(idAndHash.Split(':')[0]);
+            Hash = colon > 0 ? idAndHash.Substring(colon + 1) : null;
+            Uri = uri;
             Name = json.GetString("name")!;
             Description = json.GetString("description");
             Link = json.GetString("link")!;
@@ -188,6 +199,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos {
             ResourceKey = json.GetString("resource_key")!;
             // "embed_presets"
             Files = json.GetArrayItems("files", VimeoVideoFile.Parse)!;
+
         }
 
         #endregion
