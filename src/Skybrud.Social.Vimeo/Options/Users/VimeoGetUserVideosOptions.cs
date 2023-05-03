@@ -1,16 +1,18 @@
-﻿using System;
-using Skybrud.Essentials.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Strings;
 using Skybrud.Social.Vimeo.Options.Sorting;
+using Skybrud.Social.Vimeo.Options.Videos;
 
-namespace Skybrud.Social.Vimeo.Options.Videos {
+namespace Skybrud.Social.Vimeo.Options.Users {
 
     /// <summary>
-    /// Class representing the options for getting a list of videos of a channel.
+    /// Class representing the options for getting a list of videos of a Vimeo user.
     /// </summary>
-    [Obsolete("Use the 'VimeoGetUserVideosOptions' class instead.")]
-    public class VimeoGetVideosOptions : VimeoListOptions {
+    /// <see>
+    ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+    /// </see>
+    public class VimeoGetUserVideosOptions : VimeoListOptions {
 
         #region Properties
 
@@ -57,13 +59,13 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// <summary>
         /// Initializes a new instance with default options.
         /// </summary>
-        public VimeoGetVideosOptions() { }
+        public VimeoGetUserVideosOptions() { }
 
         /// <summary>
         /// Initializes a new instance with the specified options.
         /// </summary>
         /// <param name="userId">The ID of the user.</param>
-        public VimeoGetVideosOptions(long userId) {
+        public VimeoGetUserVideosOptions(long userId) {
             UserId = userId;
         }
 
@@ -73,7 +75,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// <param name="userId">The ID of the user.</param>
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
-        public VimeoGetVideosOptions(long userId, int page, int perPage) {
+        public VimeoGetUserVideosOptions(long userId, int page, int perPage) {
             UserId = userId;
             Page = page;
             PerPage = perPage;
@@ -83,7 +85,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// Initializes a new instance with the specified options.
         /// </summary>
         /// <param name="username">The username of the user.</param>
-        public VimeoGetVideosOptions(string username) {
+        public VimeoGetUserVideosOptions(string username) {
             Username = username;
         }
 
@@ -93,7 +95,7 @@ namespace Skybrud.Social.Vimeo.Options.Videos {
         /// <param name="username">The username of the user.</param>
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
-        public VimeoGetVideosOptions(string username, int page, int perPage) {
+        public VimeoGetUserVideosOptions(string username, int page, int perPage) {
             Username = username;
             Page = page;
             PerPage = perPage;

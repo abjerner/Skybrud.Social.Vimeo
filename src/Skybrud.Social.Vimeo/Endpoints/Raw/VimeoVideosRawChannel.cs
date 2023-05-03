@@ -48,6 +48,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// Gets a list of videos uploaded by the authenticated user.
         /// </summary>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
         public IHttpResponse GetVideos() {
             return GetVideos(new VimeoGetVideosOptions("me"));
         }
@@ -57,6 +58,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// </summary>
         /// <param name="userId">The ID of the user.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
         public IHttpResponse GetVideos(long userId) {
             return GetVideos(new VimeoGetVideosOptions(userId));
         }
@@ -68,6 +70,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of videos to be returned per page.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
         public IHttpResponse GetVideos(long userId, int page, int perPage) {
             return GetVideos(new VimeoGetVideosOptions(userId, page, perPage));
         }
@@ -77,6 +80,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// </summary>
         /// <param name="username">The username of the parent user.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
         public IHttpResponse GetVideos(string username) {
             return GetVideos(new VimeoGetVideosOptions(username));
         }
@@ -88,6 +92,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// <param name="page">The page to be returned.</param>
         /// <param name="perPage">The maximum amount of videos to be returned per page.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
         public IHttpResponse GetVideos(string username, int page, int perPage) {
             return GetVideos(new VimeoGetVideosOptions(username, page, perPage));
         }
@@ -97,6 +102,7 @@ namespace Skybrud.Social.Vimeo.Endpoints.Raw {
         /// </summary>
         /// <param name="options">The options for request to the API.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
         public IHttpResponse GetVideos(VimeoGetVideosOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
             return Client.GetResponse(options);

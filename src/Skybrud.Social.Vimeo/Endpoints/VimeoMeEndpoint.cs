@@ -1,5 +1,6 @@
 ﻿using Skybrud.Social.Vimeo.Endpoints.Raw;
 using Skybrud.Social.Vimeo.Responses.Users;
+using Skybrud.Social.Vimeo.Responses.Videos;
 
 namespace Skybrud.Social.Vimeo.Endpoints {
 
@@ -44,6 +45,30 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// </see>
         public VimeoUserResponse GetUser() {
             return new VimeoUserResponse(Raw.GetUser());
+        }
+
+        /// <summary>
+        /// Returns a list of video the authenticated user has uploaded.
+        /// </summary>
+        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+        /// </see>
+        public VimeoVideoListResponse GetVideos() {
+            return new VimeoVideoListResponse(Raw.GetVideos());
+        }
+
+        /// <summary>
+        /// Returns a list of video the authenticated user has uploaded.
+        /// </summary>
+        /// <param name="page">The page to be returned.</param>
+        /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
+        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+        /// </see>
+        public VimeoVideoListResponse GetVideos(int page, int perPage) {
+            return new VimeoVideoListResponse(Raw.GetVideos(page, perPage));
         }
 
         #endregion

@@ -2,6 +2,7 @@
 using Skybrud.Social.Vimeo.Options.Users;
 using Skybrud.Social.Vimeo.Responses.Channels;
 using Skybrud.Social.Vimeo.Responses.Users;
+using Skybrud.Social.Vimeo.Responses.Videos;
 
 namespace Skybrud.Social.Vimeo.Endpoints {
 
@@ -59,6 +60,70 @@ namespace Skybrud.Social.Vimeo.Endpoints {
         /// </see>
         public VimeoUserResponse GetUser(string username) {
             return new VimeoUserResponse(Raw.GetUser(username));
+        }
+
+        /// <summary>
+        /// Returns a list of videos the user with the specified <paramref name="userId"/> has uploaded.
+        /// </summary>
+        /// <param name="userId">The ID of the user.</param>
+        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+        /// </see>
+        public VimeoVideoListResponse GetVideos(long userId) {
+            return new VimeoVideoListResponse(Raw.GetVideos(userId));
+        }
+
+        /// <summary>
+        /// Returns a list of videos the user with the specified <paramref name="userId"/> has uploaded.
+        /// </summary>
+        /// <param name="userId">The ID of the user.</param>
+        /// <param name="page">The page to be returned.</param>
+        /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
+        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+        /// </see>
+        public VimeoVideoListResponse GetVideos(long userId, int page, int perPage) {
+            return new VimeoVideoListResponse(Raw.GetVideos(userId, page, perPage));
+        }
+
+        /// <summary>
+        /// Returns a list of videos the user with the specified <paramref name="username"/> has uploaded.
+        /// </summary>
+        /// <param name="username">The username of the user.</param>
+        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+        /// </see>
+        public VimeoVideoListResponse GetVideos(string username) {
+            return new VimeoVideoListResponse(Raw.GetVideos(username));
+        }
+
+        /// <summary>
+        /// Returns a list of videos the user with the specified <paramref name="username"/> has uploaded.
+        /// </summary>
+        /// <param name="username">The username of the user.</param>
+        /// <param name="page">The page to be returned.</param>
+        /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
+        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+        /// </see>
+        public VimeoVideoListResponse GetVideos(string username, int page, int perPage) {
+            return new VimeoVideoListResponse(Raw.GetVideos(username, page, perPage));
+        }
+
+        /// <summary>
+        /// Returns a list of videos the user matching the specified <paramref name="options"/> has uploaded.
+        /// </summary>
+        /// <param name="options">The options for the request to the API.</param>
+        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+        /// </see>
+        public VimeoVideoListResponse GetVideos(VimeoGetUserVideosOptions options) {
+            return new VimeoVideoListResponse(Raw.GetVideos(options));
         }
 
         /// <summary>
