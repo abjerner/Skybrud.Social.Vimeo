@@ -105,6 +105,18 @@ namespace Skybrud.Social.Vimeo.Endpoints {
             return new VimeoVideoListResponse(Raw.GetVideos(options));
         }
 
+        /// <summary>
+        /// Gets a list of videos of the user matching the specified <paramref name="options"/>.
+        /// </summary>
+        /// <param name="options">The options for request to the API.</param>
+        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://developer.vimeo.com/api/reference/videos#search_videos</cref>
+        /// </see>
+        public VimeoVideoListResponse SearchVideos(VimeoSearchVideosOptions options) {
+            return new VimeoVideoListResponse(Raw.SearchVideos(options));
+        }
+
         #endregion
 
     }
