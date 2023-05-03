@@ -8,16 +8,16 @@ As an add-on for [Skybrud.Social](https://github.com/abjerner/Skybrud.Social), *
 
 ## Installation
 
-The package is only available via [NuGet](https://www.nuget.org/packages/Skybrud.Social.Vimeo/1.0.0). To install the package, you can use either .NET CLI:
+The package is only available via [NuGet](https://www.nuget.org/packages/Skybrud.Social.Vimeo/1.0.1). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Skybrud.Social.Vimeo --version 1.0.0
+dotnet add package Skybrud.Social.Vimeo --version 1.0.1
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Skybrud.Social.Vimeo -Version 1.0.0
+Install-Package Skybrud.Social.Vimeo -Version 1.0.1
 ```
 
 
