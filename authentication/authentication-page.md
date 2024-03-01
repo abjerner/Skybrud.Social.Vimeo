@@ -2,7 +2,7 @@
 
 This page will describe the steps involved for setting up a page for authenticating with the Vimeo Advanced API using OAuth 1.0a.
 
-To get started, we need to initialize a new instance of the {{class:Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient}} class. This class is used for the authentication, as well as the raw communication with the Advanced API once the user is authenticated. The class has properties which should be populated with information about your Vimeo app:
+To get started, we need to initialize a new instance of the <code type="Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient, Skybrud.Social.Vimeo">VimeoOAuthClient</code> class. This class is used for the authentication, as well as the raw communication with the Advanced API once the user is authenticated. The class has properties which should be populated with information about your Vimeo app:
 
 ```csharp
 VimeoOAuthClient oauth = new VimeoOAuthClient {
@@ -14,7 +14,7 @@ VimeoOAuthClient oauth = new VimeoOAuthClient {
 
 If you don't know how to find your consumer key and consumer secret, head over to the <a href="https://developer.vimeo.com/apps" target="_blank">My API Apps at developer.vimeo.com</a>. The callback URL is simply the URL of your authentication page (so Vimeo knows which URL it should redirect the user back to after a successful authentication).
 
-Once we have an instance of {{class:Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient}}, we can request what in OAuth 1.0a terminology is called a request token. A request token (and a corresponding request token secret) is used to identify the request to Vimeo prior to actually redirecting the user to the Vimeo authentication page. The code to obtain a request token can look like:
+Once we have an instance of <code type="Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient, Skybrud.Social.Vimeo">VimeoOAuthClient</code>, we can request what in OAuth 1.0a terminology is called a request token. A request token (and a corresponding request token secret) is used to identify the request to Vimeo prior to actually redirecting the user to the Vimeo authentication page. The code to obtain a request token can look like:
 
 ```csharp
 // Get a request token from the Vimeo API
@@ -43,7 +43,7 @@ oauth.TokenSecret = token.TokenSecret;
 OAuthAccessToken accessToken = oauth.GetAccessToken(oAuthVerifier);
 ```
 
-The {{class:Skybrud.Social.OAuth.OAuthAccessToken}} represents the response from the Vimeo API, and contains an `AccessToken` property and an `AccessTokenSecret` property containing the access token and access token secret respectively of the now authenticated user.
+The <code type="Skybrud.Social.OAuth.OAuthAccessToken, Skybrud.Social">OAuthAccessToken</code> class represents the response from the Vimeo API, and contains an `AccessToken` property and an `AccessTokenSecret` property containing the access token and access token secret respectively of the now authenticated user.
 
 Along with the consumer key and consumer secret, you can now use the access token and access token secret to make calls to the Vimeo Advanced API on behalf of the authenticated user.
 
