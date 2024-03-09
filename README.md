@@ -5,7 +5,7 @@
 [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Social.Vimeo.svg)](https://www.nuget.org/packages/Skybrud.Social.Vimeo)
 [![Skybrud.Social.Vimeo at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/skybrud.social.vimeo/)
 
-.NET API wrapper and implementation of the [**Vimeo API**](https://developer.vimeo.com/api/reference). *Skybrud.Social.Vimeo* helps you with both authentication as well as raw and object-oriented communication with the Vimeo API.
+**Skybrud.Social.Vimeo** is a .NET API wrapper and implementation of the [**Vimeo API**](https://developer.vimeo.com/api/reference). The package helps you with both authentication as well as raw and object-oriented communication with the Vimeo API.
 
 <table>
   <tr>
