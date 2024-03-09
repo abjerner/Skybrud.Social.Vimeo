@@ -3,13 +3,14 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Skybrud.Social.Vimeo/blob/v1/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/vpre/Skybrud.Social.Vimeo.svg)](https://www.nuget.org/packages/Skybrud.Social.Vimeo)
 [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Social.Vimeo.svg)](https://www.nuget.org/packages/Skybrud.Social.Vimeo)
+[![Skybrud.Social.Vimeo at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/skybrud.social.vimeo/)
 
 .NET API wrapper and implementation of the [**Vimeo API**](https://developer.vimeo.com/api/reference). *Skybrud.Social.Vimeo* helps you with both authentication as well as raw and object-oriented communication with the Vimeo API.
 
 <table>
   <tr>
     <td><strong>License:</strong></td>
-    <td><a href="https://github.com/abjerner/Skybrud.Social.Mastodon/blob/v1/main/LICENSE.md"><strong>MIT License</strong></a></td>
+    <td><a href="https://github.com/abjerner/Skybrud.Social.Vimeo/blob/v1/main/LICENSE.md"><strong>MIT License</strong></a></td>
   </tr>
   <tr>
     <td><strong>Target Framework:</strong></td>
@@ -26,22 +27,22 @@
 
 ## Installation
 
-The package is only available via [NuGet](https://www.nuget.org/packages/Skybrud.Social.Vimeo/1.0.1). To install the package, you can use either .NET CLI:
+The package is only available via [NuGet](https://www.nuget.org/packages/Skybrud.Social.Vimeo). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Skybrud.Social.Vimeo --version 1.0.1
+dotnet add package Skybrud.Social.Vimeo
 ```
 
-or the older NuGet Package Manager:
+or the NuGet Package Manager:
 
 ```
-Install-Package Skybrud.Social.Vimeo -Version 1.0.1
+Install-Package Skybrud.Social.Vimeo
 ```
 
 
 <br /><br />
-## Getting started?
-Documentation for this package is available at [**social.skybrud.dk**](https://social.skybrud.dk/vimeo/).
+## Documentation
+Documentation for this package is available via our package site at [**packages.limbo.works**](https://packages.limbo.works/skybrud.social.vimeo/).
 
 
 <br /><br />
