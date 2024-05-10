@@ -5,11 +5,11 @@ order: -7
 
 # Getting started
 
-In order to access the Advanced API with Skybrud.Social, you need an instance of {{class:Skybrud.Social.Vimeo.Advanced.VimeoService}}. This class is your starting point to an object oriented approach to the API.
+In order to access the Advanced API with Skybrud.Social, you need an instance of <code class="Skybrud.Social.Vimeo.Advanced.VimeoService, Skybrud.Social.Vimeo">VimeoService</code>. This class is your starting point to an object oriented approach to the API.
 
-{{class:Skybrud.Social.Vimeo.Advanced.VimeoService}} will internally use an instance of {{class:Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient}} for the raw communication with the Advanced API ({{class:Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient}} is also used for authentication).
+<code class="Skybrud.Social.Vimeo.Advanced.VimeoService, Skybrud.Social.Vimeo">VimeoService</code> will internally use an instance of <code class="Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient, Skybrud.Social.Vimeo">VimeoService</code> for the raw communication with the Advanced API (<code class="Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient, Skybrud.Social.Vimeo">VimeoService</code> is also used for authentication).
 
-If you just need to access public data in the Advanced API, you can simply initialize a new instance of {{class:Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient}} with the consumer key and consumer secret of your Vimeo app:
+If you just need to access public data in the Advanced API, you can simply initialize a new instance of <code class="Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient, Skybrud.Social.Vimeo">VimeoService</code> with the consumer key and consumer secret of your Vimeo app:
 
 ```csharp
 // Initialize a new instance of the OAuth client
@@ -39,4 +39,4 @@ VimeoOAuthClient client = new VimeoOAuthClient {
 VimeoService service = VimeoService.CreateFromOAuthClient(client);
 ```
 
-Both the {{class:Skybrud.Social.Vimeo.Advanced.VimeoService}} and the {{class:Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient}} classes are located in the `Skybrud.Social.Vimeo.Advanced` namespace.
+Both the <code class="Skybrud.Social.Vimeo.Advanced.VimeoService, Skybrud.Social.Vimeo">VimeoService</code> and the <code class="Skybrud.Social.Vimeo.Advanced.VimeoOAuthClient, Skybrud.Social.Vimeo">VimeoService</code> classes are located in the `Skybrud.Social.Vimeo.Advanced` namespace.
