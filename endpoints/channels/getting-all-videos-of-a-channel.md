@@ -1,4 +1,5 @@
 ---
+outdated: true
 order: 20
 teaser: Endpoint for working with channels and videos of a channel.
 ---

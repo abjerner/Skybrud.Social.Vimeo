@@ -1,3 +1,7 @@
+---
+outdated: true
+---
+
 # Setting up an authentication page
 
 This page will describe the steps involved for setting up a page for authenticating with the Vimeo Advanced API using OAuth 1.0a.

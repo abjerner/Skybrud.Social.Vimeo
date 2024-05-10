@@ -1,3 +1,7 @@
+---
+outdated: true
+---
+
 # Getting information about a video
 
 In the `Videos` endpoint, the `GetInfo` method lets you request information about a given video by it's ID. For instance to get information about the <a href="https://vimeo.com/172382998" target="_blank">Umbraco: The Friendly CMS</a> video, the code could look as:

@@ -1,4 +1,5 @@
 ---
+outdated: true
 teaser: See how to get information about a specific user by either an ID or a username.
 ---
 

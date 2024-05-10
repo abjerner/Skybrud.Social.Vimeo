@@ -1,3 +1,7 @@
+---
+outdated: true
+---
+
 # Authentication
 
 To get started with accessing the Vimeo Advanced API, you need to <a href="https://developer.vimeo.com/apps/new" target="_blank"><strong>create a new Vimeo app</strong></a> (or use an <a href="https://developer.vimeo.com/apps" target="_blank"><strong>existing app</strong></a>).
