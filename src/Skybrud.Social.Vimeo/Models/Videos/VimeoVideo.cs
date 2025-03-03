@@ -190,7 +190,7 @@ public class VimeoVideo : VimeoObject {
         // "license"
         // "privacy"
         Pictures = json.GetObject("pictures", VimeoVideoPictureList.Parse)!;
-        Tags = json.GetArrayItems("tags", VimeoTag.Parse)!;
+        Tags = json.GetArrayItems("tags", VimeoTag.Parse);
         Stats = json.GetObject("stats", VimeoVideoStats.Parse)!;
         Metadata = json.GetObject("metadata", VimeoVideoMetadata.Parse)!;
         User = json.GetObject("user", VimeoUser.Parse)!;
