@@ -34,7 +34,7 @@ public class VimeoTag : VimeoObject {
     /// <summary>
     /// Gets the metadata of the tag.
     /// </summary>
-    public VimeoTagMetaData MetaData { get; }
+    public VimeoTagMetadata Metadata { get; }
 
     /// <summary>
     /// Gets the resource key of the tag.
@@ -50,7 +50,7 @@ public class VimeoTag : VimeoObject {
         Name = json.GetString("name")!;
         Tag = json.GetString("tag")!;
         Canonical = json.GetString("canonical")!;
-        MetaData = json.GetObject("metadata", VimeoTagMetaData.Parse)!;
+        Metadata = json.GetObject("metadata", VimeoTagMetadata.Parse)!;
         ResourceKey = json.GetString("resource_key")!;
     }
 

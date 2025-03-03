@@ -7,7 +7,7 @@ namespace Skybrud.Social.Vimeo.Models.Tags;
 /// <summary>
 /// Class representing the metadata of a Vimeo tag.
 /// </summary>
-public class VimeoTagMetaData : VimeoObject {
+public class VimeoTagMetadata : VimeoObject {
 
     #region Properties
 
@@ -20,7 +20,7 @@ public class VimeoTagMetaData : VimeoObject {
 
     #region Constructors
 
-    private VimeoTagMetaData(JObject json) : base(json) {
+    private VimeoTagMetadata(JObject json) : base(json) {
         Connections = json.GetObject("connections", VimeoTagConnections.Parse)!;
     }
 
@@ -29,13 +29,13 @@ public class VimeoTagMetaData : VimeoObject {
     #region Static methods
 
     /// <summary>
-    /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoTagMetaData"/>.
+    /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoTagMetadata"/>.
     /// </summary>
     /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
-    /// <returns>An instance of <see cref="VimeoTagMetaData"/>.</returns>
+    /// <returns>An instance of <see cref="VimeoTagMetadata"/>.</returns>
     [return: NotNullIfNotNull(nameof(json))]
-    public static VimeoTagMetaData? Parse(JObject? json) {
-        return json == null ? null : new VimeoTagMetaData(json);
+    public static VimeoTagMetadata? Parse(JObject? json) {
+        return json == null ? null : new VimeoTagMetadata(json);
     }
 
     #endregion

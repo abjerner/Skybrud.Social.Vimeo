@@ -7,7 +7,7 @@ namespace Skybrud.Social.Vimeo.Models.Videos;
 /// <summary>
 /// Class representing the metadata of a Vimeo video.
 /// </summary>
-public class VimeoVideoMetaData : VimeoObject {
+public class VimeoVideoMetadata : VimeoObject {
 
     #region Properties
 
@@ -20,7 +20,7 @@ public class VimeoVideoMetaData : VimeoObject {
 
     #region Constructors
 
-    private VimeoVideoMetaData(JObject json) : base(json) {
+    private VimeoVideoMetadata(JObject json) : base(json) {
         Connections = json.GetObject("connections", VimeoVideoConnections.Parse)!;
     }
 
@@ -29,13 +29,13 @@ public class VimeoVideoMetaData : VimeoObject {
     #region Static methods
 
     /// <summary>
-    /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoVideoMetaData"/>.
+    /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoVideoMetadata"/>.
     /// </summary>
     /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
-    /// <returns>An instance of <see cref="VimeoVideoMetaData"/>.</returns>
+    /// <returns>An instance of <see cref="VimeoVideoMetadata"/>.</returns>
     [return: NotNullIfNotNull(nameof(json))]
-    public static VimeoVideoMetaData? Parse(JObject? json) {
-        return json == null ? null : new VimeoVideoMetaData(json);
+    public static VimeoVideoMetadata? Parse(JObject? json) {
+        return json == null ? null : new VimeoVideoMetadata(json);
     }
 
     #endregion

@@ -92,7 +92,7 @@ public class VimeoChannel : VimeoObject {
     /// <summary>
     /// Gets the metadata of the channel.
     /// </summary>
-    public VimeoChannelMetaData MetaData { get; }
+    public VimeoChannelMetadata Metadata { get; }
 
     /// <summary>
     /// Gets the resource key of the channel.
@@ -115,7 +115,7 @@ public class VimeoChannel : VimeoObject {
         Picture = json.GetObject("pictures", VimeoPicture.Parse);
         Header = json.GetObject("header", VimeoPicture.Parse);
         Privacy = json.GetObject("privacy", VimeoChannelPrivacy.Parse)!;
-        MetaData = json.GetObject("metadata", VimeoChannelMetaData.Parse)!;
+        Metadata = json.GetObject("metadata", VimeoChannelMetadata.Parse)!;
         ResourceKey = json.GetString("resource_key")!;
     }
 

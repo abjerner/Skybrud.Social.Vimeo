@@ -5,9 +5,9 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 namespace Skybrud.Social.Vimeo.Models.Channels;
 
 /// <summary>
-/// Class representing the meta data of a Vimeo channel.
+/// Class representing the metadata of a Vimeo channel.
 /// </summary>
-public class VimeoChannelMetaData : VimeoObject {
+public class VimeoChannelMetadata : VimeoObject {
 
     #region Properties
 
@@ -20,7 +20,7 @@ public class VimeoChannelMetaData : VimeoObject {
 
     #region Constructors
 
-    private VimeoChannelMetaData(JObject json) : base(json) {
+    private VimeoChannelMetadata(JObject json) : base(json) {
         Connections = json.GetObject("connections", VimeoChannelConnections.Parse)!;
     }
 
@@ -29,13 +29,13 @@ public class VimeoChannelMetaData : VimeoObject {
     #region Static methods
 
     /// <summary>
-    /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoChannelMetaData"/>.
+    /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoChannelMetadata"/>.
     /// </summary>
     /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
-    /// <returns>An instance of <see cref="VimeoChannelMetaData"/>.</returns>
+    /// <returns>An instance of <see cref="VimeoChannelMetadata"/>.</returns>
     [return: NotNullIfNotNull(nameof(json))]
-    public static VimeoChannelMetaData? Parse(JObject? json) {
-        return json == null ? null : new VimeoChannelMetaData(json);
+    public static VimeoChannelMetadata? Parse(JObject? json) {
+        return json == null ? null : new VimeoChannelMetadata(json);
     }
 
     #endregion

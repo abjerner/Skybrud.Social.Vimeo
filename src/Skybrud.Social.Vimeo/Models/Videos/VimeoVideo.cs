@@ -131,7 +131,7 @@ public class VimeoVideo : VimeoObject {
     /// <summary>
     /// Gets the metadata of the video.
     /// </summary>
-    public VimeoVideoMetaData MetaData { get; }
+    public VimeoVideoMetadata Metadata { get; }
 
     /// <summary>
     /// Gets a reference to the user who uploaded the video.
@@ -192,7 +192,7 @@ public class VimeoVideo : VimeoObject {
         Pictures = json.GetObject("pictures", VimeoVideoPictureList.Parse)!;
         Tags = json.GetArrayItems("tags", VimeoTag.Parse)!;
         Stats = json.GetObject("stats", VimeoVideoStats.Parse)!;
-        MetaData = json.GetObject("metadata", VimeoVideoMetaData.Parse)!;
+        Metadata = json.GetObject("metadata", VimeoVideoMetadata.Parse)!;
         User = json.GetObject("user", VimeoUser.Parse)!;
         // "app"
         // "status"
