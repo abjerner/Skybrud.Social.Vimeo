@@ -4,44 +4,42 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Vimeo.Models.Common;
 
-namespace Skybrud.Social.Vimeo.Models.Videos {
+namespace Skybrud.Social.Vimeo.Models.Videos;
+
+/// <summary>
+/// Class representing a list of videos as returned by the Vimeo API.
+/// </summary>
+public class VimeoVideoList : VimeoList {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing a list of videos as returned by the Vimeo API.
+    /// Gets the videos of the list.
     /// </summary>
-    public class VimeoVideoList : VimeoList {
+    public IReadOnlyList<VimeoVideo> Data { get; }
 
-        #region Properties
+    #endregion
 
-        /// <summary>
-        /// Gets the videos of the list.
-        /// </summary>
-        public IReadOnlyList<VimeoVideo> Data { get; }
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        private VimeoVideoList(JObject json) : base(json) {
-            Data = json.GetArrayItems("data", VimeoVideo.Parse)!;
-        }
-
-        #endregion
-
-        #region Static methods
-
-        /// <summary>
-        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoVideoList"/>.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>An instance of <see cref="VimeoVideoList"/>.</returns>
-        [return: NotNullIfNotNull("json")]
-        public new static VimeoVideoList? Parse(JObject? json) {
-            return json == null ? null : new VimeoVideoList(json);
-        }
-
-        #endregion
-
+    private VimeoVideoList(JObject json) : base(json) {
+        Data = json.GetArrayItems("data", VimeoVideo.Parse);
     }
+
+    #endregion
+
+    #region Static methods
+
+    /// <summary>
+    /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoVideoList"/>.
+    /// </summary>
+    /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
+    /// <returns>An instance of <see cref="VimeoVideoList"/>.</returns>
+    [return: NotNullIfNotNull(nameof(json))]
+    public static new VimeoVideoList? Parse(JObject? json) {
+        return json == null ? null : new VimeoVideoList(json);
+    }
+
+    #endregion
 
 }

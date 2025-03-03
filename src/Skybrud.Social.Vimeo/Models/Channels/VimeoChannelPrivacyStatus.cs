@@ -1,25 +1,23 @@
-﻿namespace Skybrud.Social.Vimeo.Models.Channels {
+﻿namespace Skybrud.Social.Vimeo.Models.Channels;
+
+/// <summary>
+/// ENum class representing the privacy status of a Vimeo channel.
+/// </summary>
+public enum VimeoChannelPrivacyStatus {
 
     /// <summary>
-    /// ENum class representing the privacy status of a Vimeo channel.
+    /// The channel is visible to anybody (public).
     /// </summary>
-    public enum VimeoChannelPrivacyStatus {
+    Anybody,
 
-        /// <summary>
-        /// The channel is visible to anybody (public).
-        /// </summary>
-        Anybody,
+    /// <summary>
+    /// The channel is only visible to moderators.
+    /// </summary>
+    Moderators,
 
-        /// <summary>
-        /// The channel is only visible to moderators.
-        /// </summary>
-        Moderators,
-
-        /// <summary>
-        /// The video is only visible to moderators and selected users.
-        /// </summary>
-        Users
-
-    }
+    /// <summary>
+    /// The video is only visible to moderators and selected users.
+    /// </summary>
+    Users
 
 }

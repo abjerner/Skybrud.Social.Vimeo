@@ -2,77 +2,75 @@
 using Skybrud.Social.Vimeo.Responses.Users;
 using Skybrud.Social.Vimeo.Responses.Videos;
 
-namespace Skybrud.Social.Vimeo.Endpoints {
+namespace Skybrud.Social.Vimeo.Endpoints;
+
+/// <summary>
+/// Class representing the implementation of the <strong>Me</strong> endpoint.
+/// </summary>
+/// <see>
+///     <cref>https://developer.vimeo.com/api/endpoints/me</cref>
+/// </see>
+public class VimeoMeEndpoint {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing the implementation of the me endpoint.
+    /// Gets a reference to the Vimeo service.
     /// </summary>
-    /// <see>
-    ///     <cref>https://developer.vimeo.com/api/endpoints/me</cref>
-    /// </see>
-    public class VimeoMeEndpoint {
+    public VimeoHttpService Service { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets a reference to the raw endpoint.
+    /// </summary>
+    public VimeoMeRawEndpoint Raw => Service.Client.Me;
 
-        /// <summary>
-        /// Gets a reference to the Vimeo service.
-        /// </summary>
-        public VimeoHttpService Service { get; }
+    #endregion
 
-        /// <summary>
-        /// Gets a reference to the raw endpoint.
-        /// </summary>
-        public VimeoMeRawEndpoint Raw => Service.Client.Me;
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        internal VimeoMeEndpoint(VimeoHttpService service) {
+    internal VimeoMeEndpoint(VimeoHttpService service) {
             Service = service;
         }
 
-        #endregion
+    #endregion
 
-        #region Member methods
+    #region Member methods
 
-        /// <summary>
-        /// Gets information about the authenticated user.
-        /// </summary>
-        /// <returns>An instance of <see cref="VimeoUserResponse"/> representing the response.</returns>
-        /// <see>
-        ///     <cref>https://developer.vimeo.com/api/endpoints/me#GET/me</cref>
-        /// </see>
-        public VimeoUserResponse GetUser() {
+    /// <summary>
+    /// Gets information about the authenticated user.
+    /// </summary>
+    /// <returns>An instance of <see cref="VimeoUserResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://developer.vimeo.com/api/endpoints/me#GET/me</cref>
+    /// </see>
+    public VimeoUserResponse GetUser() {
             return new VimeoUserResponse(Raw.GetUser());
         }
 
-        /// <summary>
-        /// Returns a list of video the authenticated user has uploaded.
-        /// </summary>
-        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
-        /// <see>
-        ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
-        /// </see>
-        public VimeoVideoListResponse GetVideos() {
+    /// <summary>
+    /// Returns a list of video the authenticated user has uploaded.
+    /// </summary>
+    /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+    /// </see>
+    public VimeoVideoListResponse GetVideos() {
             return new VimeoVideoListResponse(Raw.GetVideos());
         }
 
-        /// <summary>
-        /// Returns a list of video the authenticated user has uploaded.
-        /// </summary>
-        /// <param name="page">The page to be returned.</param>
-        /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
-        /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
-        /// <see>
-        ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
-        /// </see>
-        public VimeoVideoListResponse GetVideos(int page, int perPage) {
+    /// <summary>
+    /// Returns a list of video the authenticated user has uploaded.
+    /// </summary>
+    /// <param name="page">The page to be returned.</param>
+    /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
+    /// <returns>An instance of <see cref="VimeoVideoListResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
+    /// </see>
+    public VimeoVideoListResponse GetVideos(int page, int perPage) {
             return new VimeoVideoListResponse(Raw.GetVideos(page, perPage));
         }
 
-        #endregion
-
-    }
+    #endregion
 
 }

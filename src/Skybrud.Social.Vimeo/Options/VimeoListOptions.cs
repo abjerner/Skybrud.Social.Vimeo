@@ -2,68 +2,66 @@
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
-namespace Skybrud.Social.Vimeo.Options {
+namespace Skybrud.Social.Vimeo.Options;
+
+/// <summary>
+/// Class with basic options for a paginated request to the Vimeo API.
+/// </summary>
+public abstract class VimeoListOptions : IHttpRequestOptions {
+
+    #region Properties
 
     /// <summary>
-    /// Class with basic options for a paginated request to the Vimeo API.
+    /// Gets or sets the page to show.
     /// </summary>
-    public abstract class VimeoListOptions : IHttpRequestOptions {
+    public int? Page { get; set; }
 
-        #region Properties
+    /// <summary>
+    /// Gets or sets the maximum amount of items per page.
+    /// </summary>
+    public int? PerPage { get; set; }
 
-        /// <summary>
-        /// Gets or sets the page to show.
-        /// </summary>
-        public int? Page { get; set; }
+    #endregion
 
-        /// <summary>
-        /// Gets or sets the maximum amount of items per page.
-        /// </summary>
-        public int? PerPage { get; set; }
+    #region Constructors
 
-        #endregion
+    /// <summary>
+    /// Initializes a new instance with default options.
+    /// </summary>
+    protected VimeoListOptions() { }
 
-        #region Constructors
+    /// <summary>
+    /// Initializes a new instance with specified options.
+    /// </summary>
+    /// <param name="page">The page to show.</param>
+    /// <param name="perPage">The maximum amount of items per page.</param>
+    protected VimeoListOptions(int page, int perPage) {
+        Page = page;
+        PerPage = perPage;
+    }
 
-        /// <summary>
-        /// Initializes a new instance with default options.
-        /// </summary>
-        protected VimeoListOptions() { }
+    #endregion
 
-        /// <summary>
-        /// Initializes a new instance with specified options.
-        /// </summary>
-        /// <param name="page">The page to show.</param>
-        /// <param name="perPage">The maximum amount of items per page.</param>
-        protected VimeoListOptions(int page, int perPage) {
-            Page = page;
-            PerPage = perPage;
-        }
+    #region Members methods
 
-        #endregion
+    /// <summary>
+    /// Gets an instance of <see cref="IHttpQueryString"/> representing the GET parameters.
+    /// </summary>
+    public virtual IHttpQueryString GetQueryString() {
 
-        #region Members methods
+        HttpQueryString query = new();
+        if (Page != null) query.Add("page", Page.Value);
+        if (PerPage != null) query.Add("per_page", PerPage.Value);
 
-        /// <summary>
-        /// Gets an instance of <see cref="IHttpQueryString"/> representing the GET parameters.
-        /// </summary>
-        public virtual IHttpQueryString GetQueryString() {
-
-            HttpQueryString query = new();
-            if (Page != null) query.Add("page", Page.Value);
-            if (PerPage != null) query.Add("per_page", PerPage.Value);
-
-            return query;
-
-        }
-
-        /// <summary>
-        /// Gets an instance of <see cref="IHttpRequest"/> representing the request.
-        /// </summary>
-        public abstract IHttpRequest GetRequest();
-
-        #endregion
+        return query;
 
     }
+
+    /// <summary>
+    /// Gets an instance of <see cref="IHttpRequest"/> representing the request.
+    /// </summary>
+    public abstract IHttpRequest GetRequest();
+
+    #endregion
 
 }

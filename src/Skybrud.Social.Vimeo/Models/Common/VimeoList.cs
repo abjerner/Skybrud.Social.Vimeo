@@ -2,66 +2,64 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
-namespace Skybrud.Social.Vimeo.Models.Common {
+namespace Skybrud.Social.Vimeo.Models.Common;
+
+/// <summary>
+/// Class representing a generic list returned by the Vimeo API.
+/// </summary>
+public class VimeoList : VimeoObject {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing a generic list returned by the Vimeo API.
+    /// Gets the total amount of items in the list.
     /// </summary>
-    public class VimeoList : VimeoObject {
+    public int Total { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets the current page.
+    /// </summary>
+    public int Page { get; }
 
-        /// <summary>
-        /// Gets the total amount of items in the list.
-        /// </summary>
-        public int Total { get; }
+    /// <summary>
+    /// Gets the maximum amount of items per page.
+    /// </summary>
+    public int PerPage { get; }
 
-        /// <summary>
-        /// Gets the current page.
-        /// </summary>
-        public int Page { get; }
+    /// <summary>
+    /// Gets pagination URLs about the list.
+    /// </summary>
+    public VimeoPaging Paging { get; }
 
-        /// <summary>
-        /// Gets the maximum amount of items per page.
-        /// </summary>
-        public int PerPage { get; }
+    #endregion
 
-        /// <summary>
-        /// Gets pagination URLs about the list.
-        /// </summary>
-        public VimeoPaging Paging { get; }
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new list based on the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The <see cref="JObject"/> representing the list.</param>
-        protected VimeoList(JObject json) : base(json) {
-            Total = json.GetInt32("total");
-            Page = json.GetInt32("page");
-            PerPage = json.GetInt32("per_page");
-            Paging = json.GetObject("paging", VimeoPaging.Parse)!;
-        }
-
-        #endregion
-
-        #region Static methods
-
-        /// <summary>
-        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoList"/>.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>An instance of <see cref="VimeoList"/>.</returns>
-        [return: NotNullIfNotNull("json")]
-        public static VimeoList? Parse(JObject? json) {
-            return json == null ? null : new VimeoList(json);
-        }
-
-        #endregion
-
+    /// <summary>
+    /// Initializes a new list based on the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The <see cref="JObject"/> representing the list.</param>
+    protected VimeoList(JObject json) : base(json) {
+        Total = json.GetInt32("total");
+        Page = json.GetInt32("page");
+        PerPage = json.GetInt32("per_page");
+        Paging = json.GetObject("paging", VimeoPaging.Parse)!;
     }
+
+    #endregion
+
+    #region Static methods
+
+    /// <summary>
+    /// Parses the specified <paramref name="json"/> object into an instance of <see cref="VimeoList"/>.
+    /// </summary>
+    /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
+    /// <returns>An instance of <see cref="VimeoList"/>.</returns>
+    [return: NotNullIfNotNull(nameof(json))]
+    public static VimeoList? Parse(JObject? json) {
+        return json == null ? null : new VimeoList(json);
+    }
+
+    #endregion
 
 }
