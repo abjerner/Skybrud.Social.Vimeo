@@ -29,8 +29,8 @@ public class VimeoMeEndpoint {
     #region Constructors
 
     internal VimeoMeEndpoint(VimeoHttpService service) {
-            Service = service;
-        }
+        Service = service;
+    }
 
     #endregion
 
@@ -44,8 +44,8 @@ public class VimeoMeEndpoint {
     ///     <cref>https://developer.vimeo.com/api/endpoints/me#GET/me</cref>
     /// </see>
     public VimeoUserResponse GetUser() {
-            return new VimeoUserResponse(Raw.GetUser());
-        }
+        return new VimeoUserResponse(Raw.GetUser());
+    }
 
     /// <summary>
     /// Returns a list of video the authenticated user has uploaded.
@@ -55,8 +55,8 @@ public class VimeoMeEndpoint {
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos() {
-            return new VimeoVideoListResponse(Raw.GetVideos());
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos());
+    }
 
     /// <summary>
     /// Returns a list of video the authenticated user has uploaded.
@@ -68,8 +68,8 @@ public class VimeoMeEndpoint {
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos(int page, int perPage) {
-            return new VimeoVideoListResponse(Raw.GetVideos(page, perPage));
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos(page, perPage));
+    }
 
     #endregion
 

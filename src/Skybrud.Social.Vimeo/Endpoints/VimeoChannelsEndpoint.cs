@@ -30,8 +30,8 @@ public class VimeoChannelsEndpoint {
     #region Constructors
 
     internal VimeoChannelsEndpoint(VimeoHttpService service) {
-            Service = service;
-        }
+        Service = service;
+    }
 
     #endregion
 
@@ -43,8 +43,8 @@ public class VimeoChannelsEndpoint {
     /// <param name="channelId">The ID of the user.</param>
     /// <returns>An instance of <see cref="VimeoChannelResponse"/> representing the response.</returns>
     public VimeoChannelResponse GetChannel(long channelId) {
-            return new VimeoChannelResponse(Raw.GetChannel(channelId));
-        }
+        return new VimeoChannelResponse(Raw.GetChannel(channelId));
+    }
 
     /// <summary>
     /// Gets a list of videos of the channel with the specified <paramref name="channelId"/>.
@@ -55,8 +55,8 @@ public class VimeoChannelsEndpoint {
     ///     <cref>https://developer.vimeo.com/api/endpoints/channels#/{channel_id}/videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos(long channelId) {
-            return new VimeoVideoListResponse(Raw.GetVideos(channelId));
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos(channelId));
+    }
 
     /// <summary>
     /// Gets a list of videos of the channel with the specified <paramref name="channelId"/>.
@@ -69,8 +69,8 @@ public class VimeoChannelsEndpoint {
     ///     <cref>https://developer.vimeo.com/api/endpoints/channels#/{channel_id}/videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos(long channelId, int page, int perPage) {
-            return new VimeoVideoListResponse(Raw.GetVideos(channelId, page, perPage));
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos(channelId, page, perPage));
+    }
 
 
     /// <summary>
@@ -82,8 +82,8 @@ public class VimeoChannelsEndpoint {
     ///     <cref>https://developer.vimeo.com/api/endpoints/channels#/{channel_id}/videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos(VimeoGetChannelVideosOptions options) {
-            return new VimeoVideoListResponse(Raw.GetVideos(options));
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos(options));
+    }
 
     #endregion
 

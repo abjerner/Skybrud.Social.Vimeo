@@ -31,8 +31,8 @@ public class VimeoUsersEndpoint {
     #region Constructors
 
     internal VimeoUsersEndpoint(VimeoHttpService service) {
-            Service = service;
-        }
+        Service = service;
+    }
 
     #endregion
 
@@ -47,8 +47,8 @@ public class VimeoUsersEndpoint {
     ///     <cref>https://developer.vimeo.com/api/endpoints/users#/{user_id}</cref>
     /// </see>
     public VimeoUserResponse GetUser(long userId) {
-            return new VimeoUserResponse(Raw.GetUser(userId));
-        }
+        return new VimeoUserResponse(Raw.GetUser(userId));
+    }
 
     /// <summary>
     /// Gets information about the user with the specified <paramref name="username"/>.
@@ -59,8 +59,8 @@ public class VimeoUsersEndpoint {
     ///     <cref>https://developer.vimeo.com/api/endpoints/users#/{user_id}</cref>
     /// </see>
     public VimeoUserResponse GetUser(string username) {
-            return new VimeoUserResponse(Raw.GetUser(username));
-        }
+        return new VimeoUserResponse(Raw.GetUser(username));
+    }
 
     /// <summary>
     /// Returns a list of videos the user with the specified <paramref name="userId"/> has uploaded.
@@ -71,8 +71,8 @@ public class VimeoUsersEndpoint {
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos(long userId) {
-            return new VimeoVideoListResponse(Raw.GetVideos(userId));
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos(userId));
+    }
 
     /// <summary>
     /// Returns a list of videos the user with the specified <paramref name="userId"/> has uploaded.
@@ -85,8 +85,8 @@ public class VimeoUsersEndpoint {
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos(long userId, int page, int perPage) {
-            return new VimeoVideoListResponse(Raw.GetVideos(userId, page, perPage));
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos(userId, page, perPage));
+    }
 
     /// <summary>
     /// Returns a list of videos the user with the specified <paramref name="username"/> has uploaded.
@@ -97,8 +97,8 @@ public class VimeoUsersEndpoint {
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos(string username) {
-            return new VimeoVideoListResponse(Raw.GetVideos(username));
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos(username));
+    }
 
     /// <summary>
     /// Returns a list of videos the user with the specified <paramref name="username"/> has uploaded.
@@ -111,8 +111,8 @@ public class VimeoUsersEndpoint {
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos(string username, int page, int perPage) {
-            return new VimeoVideoListResponse(Raw.GetVideos(username, page, perPage));
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos(username, page, perPage));
+    }
 
     /// <summary>
     /// Returns a list of videos the user matching the specified <paramref name="options"/> has uploaded.
@@ -123,8 +123,8 @@ public class VimeoUsersEndpoint {
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
     public VimeoVideoListResponse GetVideos(VimeoGetUserVideosOptions options) {
-            return new VimeoVideoListResponse(Raw.GetVideos(options));
-        }
+        return new VimeoVideoListResponse(Raw.GetVideos(options));
+    }
 
     /// <summary>
     /// Gets a list of channels of the user with the specified <paramref name="userId"/>.
@@ -132,8 +132,8 @@ public class VimeoUsersEndpoint {
     /// <param name="userId">The ID of the parent user.</param>
     /// <returns>An instance of <see cref="VimeoChannelListResponse"/> representing the response.</returns>
     public VimeoChannelListResponse GetChannels(long userId) {
-            return new VimeoChannelListResponse(Raw.GetChannels(userId));
-        }
+        return new VimeoChannelListResponse(Raw.GetChannels(userId));
+    }
 
     /// <summary>
     /// Gets a list of channels of the user with the specified <paramref name="userId"/>.
@@ -143,8 +143,8 @@ public class VimeoUsersEndpoint {
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
     /// <returns>An instance of <see cref="VimeoChannelListResponse"/> representing the response.</returns>
     public VimeoChannelListResponse GetChannels(long userId, int page, int perPage) {
-            return new VimeoChannelListResponse(Raw.GetChannels(userId, page, perPage));
-        }
+        return new VimeoChannelListResponse(Raw.GetChannels(userId, page, perPage));
+    }
 
     /// <summary>
     /// Gets a list of channels of the user with the specified <paramref name="username"/>.
@@ -152,8 +152,8 @@ public class VimeoUsersEndpoint {
     /// <param name="username">The username of the parent user.</param>
     /// <returns>An instance of <see cref="VimeoChannelListResponse"/> representing the response.</returns>
     public VimeoChannelListResponse GetChannels(string username) {
-            return new VimeoChannelListResponse(Raw.GetChannels(username));
-        }
+        return new VimeoChannelListResponse(Raw.GetChannels(username));
+    }
 
     /// <summary>
     /// Gets a list of channels of the user with the specified <paramref name="username"/>.
@@ -163,8 +163,8 @@ public class VimeoUsersEndpoint {
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
     /// <returns>An instance of <see cref="VimeoChannelListResponse"/> representing the response.</returns>
     public VimeoChannelListResponse GetChannels(string username, int page, int perPage) {
-            return new VimeoChannelListResponse(Raw.GetChannels(username, page, perPage));
-        }
+        return new VimeoChannelListResponse(Raw.GetChannels(username, page, perPage));
+    }
 
     /// <summary>
     /// Gets a list of user channels matching the specified <paramref name="options"/>.
@@ -172,8 +172,8 @@ public class VimeoUsersEndpoint {
     /// <param name="options">The options for request to the API.</param>
     /// <returns>An instance of <see cref="VimeoChannelListResponse"/> representing the response.</returns>
     public VimeoChannelListResponse GetChannels(VimeoGetUserChannelsOptions options) {
-            return new VimeoChannelListResponse(Raw.GetChannels(options));
-        }
+        return new VimeoChannelListResponse(Raw.GetChannels(options));
+    }
 
     #endregion
 

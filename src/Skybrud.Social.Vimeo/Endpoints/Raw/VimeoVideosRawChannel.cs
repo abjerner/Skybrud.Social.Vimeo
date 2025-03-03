@@ -41,72 +41,8 @@ public class VimeoVideosRawEndpoint {
     ///     <cref>https://developer.vimeo.com/api/endpoints/videos#GET/videos/{video_id}</cref>
     /// </see>
     public IHttpResponse GetVideo(long videoId) {
-            return Client.Get($"/videos/{videoId}");
-        }
-
-    /// <summary>
-    /// Gets a list of videos uploaded by the authenticated user.
-    /// </summary>
-    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-    [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
-    public IHttpResponse GetVideos() {
-            return GetVideos(new VimeoGetVideosOptions("me"));
-        }
-
-    /// <summary>
-    /// Gets a list of videos uploaded by the user with the specified <paramref name="userId"/>
-    /// </summary>
-    /// <param name="userId">The ID of the user.</param>
-    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-    [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
-    public IHttpResponse GetVideos(long userId) {
-            return GetVideos(new VimeoGetVideosOptions(userId));
-        }
-
-    /// <summary>
-    /// Gets a list of channels of the user with the specified <paramref name="userId"/>.
-    /// </summary>
-    /// <param name="userId">The ID of the parent user.</param>
-    /// <param name="page">The page to be returned.</param>
-    /// <param name="perPage">The maximum amount of videos to be returned per page.</param>
-    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-    [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
-    public IHttpResponse GetVideos(long userId, int page, int perPage) {
-            return GetVideos(new VimeoGetVideosOptions(userId, page, perPage));
-        }
-
-    /// <summary>
-    /// Gets a list of channels of the user with the specified <paramref name="username"/>.
-    /// </summary>
-    /// <param name="username">The username of the parent user.</param>
-    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-    [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
-    public IHttpResponse GetVideos(string username) {
-            return GetVideos(new VimeoGetVideosOptions(username));
-        }
-
-    /// <summary>
-    /// Gets a list of videos of the user with the specified <paramref name="username"/>.
-    /// </summary>
-    /// <param name="username">The username of the parent user.</param>
-    /// <param name="page">The page to be returned.</param>
-    /// <param name="perPage">The maximum amount of videos to be returned per page.</param>
-    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-    [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
-    public IHttpResponse GetVideos(string username, int page, int perPage) {
-            return GetVideos(new VimeoGetVideosOptions(username, page, perPage));
-        }
-
-    /// <summary>
-    /// Gets a list of videos of the user matching the specified <paramref name="options"/>.
-    /// </summary>
-    /// <param name="options">The options for request to the API.</param>
-    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-    [Obsolete("Use the 'GetVideos' method in the 'Users' endpoint instead.")]
-    public IHttpResponse GetVideos(VimeoGetVideosOptions options) {
-            if (options == null) throw new ArgumentNullException(nameof(options));
-            return Client.GetResponse(options);
-        }
+        return Client.Get($"/videos/{videoId}");
+    }
 
     /// <summary>
     /// Gets a list of videos of the user matching the specified <paramref name="options"/>.
@@ -117,9 +53,9 @@ public class VimeoVideosRawEndpoint {
     ///     <cref>https://developer.vimeo.com/api/reference/videos#search_videos</cref>
     /// </see>
     public IHttpResponse SearchVideos(VimeoSearchVideosOptions options) {
-            if (options == null) throw new ArgumentNullException(nameof(options));
-            return Client.GetResponse(options);
-        }
+        if (options == null) throw new ArgumentNullException(nameof(options));
+        return Client.GetResponse(options);
+    }
 
     #endregion
 
