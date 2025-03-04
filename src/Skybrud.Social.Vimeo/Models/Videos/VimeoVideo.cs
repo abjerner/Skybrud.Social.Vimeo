@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
+using Skybrud.Essentials.Strings.Extensions;
 using Skybrud.Essentials.Time;
 using Skybrud.Social.Vimeo.Models.Tags;
 using Skybrud.Social.Vimeo.Models.Users;
@@ -46,7 +48,7 @@ public class VimeoVideo : VimeoObject {
     /// Gets whether the video has a description. If true, the description can be read from the
     /// <see cref="Description"/> property.
     /// </summary>
-    [MemberNotNullWhen(true, "Description")]
+    [MemberNotNullWhen(true, nameof(Description))]
     public bool HasDescription => string.IsNullOrWhiteSpace(Description) == false;
 
     // TODO: Add support for property "type": (enum: video)
@@ -56,7 +58,15 @@ public class VimeoVideo : VimeoObject {
     /// </summary>
     public string Link { get; }
 
-    // TODO: Add support for property "player_embed_url": (string)
+    /// <summary>
+    /// Gets the embed URL of the Vimeo video.
+    /// </summary>
+    public string PlayerEmbedUrl { get; }
+
+    /// <summary>
+    /// Gets the embed hash of the Vimeo video.
+    /// </summary>
+    public string PlayerEmbedHash { get; }
 
     /// <summary>
     /// Gets the duration of the video.
@@ -178,6 +188,7 @@ public class VimeoVideo : VimeoObject {
         Name = json.GetString("name")!;
         Description = json.GetString("description");
         Link = json.GetString("link")!;
+        PlayerEmbedUrl = json.GetString("player_embed_url")!;
         Duration = json.GetDouble("duration", TimeSpan.FromSeconds);
         Width = json.GetInt32("width");
         Language = json.GetString("language")!;
@@ -199,6 +210,10 @@ public class VimeoVideo : VimeoObject {
         ResourceKey = json.GetString("resource_key")!;
         // "embed_presets"
         Files = json.GetArrayItems("files", VimeoVideoFile.Parse);
+
+        PlayerEmbedUrl.Split('?', out string _, out string? embedQuery);
+        IHttpQueryString query = HttpQueryString.Parse(embedQuery ?? string.Empty);
+        PlayerEmbedHash = query["h"]!;
 
     }
 
