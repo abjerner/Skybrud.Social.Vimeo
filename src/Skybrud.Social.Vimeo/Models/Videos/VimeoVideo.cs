@@ -81,7 +81,7 @@ public class VimeoVideo : VimeoObject {
     /// <summary>
     /// Gets the language of the video.
     /// </summary>
-    public string Language { get; }
+    public string? Language { get; }
 
     /// <summary>
     /// Gets the height of the video.
@@ -191,7 +191,7 @@ public class VimeoVideo : VimeoObject {
         PlayerEmbedUrl = json.GetString("player_embed_url")!;
         Duration = json.GetDouble("duration", TimeSpan.FromSeconds);
         Width = json.GetInt32("width");
-        Language = json.GetString("language")!;
+        Language = json.GetString("language");
         Height = json.GetInt32("height");
         Embed = json.GetObject("embed", VimeoVideoEmbed.Parse)!;
         CreatedTime = json.GetString("created_time", EssentialsTime.Parse)!;
