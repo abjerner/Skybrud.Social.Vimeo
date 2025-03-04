@@ -72,7 +72,7 @@ public class VimeoGetUserChannelsOptions : VimeoListOptions {
     /// <param name="username">The username of the parent user.</param>
     /// <param name="page">The page to be returned.</param>
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
-    public VimeoGetUserChannelsOptions(string username, int page, int perPage) : this() {
+    public VimeoGetUserChannelsOptions(string username, int? page, int? perPage) : this() {
         Username = username;
         Page = page;
         PerPage = perPage;

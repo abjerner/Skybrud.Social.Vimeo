@@ -84,7 +84,7 @@ public class VimeoUsersEndpoint {
     /// <see>
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
-    public VimeoVideoListResponse GetVideos(long userId, int page, int perPage) {
+    public VimeoVideoListResponse GetVideos(long userId, int? page, int? perPage) {
         return new VimeoVideoListResponse(Raw.GetVideos(userId, page, perPage));
     }
 
@@ -110,7 +110,7 @@ public class VimeoUsersEndpoint {
     /// <see>
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
-    public VimeoVideoListResponse GetVideos(string username, int page, int perPage) {
+    public VimeoVideoListResponse GetVideos(string username, int? page, int? perPage) {
         return new VimeoVideoListResponse(Raw.GetVideos(username, page, perPage));
     }
 
@@ -142,7 +142,7 @@ public class VimeoUsersEndpoint {
     /// <param name="page">The page to be returned.</param>
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
     /// <returns>An instance of <see cref="VimeoChannelListResponse"/> representing the response.</returns>
-    public VimeoChannelListResponse GetChannels(long userId, int page, int perPage) {
+    public VimeoChannelListResponse GetChannels(long userId, int? page, int? perPage) {
         return new VimeoChannelListResponse(Raw.GetChannels(userId, page, perPage));
     }
 
@@ -162,7 +162,7 @@ public class VimeoUsersEndpoint {
     /// <param name="page">The page to be returned.</param>
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
     /// <returns>An instance of <see cref="VimeoChannelListResponse"/> representing the response.</returns>
-    public VimeoChannelListResponse GetChannels(string username, int page, int perPage) {
+    public VimeoChannelListResponse GetChannels(string username, int? page, int? perPage) {
         return new VimeoChannelListResponse(Raw.GetChannels(username, page, perPage));
     }
 

@@ -74,7 +74,7 @@ public class VimeoUsersRawEndpoint {
     /// <param name="page">The page to be returned.</param>
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
     /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-    public IHttpResponse GetChannels(long userId, int page, int perPage) {
+    public IHttpResponse GetChannels(long userId, int? page, int? perPage) {
         return GetChannels(new VimeoGetUserChannelsOptions(userId, page, perPage));
     }
 
@@ -95,7 +95,7 @@ public class VimeoUsersRawEndpoint {
     /// <param name="page">The page to be returned.</param>
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
     /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-    public IHttpResponse GetChannels(string username, int page, int perPage) {
+    public IHttpResponse GetChannels(string username, int? page, int? perPage) {
         if (string.IsNullOrWhiteSpace(username)) throw new ArgumentNullException(nameof(username));
         return GetChannels(new VimeoGetUserChannelsOptions(username, page, perPage));
     }
@@ -133,7 +133,7 @@ public class VimeoUsersRawEndpoint {
     /// <see>
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
-    public IHttpResponse GetVideos(long userId, int page, int perPage) {
+    public IHttpResponse GetVideos(long userId, int? page, int? perPage) {
         return GetVideos(new VimeoGetUserVideosOptions(userId, page, perPage));
     }
 
@@ -159,7 +159,7 @@ public class VimeoUsersRawEndpoint {
     /// <see>
     ///     <cref>https://developer.vimeo.com/api/reference/videos#get_videos</cref>
     /// </see>
-    public IHttpResponse GetVideos(string username, int page, int perPage) {
+    public IHttpResponse GetVideos(string username, int? page, int? perPage) {
         return GetVideos(new VimeoGetUserVideosOptions(username, page, perPage));
     }
 
