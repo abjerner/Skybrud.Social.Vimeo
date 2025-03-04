@@ -38,7 +38,17 @@ public class VimeoChannelsRawEndpoint {
     /// <param name="channelId">The ID of the channel.</param>
     /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
     public IHttpResponse GetChannel(long channelId) {
-        return Client.Get($"/channels/{channelId}");
+        return GetChannel(new VimeoGetChannelOptions(channelId));
+    }
+
+    /// <summary>
+    /// Gets information about the channel matching the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+    public IHttpResponse GetChannel(VimeoGetChannelOptions options) {
+        if (options == null) throw new ArgumentNullException(nameof(options));
+        return Client.GetResponse(options);
     }
 
     /// <summary>

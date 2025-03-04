@@ -47,6 +47,15 @@ public class VimeoChannelsEndpoint {
     }
 
     /// <summary>
+    /// Gets information about the channel matching the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="VimeoChannelResponse"/> representing the response.</returns>
+    public VimeoChannelResponse GetChannel(VimeoGetChannelOptions options) {
+        return new VimeoChannelResponse(Raw.GetChannel(options));
+    }
+
+    /// <summary>
     /// Gets a list of videos of the channel with the specified <paramref name="channelId"/>.
     /// </summary>
     /// <param name="channelId">The ID of the cannel.</param>
