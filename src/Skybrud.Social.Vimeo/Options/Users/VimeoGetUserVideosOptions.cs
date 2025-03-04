@@ -75,7 +75,7 @@ public class VimeoGetUserVideosOptions : VimeoListOptions {
     /// <param name="userId">The ID of the user.</param>
     /// <param name="page">The page to be returned.</param>
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
-    public VimeoGetUserVideosOptions(long userId, int page, int perPage) {
+    public VimeoGetUserVideosOptions(long userId, int? page, int? perPage) {
         UserId = userId;
         Page = page;
         PerPage = perPage;
@@ -95,7 +95,7 @@ public class VimeoGetUserVideosOptions : VimeoListOptions {
     /// <param name="username">The username of the user.</param>
     /// <param name="page">The page to be returned.</param>
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
-    public VimeoGetUserVideosOptions(string username, int page, int perPage) {
+    public VimeoGetUserVideosOptions(string username, int? page, int? perPage) {
         Username = username;
         Page = page;
         PerPage = perPage;
