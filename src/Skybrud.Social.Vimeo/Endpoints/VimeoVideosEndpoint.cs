@@ -42,10 +42,22 @@ public class VimeoVideosEndpoint {
     /// <param name="videoId">The ID of the video</param>
     /// <returns>An instance of <see cref="VimeoVideoResponse"/> representing the response.</returns>
     /// <see>
-    ///     <cref>https://developer.vimeo.com/api/endpoints/videos#GET/videos/{video_id}</cref>
+    ///     <cref>https://developer.vimeo.com/api/reference/videos#get_video</cref>
     /// </see>
     public VimeoVideoResponse GetVideo(long videoId) {
         return new VimeoVideoResponse(Raw.GetVideo(videoId));
+    }
+
+    /// <summary>
+    /// Gets information about the video matching the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="VimeoVideoResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://developer.vimeo.com/api/reference/videos#get_video</cref>
+    /// </see>
+    public VimeoVideoResponse GetVideo(VimeoGetVideoOptions options) {
+        return new VimeoVideoResponse(Raw.GetVideo(options));
     }
 
     /// <summary>
