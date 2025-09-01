@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
 using Skybrud.Social.Vimeo.Models.Pictures;
@@ -127,7 +128,7 @@ public class VimeoUser : VimeoObject {
         Bio = json.GetString("bio");
         ShortBio = json.GetString("short_bio");
         CreatedTime = json.GetString("created_time", EssentialsTime.Parse)!;
-        Account = json.GetEnum<VimeoAccountType>("account");
+        Account = ParseAccountType(json.GetString("account"));
         Picture = json.GetObject("pictures", VimeoPicture.Parse);
         Websites = json.GetArrayItems("websites", VimeoUserWebsite.Parse);
         // "metadata"
@@ -138,6 +139,10 @@ public class VimeoUser : VimeoObject {
     #endregion
 
     #region Static methods
+
+    private static VimeoAccountType ParseAccountType(string? value) {
+        return string.IsNullOrWhiteSpace(value) ? VimeoAccountType.Unspecified : EnumUtils.ParseEnum(value, VimeoAccountType.Unrecognized);
+    }
 
     private static VimeoGender ParseGender(string value) {
         return value switch {

@@ -9,6 +9,16 @@
 public enum VimeoAccountType {
 
     /// <summary>
+    /// Indicates that Vimeo returned an undocumented or unsupported account type.
+    /// </summary>
+    Unrecognized = -1,
+
+    /// <summary>
+    /// Indicates that an account type was not specified.
+    /// </summary>
+    Unspecified = 0,
+
+    /// <summary>
     /// Indicates that a user has a <strong>Vimeo Advanced</strong> subscription.
     /// </summary>
     Advanced,
@@ -79,6 +89,11 @@ public enum VimeoAccountType {
     /// <summary>
     /// Indicates a user with a <strong>Vimeo Starter</strong> membership.
     /// </summary>
-    Starter
+    Starter,
+
+    /// <summary>
+    /// Indicates a user with a <strong>Custom</strong> membership. This value is not documented by Vimeo.
+    /// </summary>
+    Custom
 
 }
