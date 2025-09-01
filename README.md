@@ -15,7 +15,7 @@
   <tr>
     <td><strong>Target Framework:</strong></td>
     <td>
-      .NET 4.5, .NET 4.6, .NET 4.7 and .NET Standard 2.0
+      .NET Standard 2.0 and .NET 8
     </td>
   </tr>
 </table>
