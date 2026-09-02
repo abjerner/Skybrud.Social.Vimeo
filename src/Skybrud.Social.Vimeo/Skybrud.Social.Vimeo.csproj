@@ -17,30 +17,46 @@
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Description>Authentication and service implementation for the Vimeo API.</Description>
-    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Vimeo</RepositoryUrl>
   </PropertyGroup>
 
+  <!-- Include additional metadata in the assembly -->
+  <ItemGroup>
+    <AssemblyMetadata Include="Authors" Value="$(Authors)" />
+    <AssemblyMetadata Include="PackageProjectUrl" Value="https://packages.limbo.works/skybrud.social.vimeo/" />
+    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/skybrud.social.vimeo/docs/" />
+    <AssemblyMetadata Include="NuGetUrl" Value="https://www.nuget.org/packages/Skybrud.Social.Vimeo" />
+  </ItemGroup>
+
+  <!-- Information for the NuGet package -->
   <PropertyGroup>
     <PackageTags>Vimeo, API, Skybrud, Social, OAuth, JSON, Limbo</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://social.skybrud.dk/vimeo/</PackageProjectUrl>
+    <PackageProjectUrl>https://packages.limbo.works/skybrud.social.vimeo/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Vimeo</RepositoryUrl>
   </PropertyGroup>
 
+  <!-- Ignore vulnerabilities from transient dependencies -->
+  <PropertyGroup>
+    <NuGetAuditMode>direct</NuGetAuditMode>
+  </PropertyGroup>
+
+  <!-- Include NuGet dependencies -->
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials" Version="1.1.69" />
     <PackageReference Include="Skybrud.Essentials.Http" Version="1.2.3" />
     <PackageReference Include="Nullable" Version="1.3.1" PrivateAssets="all" />
   </ItemGroup>
 
+  <!-- Include package icon for NuGet -->
+  <ItemGroup>
+    <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <!-- Generate XML documentation -->
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="../build/Limbo.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
 
 </Project>
