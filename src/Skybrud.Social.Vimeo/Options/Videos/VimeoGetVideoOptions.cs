@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Skybrud.Essentials.Common;
+﻿using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Options;
 
@@ -15,7 +14,11 @@ public class VimeoGetVideoOptions : IHttpRequestOptions {
     /// <summary>
     /// Gets or sets the ID of the video.
     /// </summary>
+#if NET8_0_OR_GREATER
+    public required long VideoId { get; set; }
+#else
     public long VideoId { get; set; }
+#endif
 
     #endregion
 
@@ -31,7 +34,7 @@ public class VimeoGetVideoOptions : IHttpRequestOptions {
     /// </summary>
     /// <param name="videoId">The ID of the video.</param>
 #if NET8_0_OR_GREATER
-    [SetsRequiredMembers]
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
     public VimeoGetVideoOptions(long videoId) {
         VideoId = videoId;

@@ -35,7 +35,7 @@ public class VimeoGetUserVideosOptions : VimeoListOptions {
     /// <summary>
     /// Gets whether a username has been specified.
     /// </summary>
-    public bool HasUsername => string.IsNullOrWhiteSpace(Username) == false;
+    public bool HasUsername => !string.IsNullOrWhiteSpace(Username);
 
     /// <summary>
     /// Gets or sets a text based query the videos should match.
@@ -122,7 +122,7 @@ public class VimeoGetUserVideosOptions : VimeoListOptions {
     public override IHttpRequest GetRequest() {
 
         // Get videos of the authenticated user?
-        if (Username == "me" || HasUserId == false && HasUsername == false) {
+        if (Username == "me" || !HasUserId && !HasUsername) {
             return new HttpRequest(HttpMethod.Get, "/me/videos", GetQueryString());
         }
 

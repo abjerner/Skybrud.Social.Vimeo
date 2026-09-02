@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Skybrud.Essentials.Common;
+﻿using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Options;
 
@@ -35,7 +34,7 @@ public class VimeoGetChannelOptions : IHttpRequestOptions {
     /// </summary>
     /// <param name="channelId">The ID of the channel.</param>
 #if NET8_0_OR_GREATER
-    [SetsRequiredMembers]
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
     public VimeoGetChannelOptions(long channelId) {
         ChannelId = channelId;

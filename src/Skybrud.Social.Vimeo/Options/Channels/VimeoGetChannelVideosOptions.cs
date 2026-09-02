@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Skybrud.Essentials.Common;
+﻿using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Strings;
@@ -53,7 +52,7 @@ public class VimeoGetChannelVideosOptions : VimeoListOptions {
     /// </summary>
     /// <param name="channelId">The ID of the channel.</param>
 #if NET8_0_OR_GREATER
-    [SetsRequiredMembers]
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
     public VimeoGetChannelVideosOptions(long channelId) {
         ChannelId = channelId;
@@ -66,7 +65,7 @@ public class VimeoGetChannelVideosOptions : VimeoListOptions {
     /// <param name="page">The page to be returned.</param>
     /// <param name="perPage">The maximum amount of pages to be returned per page.</param>
 #if NET8_0_OR_GREATER
-    [SetsRequiredMembers]
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
     public VimeoGetChannelVideosOptions(long channelId, int? page, int? perPage) {
         ChannelId = channelId;

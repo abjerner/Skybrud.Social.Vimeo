@@ -88,7 +88,7 @@ public class VimeoGetUserChannelsOptions : VimeoListOptions {
     public override IHttpRequest GetRequest() {
 
         // Get channels of the authenticated user?
-        if (Username == "me" || HasUserId == false && HasUsername == false) {
+        if (Username == "me" || !HasUserId && !HasUsername) {
             return new HttpRequest(HttpMethod.Get, "/me/channels", GetQueryString());
         }
 
